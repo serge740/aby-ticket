@@ -120,7 +120,7 @@ const BlogDetailPage = () => {
               />
             </div>
 
-            <h1 className="text-4xl font-bold text-gray-900 mb-6 hover:text-red-600 transition-colors">
+            <h1 className="text-4xl font-bold text-gray-900 mb-6 hover:text-primary-600 transition-colors">
               {currentPost.title}
             </h1>
 
@@ -131,7 +131,7 @@ const BlogDetailPage = () => {
               </p>
 
               {/* Quote */}
-              <blockquote className="border-l-4 border-red-600 pl-6 py-4 mb-6 bg-gradient-to-r from-red-50 to-transparent rounded-r-lg">
+              <blockquote className="border-l-4 border-primary-600 pl-6 py-4 mb-6 bg-gradient-to-r from-primary-50 to-transparent rounded-r-lg">
                 <p className="text-gray-800 font-medium leading-relaxed italic text-lg">
                   {currentPost.quote}
                 </p>
@@ -146,7 +146,7 @@ const BlogDetailPage = () => {
             <div className="bg-white rounded-2xl p-6 mb-8 shadow-md">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
-                  <span className="text-5xl font-bold text-red-600">
+                  <span className="text-5xl font-bold text-primary-600">
                     {currentDate.day}
                   </span>
                   <div className="flex flex-col text-sm text-gray-600">
@@ -156,11 +156,11 @@ const BlogDetailPage = () => {
                 </div>
                 <div className="flex items-center space-x-4 text-gray-600">
                   <div className="flex items-center space-x-2 bg-gray-50 px-3 py-2 rounded-full">
-                    <Eye size={18} className="text-red-600" />
+                    <Eye size={18} className="text-primary-600" />
                     <span className="font-medium">{currentPost.views}</span>
                   </div>
                   <div className="flex items-center space-x-2 bg-gray-50 px-3 py-2 rounded-full">
-                    <MessageCircle size={18} className="text-red-600" />
+                    <MessageCircle size={18} className="text-primary-600" />
                     <span className="font-medium">{comments.length}</span>
                   </div>
                 </div>
@@ -171,7 +171,7 @@ const BlogDetailPage = () => {
               <div className="mb-3">
                 <span className="font-bold text-gray-800">Tags: </span>
                 {currentPost.tags.map((tag, index) => (
-                  <span key={index} className="inline-block bg-gradient-to-r from-red-600 to-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold mr-2 mb-2">
+                  <span key={index} className="inline-block bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-3 py-1 rounded-full text-xs font-semibold mr-2 mb-2">
                     {tag}
                   </span>
                 ))}
@@ -181,7 +181,7 @@ const BlogDetailPage = () => {
                 <span className="font-bold text-gray-800">Category: </span>
                 {currentPost.category.map((cat, index) => (
                   <span key={index}>
-                    <span className="text-red-600 font-semibold">{cat}</span>
+                    <span className="text-primary-600 font-semibold">{cat}</span>
                     {index < currentPost.category.length - 1 && ', '}
                   </span>
                 ))}
@@ -198,7 +198,7 @@ const BlogDetailPage = () => {
                   </h2>
                   <div className="space-y-6 mb-8">
                     {comments.map((cmt) => (
-                      <div key={cmt.id} className="border-l-4 border-red-600 bg-gray-50 rounded-r-lg p-4">
+                      <div key={cmt.id} className="border-l-4 border-primary-600 bg-gray-50 rounded-r-lg p-4">
                         <div className="flex justify-between items-start mb-2">
                           <h4 className="font-bold text-gray-800">{cmt.name}</h4>
                           <span className="text-sm text-gray-500">
@@ -216,7 +216,7 @@ const BlogDetailPage = () => {
               <h2 className="text-3xl font-bold text-gray-800 mb-6">Add Comment</h2>
               
               <p className="text-sm text-gray-600 mb-6 text-center">
-                Your email address will not be published. Required fields are marked <span className="text-red-600">*</span>
+                Your email address will not be published. Required fields are marked <span className="text-primary-600">*</span>
               </p>
 
               <form onSubmit={handleSubmit}>
@@ -225,7 +225,7 @@ const BlogDetailPage = () => {
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
                   rows="6"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 mb-4 resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600 mb-4 resize-none"
                   required
                 />
 
@@ -235,7 +235,7 @@ const BlogDetailPage = () => {
                     placeholder="Name *"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
+                    className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600"
                     required
                   />
                   <input
@@ -243,7 +243,7 @@ const BlogDetailPage = () => {
                     placeholder="Email *"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
+                    className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600"
                     required
                   />
                 </div>
@@ -254,7 +254,7 @@ const BlogDetailPage = () => {
                       type="checkbox"
                       checked={saveInfo}
                       onChange={(e) => setSaveInfo(e.target.checked)}
-                      className="mt-1 mr-3 accent-red-600"
+                      className="mt-1 mr-3 accent-primary-600"
                     />
                     <span className="text-sm text-gray-700">
                       Save my name, email, and website in this browser for the next time I comment.
@@ -265,7 +265,7 @@ const BlogDetailPage = () => {
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="px-10 py-3 bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                    className="px-10 py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-bold rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300"
                   >
                     Post Comment
                   </button>
@@ -294,22 +294,22 @@ const BlogDetailPage = () => {
                           </div>
                           
                           <div className="flex-1">
-                            <h4 className="text-base font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors line-clamp-2">
+                            <h4 className="text-base font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors line-clamp-2">
                               {post.title}
                             </h4>
                             
                             <div className="flex items-center gap-2 text-gray-500 text-xs mb-2">
-                              <Calendar size={12} className="text-red-600" />
+                              <Calendar size={12} className="text-primary-600" />
                               <span>{relatedDate.month} {relatedDate.day}, {relatedDate.year}</span>
                             </div>
 
                             <div className="flex items-center gap-3 text-gray-500 text-xs">
                               <div className="flex items-center gap-1">
-                                <Eye size={12} className="text-red-600" />
+                                <Eye size={12} className="text-primary-600" />
                                 <span>{post.views}</span>
                               </div>
                               <div className="flex items-center gap-1">
-                                <MessageCircle size={12} className="text-red-600" />
+                                <MessageCircle size={12} className="text-primary-600" />
                                 <span>{post.comments || 0}</span>
                               </div>
                             </div>

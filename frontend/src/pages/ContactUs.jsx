@@ -1,317 +1,273 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Mail, Phone, MapPin, Clock, Send, Coffee } from "lucide-react";
-import Header from "../components/header";
-import backgroundImage from "../assets/coffee4.jpg";
+import React, { useState } from 'react';
+import { Mail, Phone, MapPin, Send, Clock, MessageSquare, ArrowUpRight } from 'lucide-react';
+import Header from '../components/header';
 
-const ContactUs = () => {
+export default function AbyTicketContact() {
   const [formData, setFormData] = useState({
-    from_name: "",
-    user_email: "",
-    subject: "",
-    message: "",
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
   });
-  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    document.documentElement.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-      inline: "start",
-    });
-  }, []);
-
-  const form = useRef();
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const sendEmail = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-
-    // Simulating email send - replace with your actual emailjs implementation
-    setTimeout(() => {
-      alert("Message sent successfully!");
-      setFormData({
-        from_name: "",
-        user_email: "",
-        subject: "",
-        message: "",
-      });
-      setLoading(false);
-    }, 2000);
+    console.log('Form submitted:', formData);
+    // Handle form submission
   };
-
-  const contactInfo = [
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Phone",
-      detail: "+250 791 813 289",
-      link: "tel:+250791813289",
-      color: "from-primary-600 to-primary-700"
-    },
-    {
-      icon: <Mail className="w-6 h-6" />,
-      title: "Email",
-      detail: "hello@jambokawa.com",
-      link: "mailto:hello@jambokawa.com",
-      color: "from-primary-600 to-primary-700"
-    },
-    {
-      icon: <MapPin className="w-6 h-6" />,
-      title: "Location",
-      detail: "kigali, Rwanda",
-      link: "https://maps.google.com",
-      color: "from-primary-600 to-primary-700"
-    },
-    {
-      icon: <Clock className="w-6 h-6" />,
-      title: "Working Hours",
-      detail: "Mon-Sun: 7AM - 10PM",
-      link: null,
-      color: "from-primary-600 to-primary-700"
-    }
-  ];
 
   return (
-    <div className="w-full flex flex-col items-center ">
-      {/* Header */}
+    <div className="min-h-screen bg-white">
       <Header title={"Contact Us"} path={"contact"} />
-      <div
-        className=" w-full bg-white flex flex-col items-center gap-12 pt-12 "
-       
-      >
-        {/* Company Info Cards */}
-        <div className="w-full px-4 lg:px-14 mx-auto -mt-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-            {contactInfo.map((info, index) => (
-              <div
-                key={index}
-                className="group relative bg-white/90 rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-primary-500"
-              >
-                {/* Gradient Background on Hover */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${info.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}
-                ></div>
-
-                {/* Icon Container */}
-                <div
-                  className={`relative w-14 h-14 rounded-xl bg-gradient-to-br ${info.color} flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <div className="text-white">{info.icon}</div>
-                </div>
-
-                {/* Content */}
-                <div className="relative">
-                  <h3 className="text-sm font-semibold text-primary-500 uppercase tracking-wide mb-1">
-                    {info.title}
-                  </h3>
-                  {info.link ? (
-                    <a
-                      href={info.link}
-                      target={
-                        info.link.startsWith("http") ? "_blank" : undefined
-                      }
-                      rel={
-                        info.link.startsWith("http")
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
-                      className="text-gray-900 font-bold text-lg hover:text-primary-500 transition-colors duration-200 block"
-                    >
-                      {info.detail}
-                    </a>
-                  ) : (
-                    <p className="text-gray-900 font-bold text-lg">
-                      {info.detail}
-                    </p>
-                  )}
-                </div>
-
-                {/* Decorative Element */}
-                <div
-                  className={`absolute -bottom-1 -right-1 w-20 h-20 bg-gradient-to-br ${info.color} opacity-5 rounded-full blur-2xl group-hover:opacity-10 transition-opacity duration-300`}
-                ></div>
-              </div>
-            ))}
+      
+      {/* Main Content */}
+      <div className="px-4 py-16">
+        
+        {/* Logo */}
+        <div className="text-center mb-8">
+          <div className="text-gray-600 text-sm tracking-[0.4em] uppercase font-semibold">
+            ABY TICKET
           </div>
         </div>
 
-        <div 
-         style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed",
-          backgroundPosition: "center",
-        }}
-        className="flex flex-col py-20 w-full gap-8 ">
-
-
-        {/* Form & Map Section */}
-        <div  className="flex flex-col lg:flex-row justify-center gap-8 lg:gap-12 w-full px-4 lg:px-14 mx-auto ">
-          {/* Google Map */}
-          <div className="w-full lg:w-1/2 flex bg-white items-center">
-            <div className="w-full rounded-2xl overflow-hidden shadow-xl border-4 border-white relative group">
-              {/* Map Overlay Label */}
-              <div className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-primary-500" />
-                  <span className="font-semibold text-gray-900">
-                    Visit Our Cafe
-                  </span>
-                </div>
-              </div>
-
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2176709267986!2d-73.98823492346677!3d40.75797883540513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1709123456789!5m2!1sen!2sus"
-                className="w-full border-0 aspect-[16/9] lg:aspect-square h-[750px] "
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="w-full h-[755px] lg:w-1/2 flex flex-col justify-center  ">
-            <div className="relative bg-white/90  lg:p-12 rounded-2xl shadow-xl border border-primary-500 h-full ">
-              {/* Decorative gradient blobs */}
-              <div className="absolute -top-2 -right-2 w-32 h-32 bg-gradient-to-br from-primary-500 to-[#a38e6a] opacity-10 rounded-full blur-3xl"></div>
-              <div className="absolute -bottom-2 -left-2 w-32 h-32 bg-gradient-to-br from-primary-500 to-[#a38e6a] opacity-10 rounded-full blur-3xl"></div>
-
-              <div className="relative h-full ">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-[#a38e6a] flex items-center justify-center shadow-lg">
-                    <Coffee className="w-6 h-6 text-white" />
-                  </div>
-                  <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-                    Get in Touch
-                  </h2>
-                </div>
-                <p className="text-gray-600 mb-6">
-                  Have a question or special request? We'd love to hear from
-                  you. Send us a message!
-                </p>
-
-                <form
-                  ref={form}
-                  onSubmit={sendEmail}
-                  className="flex flex-col gap-5 h-full "
-                >
-                  {/* Name Field */}
-                  <div className="flex flex-col">
-                    <label className="text-sm font-semibold text-gray-700 mb-2">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      name="from_name"
-                      value={formData.from_name}
-                      onChange={handleChange}
-                      placeholder="John Doe"
-                      required
-                      className="w-full px-4 py-3 rounded-xl border-2 border-primary-500 bg-primary-500/10 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#a38e6a] focus:bg-white transition duration-200"
-                    />
-                  </div>
-
-                  {/* Email Field */}
-                  <div className="flex flex-col">
-                    <label className="text-sm font-semibold text-gray-700 mb-2">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      name="user_email"
-                      value={formData.user_email}
-                      onChange={handleChange}
-                      placeholder="you@example.com"
-                      required
-                      className="w-full px-4 py-3 rounded-xl border-2 border-primary-500 bg-primary-500/10 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#a38e6a] focus:bg-white transition duration-200"
-                    />
-                  </div>
-
-                  {/* Message Field */}
-                  <div className="flex flex-col">
-                    <label className="text-sm font-semibold text-gray-700 mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us about your coffee preferences or any questions..."
-                      required
-                      rows="5"
-                      className="w-full px-4 py-3 rounded-xl border-2 border-primary-500 bg-primary-500/10 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#a38e6a] focus:bg-white transition duration-200 resize-none"
-                    ></textarea>
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="group relative w-full py-3.5 mt-2 bg-gradient-to-r from-primary-500 to-[#a38e6a] text-white font-bold text-lg rounded-xl hover:from-[#a38e6a] hover:to-[#8c7452] transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
-                  >
-                    <span className="relative z-10 flex items-center justify-center gap-2">
-                      {loading ? (
-                        <>
-                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                          Sending...
-                        </>
-                      ) : (
-                        <>
-                          <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                          Send Message
-                        </>
-                      )}
-                    </span>
-                    <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                  </button>
-                </form>
-              </div>
-            </div>
+        {/* Welcome Badge */}
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary-50 border border-primary-200">
+            <span className="text-primary-600 text-xl">✦</span>
+            <span className="text-primary-600 text-sm font-medium">Get In Touch</span>
           </div>
         </div>
 
-        {/* Additional Coffee-themed Section */}
-        <div className="w-full px-4 lg:px-14 mx-auto">
-          <div className="bg-gradient-to-r from-primary-500 to-[#a38e6a] rounded-3xl p-8 lg:p-12 text-white shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl"></div>
+        {/* Main Heading */}
+        <h1 className="text-gray-900 text-5xl md:text-7xl font-bold text-center mb-6 leading-tight">
+          We'd love to hear<br />from you
+        </h1>
 
-            <div className="relative text-center max-w-3xl mx-auto">
-              <Coffee className="w-16 h-16 mx-auto mb-4" />
-              <h3 className="text-3xl lg:text-4xl font-bold mb-4">
-                Visit Us for a Perfect Cup
-              </h3>
-              <p className="text-xl text-[#f2e0bf] mb-6">
-                Whether you're a coffee connoisseur or just looking for a cozy
-                spot to relax, we're here to serve you the finest brews in town.
+        {/* Subheading */}
+        <p className="text-gray-600 text-base md:text-lg text-center max-w-3xl mx-auto mb-16 leading-relaxed">
+          Have questions about your booking? Need assistance with your journey?<br />
+          Our team is here to help you 24/7.
+        </p>
+
+        {/* Contact Cards & Form Container */}
+        <div className=" px-16 mx-auto">
+          
+          {/* Contact Info Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            
+            {/* Phone Card */}
+            <div className="bg-gradient-to-br from-primary-50 to-primary-100 border border-primary-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
+              <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mb-4">
+                <Phone className="text-white" size={24} />
+              </div>
+              <h3 className="text-gray-900 font-semibold text-lg mb-2">Call Us</h3>
+              <p className="text-gray-600 text-sm mb-3">Mon-Sun from 6am to 10pm</p>
+              <a href="tel:+250788123456" className="text-primary-600 hover:text-primary-700 font-medium">
+                +250 788 123 456
+              </a>
+            </div>
+
+            {/* Email Card */}
+            <div className="bg-gradient-to-br from-primary-50 to-primary-100 border border-primary-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
+              <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mb-4">
+                <Mail className="text-white" size={24} />
+              </div>
+              <h3 className="text-gray-900 font-semibold text-lg mb-2">Email Us</h3>
+              <p className="text-gray-600 text-sm mb-3">We'll respond within 24 hours</p>
+              <a href="mailto:info@abyticket.rw" className="text-primary-600 hover:text-primary-700 font-medium">
+                info@abyticket.rw
+              </a>
+            </div>
+
+            {/* Location Card */}
+            <div className="bg-gradient-to-br from-primary-50 to-primary-100 border border-primary-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
+              <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mb-4">
+                <MapPin className="text-white" size={24} />
+              </div>
+              <h3 className="text-gray-900 font-semibold text-lg mb-2">Visit Us</h3>
+              <p className="text-gray-600 text-sm mb-3">Come say hello at our office</p>
+              <p className="text-primary-600 font-medium">
+                Kigali, Rwanda<br />
+                KN 4 Ave, Nyarugenge
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                  <p className="font-semibold">Free WiFi</p>
+            </div>
+
+          </div>
+
+          {/* Two Column Layout: Form & Map */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            
+            {/* Contact Form */}
+            <div className="bg-white border border-gray-200 rounded-3xl shadow-lg p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center">
+                  <MessageSquare className="text-white" size={24} />
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                  <p className="font-semibold">Cozy Atmosphere</p>
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900">Send us a message</h2>
+                  <p className="text-gray-600 text-sm">We'll get back to you soon</p>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                  <p className="font-semibold">Premium Beans</p>
+              </div>
+
+              <div className="space-y-4">
+                
+                {/* Name */}
+                <div className="space-y-2">
+                  <label className="text-gray-700 font-semibold text-sm">
+                    Full Name *
+                  </label>
+                  <input 
+                    type="text"
+                    placeholder="John Doe"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  />
+                </div>
+
+                {/* Email */}
+                <div className="space-y-2">
+                  <label className="text-gray-700 font-semibold text-sm">
+                    Email Address *
+                  </label>
+                  <input 
+                    type="email"
+                    placeholder="john@example.com"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  />
+                </div>
+
+                {/* Phone */}
+                <div className="space-y-2">
+                  <label className="text-gray-700 font-semibold text-sm">
+                    Phone Number
+                  </label>
+                  <input 
+                    type="tel"
+                    placeholder="+250 788 123 456"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                  />
+                </div>
+
+                {/* Subject */}
+                <div className="space-y-2">
+                  <label className="text-gray-700 font-semibold text-sm">
+                    Subject *
+                  </label>
+                  <select 
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent appearance-none cursor-pointer"
+                    value={formData.subject}
+                    onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                  >
+                    <option value="">Select a subject</option>
+                    <option value="booking">Booking Inquiry</option>
+                    <option value="support">Customer Support</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="partnership">Partnership</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                {/* Message */}
+                <div className="space-y-2">
+                  <label className="text-gray-700 font-semibold text-sm">
+                    Message *
+                  </label>
+                  <textarea 
+                    placeholder="Tell us how we can help you..."
+                    rows={4}
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <button 
+                    onClick={handleSubmit}
+                    className="group flex items-center gap-3 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg shadow-primary-600/30"
+                  >
+                    Send Message
+                    <div className="w-8 h-8 flex items-center justify-center rounded-full bg-primary-700 group-hover:bg-primary-800 transition-colors">
+                      <Send size={16} />
+                    </div>
+                  </button>
+
+                  <button 
+                    type="button"
+                    className="group flex items-center gap-3 px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-900 font-semibold rounded-full transition-all duration-300"
+                  >
+                    Back to Home
+                    <div className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 group-hover:bg-gray-300 transition-colors">
+                      <ArrowUpRight size={16} />
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
-        </div>
+
+            {/* Map Section */}
+            <div className="bg-white border border-gray-200 rounded-3xl shadow-lg overflow-hidden">
+              <div className="bg-gradient-to-r from-primary-600 to-primary-700 p-6">
+                <div className="flex items-center gap-3 text-white">
+                  <MapPin size={28} />
+                  <div>
+                    <h3 className="text-xl font-bold">Find Us in Rwanda</h3>
+                    <p className="text-primary-100 text-sm">Our office location in Kigali</p>
+                  </div>
+                </div>
+              </div>
+              <div className="h-96 lg:h-full relative">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127641.04695815147!2d30.01885405!3d-1.9440726999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca4258ed8e797%3A0xe74e4a9e8a2fd69e!2sKigali%2C%20Rwanda!5e0!3m2!1sen!2s!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Rwanda Map Location"
+                  className="absolute inset-0"
+                ></iframe>
+              </div>
+            </div>
+
           </div>
+
+          {/* Operating Hours */}
+          <div className="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 rounded-2xl p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <Clock className="text-primary-600" size={28} />
+              <h3 className="text-gray-900 text-2xl font-bold">Operating Hours</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
+              <div className="flex justify-between items-center py-2 border-b border-gray-300">
+                <span>Monday - Friday</span>
+                <span className="text-primary-600 font-semibold">6:00 AM - 10:00 PM</span>
+              </div>
+              <div className="flex justify-between items-center py-2 border-b border-gray-300">
+                <span>Saturday</span>
+                <span className="text-primary-600 font-semibold">7:00 AM - 9:00 PM</span>
+              </div>
+              <div className="flex justify-between items-center py-2 border-b border-gray-300">
+                <span>Sunday</span>
+                <span className="text-primary-600 font-semibold">8:00 AM - 8:00 PM</span>
+              </div>
+              <div className="flex justify-between items-center py-2 border-b border-gray-300">
+                <span>Emergency Support</span>
+                <span className="text-primary-600 font-semibold">24/7 Available</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   );
-};
-
-export default ContactUs;
+}

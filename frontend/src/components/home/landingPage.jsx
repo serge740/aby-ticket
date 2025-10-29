@@ -24,8 +24,8 @@ export default function AbyTicketLanding() {
 
       {/* Decorative Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-1/4 h-full bg-gradient-to-r from-blue-900/10 to-transparent"></div>
-        <div className="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-blue-900/10 to-transparent"></div>
+        <div className="absolute top-0 left-0 w-1/4 h-full bg-gradient-to-r from-primary-900/10 to-transparent"></div>
+        <div className="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-primary-900/10 to-transparent"></div>
       </div>
 
    
@@ -41,9 +41,9 @@ export default function AbyTicketLanding() {
 
         {/* Welcome Badge */}
         <div className="mb-8">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-600/10 border border-blue-600/30 backdrop-blur-sm">
-            <span className="text-blue-400 text-xl">✦</span>
-            <span className="text-blue-400 text-sm font-medium">Welcome To Aby Ticket</span>
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary-600/10 border border-primary-600/30 backdrop-blur-sm">
+            <span className="text-primary-400 text-xl">✦</span>
+            <span className="text-primary-400 text-sm font-medium">Welcome To Aby Ticket</span>
           </div>
         </div>
 
@@ -60,9 +60,9 @@ export default function AbyTicketLanding() {
 
         {/* CTA Buttons */}
         <div className="flex flex-wrap gap-4 mb-20">
-          <button className="group flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg shadow-blue-600/30">
+          <button className="group flex items-center gap-3 px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg shadow-primary-600/30">
             Book A Ticket
-            <div className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-700 group-hover:bg-blue-800 transition-colors">
+            <div className="w-8 h-8 flex items-center justify-center rounded-full bg-primary-700 group-hover:bg-primary-800 transition-colors">
               <ArrowUpRight size={18} />
             </div>
           </button>
@@ -87,7 +87,7 @@ export default function AbyTicketLanding() {
                   Bus Type
                 </label>
                 <select 
-                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 appearance-none cursor-pointer"
                   value={formData.busType}
                   onChange={(e) => setFormData({...formData, busType: e.target.value})}
                 >
@@ -106,7 +106,7 @@ export default function AbyTicketLanding() {
                   Departure Location
                 </label>
                 <select 
-                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 appearance-none cursor-pointer"
                   value={formData.departureLocation}
                   onChange={(e) => setFormData({...formData, departureLocation: e.target.value})}
                 >
@@ -128,7 +128,7 @@ export default function AbyTicketLanding() {
                 <input 
                   type="date"
                   placeholder="mm/dd/yyyy"
-                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   value={formData.departureDate}
                   onChange={(e) => setFormData({...formData, departureDate: e.target.value})}
                 />
@@ -141,7 +141,7 @@ export default function AbyTicketLanding() {
                   Arrival Location
                 </label>
                 <select 
-                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 appearance-none cursor-pointer"
                   value={formData.arrivalLocation}
                   onChange={(e) => setFormData({...formData, arrivalLocation: e.target.value})}
                 >
@@ -164,14 +164,14 @@ export default function AbyTicketLanding() {
                   <input 
                     type="date"
                     placeholder="mm/dd/yyyy"
-                    className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500"
                     value={formData.returnDate}
                     onChange={(e) => setFormData({...formData, returnDate: e.target.value})}
                   />
                 </div>
                 
                 {/* Search Button */}
-                <button className="w-14 h-14 flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-colors shadow-lg shadow-blue-600/30">
+                <button className="w-14 h-14 flex items-center justify-center bg-primary-600 hover:bg-primary-700 text-white rounded-full transition-colors shadow-lg shadow-primary-600/30">
                   <Search size={24} />
                 </button>
               </div>

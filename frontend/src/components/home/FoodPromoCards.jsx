@@ -32,7 +32,7 @@ export default function FAQSection() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-orange-50/30 py-16 px-4 md:py-24">
+    <div className="bg-gradient-to-br from-gray-50 to-primary-50/30 py-16 px-4 md:py-24">
       <div className=" mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Side - Bus Background Image */}
@@ -49,7 +49,7 @@ export default function FAQSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
               
               {/* Optional Decorative Element */}
-              <div className="absolute top-8 left-8 w-20 h-20 bg-orange-500/20 rounded-full blur-2xl"></div>
+              <div className="absolute top-8 left-8 w-20 h-20 bg-primary-500/20 rounded-full blur-2xl"></div>
               <div className="absolute bottom-8 right-8 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div>
             </div>
           </div>
@@ -59,8 +59,8 @@ export default function FAQSection() {
             {/* Header */}
             <div className="mb-8">
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-orange-600 text-xl">✱</span>
-                <span className="text-orange-600 font-bold text-sm md:text-base tracking-wide uppercase">
+                <span className="text-primary-600 text-xl">✱</span>
+                <span className="text-primary-600 font-bold text-sm md:text-base tracking-wide uppercase">
                   Frequently Asked Questions
                 </span>
               </div>
@@ -85,7 +85,7 @@ export default function FAQSection() {
                     </h3>
                     <div className="flex-shrink-0">
                       {activeIndex === index ? (
-                        <ChevronUp className="w-6 h-6 text-orange-600" />
+                        <ChevronUp className="w-6 h-6 text-primary-600" />
                       ) : (
                         <ChevronDown className="w-6 h-6 text-gray-900" />
                       )}

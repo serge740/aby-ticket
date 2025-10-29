@@ -30,8 +30,8 @@ export default function CarRentalProcess() {
           {/* Left Content */}
           <div className="flex-1 w-full max-w-xl">
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-orange-600 text-xl">✱</span>
-              <h3 className="text-orange-600 font-bold text-base tracking-wide">
+              <span className="text-primary-600 text-xl">✱</span>
+              <h3 className="text-primary-600 font-bold text-base tracking-wide">
                 How It Work
               </h3>
             </div>
@@ -93,7 +93,7 @@ export default function CarRentalProcess() {
               </div>
 
               {/* Trust Badge */}
-              <div className="absolute -bottom-6 -right-10 md:bottom-8  bg-orange-600 text-white rounded-xl p-5 shadow-2xl max-w-[220px] z-10">
+              <div className="absolute -bottom-6 -right-10 md:bottom-8  bg-primary-600 text-white rounded-xl p-5 shadow-2xl max-w-[220px] z-10">
                 <p className="text-base font-semibold leading-snug mb-3">
                   5m+ Trusted world wide global clients
                 </p>
@@ -120,14 +120,14 @@ export default function CarRentalProcess() {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="w-8 h-8 rounded-full border-2 border-white bg-white flex items-center justify-center text-orange-600 font-bold text-sm">
+                  <div className="w-8 h-8 rounded-full border-2 border-white bg-white flex items-center justify-center text-primary-600 font-bold text-sm">
                     +
                   </div>
                 </div>
               </div>
 
               {/* Decorative Element */}
-              <div className="absolute -top-6 -right-6 text-orange-600 text-6xl opacity-80 hidden lg:block">
+              <div className="absolute -top-6 -right-6 text-primary-600 text-6xl opacity-80 hidden lg:block">
                 ✱
               </div>
             </div>

@@ -12,7 +12,7 @@ export default function AboutSection() {
             {/* Decorative Elements */}
             <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-10">
               <div className="w-20 h-20 flex items-center justify-center">
-                <svg viewBox="0 0 100 100" className="w-full h-full text-blue-600">
+                <svg viewBox="0 0 100 100" className="w-full h-full text-primary-600">
                   <path d="M50 10 L90 50 L50 90 L10 50 Z" fill="currentColor" opacity="0.9"/>
                   <circle cx="50" cy="50" r="8" fill="white"/>
                 </svg>
@@ -54,8 +54,8 @@ export default function AboutSection() {
             {/* Header */}
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <span className="text-blue-600 text-2xl">✦</span>
-                <span className="text-blue-600 font-semibold text-sm uppercase tracking-wide">About Us</span>
+                <span className="text-primary-600 text-2xl">✦</span>
+                <span className="text-primary-600 font-semibold text-sm uppercase tracking-wide">About Us</span>
               </div>
               
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
@@ -72,8 +72,8 @@ export default function AboutSection() {
             <div className="space-y-6">
               {/* Feature 1 */}
               <div className="flex gap-4 items-start">
-                <div className="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center">
-                  <Smartphone className="w-8 h-8 text-blue-600" strokeWidth={2} />
+                <div className="flex-shrink-0 w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center">
+                  <Smartphone className="w-8 h-8 text-primary-600" strokeWidth={2} />
                 </div>
                 <div className="flex-1 space-y-2">
                   <h3 className="text-xl font-bold text-gray-900">Easy Booking Process</h3>
@@ -85,8 +85,8 @@ export default function AboutSection() {
 
               {/* Feature 2 */}
               <div className="flex gap-4 items-start">
-                <div className="flex-shrink-0 w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center">
-                  <MapPin className="w-8 h-8 text-orange-600" strokeWidth={2} />
+                <div className="flex-shrink-0 w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center">
+                  <MapPin className="w-8 h-8 text-primary-600" strokeWidth={2} />
                 </div>
                 <div className="flex-1 space-y-2">
                   <h3 className="text-xl font-bold text-gray-900">Convenient Pick-Up & Return Process</h3>
@@ -99,9 +99,9 @@ export default function AboutSection() {
 
             {/* CTA Button */}
             <div className="pt-4">
-              <button className="group flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg shadow-blue-600/30">
+              <button className="group flex items-center gap-3 px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg shadow-primary-600/30">
                 Contact Us
-                <div className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-700 group-hover:bg-blue-800 transition-colors">
+                <div className="w-8 h-8 flex items-center justify-center rounded-full bg-primary-700 group-hover:bg-primary-800 transition-colors">
                   <ArrowUpRight size={18} />
                 </div>
               </button>

@@ -99,7 +99,7 @@ export default function TestimonialsSlider() {
         key={index}
         className={`w-5 h-5 ${
           index < rating
-            ? 'fill-orange-600 text-orange-600'
+            ? 'fill-primary-600 text-primary-600'
             : 'fill-none text-gray-300'
         }`}
       />
@@ -112,8 +112,8 @@ export default function TestimonialsSlider() {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="text-orange-600 text-xl">✱</span>
-            <span className="text-orange-600 font-semibold text-base tracking-wide">
+            <span className="text-primary-600 text-xl">✱</span>
+            <span className="text-primary-600 font-semibold text-base tracking-wide">
               Testimonials
             </span>
           </div>
@@ -152,7 +152,7 @@ export default function TestimonialsSlider() {
                       <img
                         src={testimonial.image}
                         alt={testimonial.name}
-                        className="w-14 h-14 rounded-full object-cover border-2 border-orange-100"
+                        className="w-14 h-14 rounded-full object-cover border-2 border-primary-100"
                       />
                       <div>
                         <h4 className="font-bold text-gray-900 text-lg">
@@ -173,13 +173,13 @@ export default function TestimonialsSlider() {
           <div className="flex justify-center gap-4 mt-10">
             <button
               onClick={prevSlide}
-              className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 bg-orange-600 text-white hover:bg-orange-700 hover:scale-110"
+              className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 bg-primary-600 text-white hover:bg-primary-700 hover:scale-110"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={nextSlide}
-              className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 bg-orange-600 text-white hover:bg-orange-700 hover:scale-110"
+              className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 bg-primary-600 text-white hover:bg-primary-700 hover:scale-110"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
@@ -196,7 +196,7 @@ export default function TestimonialsSlider() {
                 }}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   getIndicatorIndex() === index
-                    ? 'w-8 bg-orange-600'
+                    ? 'w-8 bg-primary-600'
                     : 'w-2 bg-gray-300 hover:bg-gray-400'
                 }`}
               />

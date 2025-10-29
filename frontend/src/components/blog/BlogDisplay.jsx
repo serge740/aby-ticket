@@ -45,7 +45,7 @@ const FeaturedArticle = ({ image, title, date, id,content2 }) => {
          <p className='text-gray-200 line-clamp-1 '>{content2}</p>
         
         {/* Arrow Button */}
-        <button className="w-14 h-14 bg-orange-600 hover:bg-orange-700 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+        <button className="w-14 h-14 bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110">
           <ArrowUpRight className="w-6 h-6 text-white" />
         </button>
       </div>
@@ -86,14 +86,14 @@ const SmallArticle = ({ image, title, date, id, delay = 0 ,content2 }) => {
         </div>
         
         {/* Title */}
-        <h4 className="text-gray-900 text-lg font-bold leading-snug mb-4 group-hover:text-orange-600 transition-colors line-clamp-2">
+        <h4 className="text-gray-900 text-lg font-bold leading-snug mb-4 group-hover:text-primary-600 transition-colors line-clamp-2">
           {title}
         </h4>
 
         <p className='text-gray-500 line-clamp-2 '>{content2}</p>
         
         {/* Read More */}
-        <button className="flex items-center gap-2 text-orange-600 font-semibold text-sm group-hover:gap-3 transition-all">
+        <button className="flex items-center gap-2 text-primary-600 font-semibold text-sm group-hover:gap-3 transition-all">
           Read Story
           <ArrowUpRight className="w-4 h-4" />
         </button>
@@ -117,15 +117,15 @@ const BlogLatest = () => {
   return (
     <section className="w-full py-20 bg-white relative overflow-hidden">
       {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-3 h-3 bg-orange-600 rounded-full" data-aos="fade" data-aos-delay="200"></div>
-      <div className="absolute bottom-40 right-20 w-2 h-2 bg-orange-600 rounded-full" data-aos="fade" data-aos-delay="400"></div>
+      <div className="absolute top-20 left-10 w-3 h-3 bg-primary-600 rounded-full" data-aos="fade" data-aos-delay="200"></div>
+      <div className="absolute bottom-40 right-20 w-2 h-2 bg-primary-600 rounded-full" data-aos="fade" data-aos-delay="400"></div>
       
       <div className=" mx-auto px-4 md:px-16">
         {/* Section Header */}
         <div className="text-center mb-16" data-aos="fade-down">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="text-orange-600 text-xl">✱</span>
-            <span className="text-orange-600 font-semibold">Latest Articles</span>
+            <span className="text-primary-600 text-xl">✱</span>
+            <span className="text-primary-600 font-semibold">Latest Articles</span>
           </div>
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
             Stay informed and inspired for<br />your next journey

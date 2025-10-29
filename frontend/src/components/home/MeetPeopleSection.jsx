@@ -70,8 +70,8 @@ export default function VideoHeroSection() {
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-4">
         {/* Top Label */}
         <div className="flex items-center gap-2 mb-6 animate-fade-in">
-          <span className="text-orange-500 text-xl">✱</span>
-          <span className="text-orange-500 font-semibold text-sm md:text-base tracking-wider uppercase">
+          <span className="text-primary-500 text-xl">✱</span>
+          <span className="text-primary-500 font-semibold text-sm md:text-base tracking-wider uppercase">
             Watch Full Video
           </span>
         </div>
@@ -84,8 +84,8 @@ export default function VideoHeroSection() {
 
         {/* Play Button */}
         <button className="group relative w-20 h-20 md:w-24 md:h-24 mb-20 animate-pulse-slow">
-          <div className="absolute inset-0 bg-orange-600 rounded-full animate-ping opacity-75"></div>
-          <div className="relative w-full h-full bg-orange-600 hover:bg-orange-700 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-2xl">
+          <div className="absolute inset-0 bg-primary-600 rounded-full animate-ping opacity-75"></div>
+          <div className="relative w-full h-full bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-2xl">
             <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-1 fill-white" />
           </div>
         </button>
@@ -100,7 +100,7 @@ export default function VideoHeroSection() {
                   className="inline-flex items-center mx-8 text-white font-semibold text-sm md:text-base tracking-wide"
                 >
                   {company}
-                  <span className="mx-8 text-orange-500">•</span>
+                  <span className="mx-8 text-primary-500">•</span>
                 </div>
               ))}
             </div>

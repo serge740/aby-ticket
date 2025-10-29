@@ -35,10 +35,10 @@ export default function NovaRideHeader() {
         ? 'flex items-center justify-between w-full text-left font-medium py-3 px-4 rounded-lg transition-colors'
         : 'flex items-center gap-1 font-medium text-base py-2 transition-colors';
 
-      const active = isActive ? 'text-orange-600' : 'text-gray-900';
+      const active = isActive ? 'text-primary-600' : 'text-gray-900';
       const hover = isMobile
-        ? 'hover:bg-orange-50 hover:text-orange-600'
-        : 'hover:text-orange-600';
+        ? 'hover:bg-primary-50 hover:text-primary-600'
+        : 'hover:text-primary-600';
 
       return `${base} ${active} ${hover}`;
     };
@@ -69,7 +69,7 @@ export default function NovaRideHeader() {
               <NavLink
                 key={sub.to}
                 to={sub.to}
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
               >
                 {sub.name}
               </NavLink>
@@ -84,7 +84,7 @@ export default function NovaRideHeader() {
               <NavLink
                 key={sub.to}
                 to={sub.to}
-                className="block text-sm text-gray-600 hover:text-orange-600 py-2 px-4 hover:bg-orange-50 rounded-lg"
+                className="block text-sm text-gray-600 hover:text-primary-600 py-2 px-4 hover:bg-primary-50 rounded-lg"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {sub.name}
@@ -104,8 +104,8 @@ export default function NovaRideHeader() {
           <div className="flex items-center">
             <NavLink to="/" className="flex items-center">
               <span className="text-3xl font-black tracking-tight">
-                <span className="text-orange-600">NOVA</span>
-                <span className="text-gray-900">RIDE</span>
+                <span className="text-primary-600">ABY</span>
+                <span className="text-gray-900">TICKET</span>
               </span>
             </NavLink>
           </div>
@@ -117,10 +117,10 @@ export default function NovaRideHeader() {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <button className="bg-orange-600 hover:bg-orange-700 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105">
+            <button className="bg-primary-600 hover:bg-primary-700 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105">
               Book A Rental
             </button>
-            <button className="bg-orange-600 hover:bg-orange-700 text-white p-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:rotate-45">
+            <button className="bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:rotate-45">
               <ArrowUpRight className="w-5 h-5" />
             </button>
           </div>
@@ -128,7 +128,7 @@ export default function NovaRideHeader() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-gray-900 hover:text-orange-600"
+            className="lg:hidden p-2 text-gray-900 hover:text-primary-600"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -149,7 +149,7 @@ export default function NovaRideHeader() {
             {/* Sidebar Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-100">
               <span className="text-2xl font-black">
-                <span className="text-orange-600">NOVA</span>
+                <span className="text-primary-600">NOVA</span>
                 <span className="text-gray-900">RIDE</span>
               </span>
               <button
@@ -166,7 +166,7 @@ export default function NovaRideHeader() {
 
               {/* Mobile CTA */}
               <div className="pt-6">
-                <button className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold px-6 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <button className="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold px-6 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
                   Book A Rental
                 </button>
               </div>

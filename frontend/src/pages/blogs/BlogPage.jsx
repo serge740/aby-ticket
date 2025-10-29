@@ -123,14 +123,14 @@ const BlogPage = () => {
                       
                       {/* Category Badge */}
                       {post.category && post.category.length > 0 && (
-                        <div className="absolute top-4 left-4 bg-gradient-to-r from-red-600 to-orange-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg">
+                        <div className="absolute top-4 left-4 bg-gradient-to-r from-secondary-600 to-secondary-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg">
                           {Array.isArray(post.category) ? post.category[0] : post.category}
                         </div>
                       )}
 
                       {/* Date Badge */}
                       <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-2xl p-3 shadow-lg text-center">
-                        <div className="text-3xl font-bold text-red-600">{postDate.day}</div>
+                        <div className="text-3xl font-bold text-secondary-600">{postDate.day}</div>
                         <div className="text-xs text-gray-600 uppercase">{postDate.month}</div>
                       </div>
 
@@ -153,7 +153,7 @@ const BlogPage = () => {
 
                     <div className="p-6">
                       {/* Title */}
-                      <h2 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-red-600 transition-colors line-clamp-2">
+                      <h2 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-secondary-600 transition-colors line-clamp-2">
                         {post.title}
                       </h2>
 
@@ -179,7 +179,7 @@ const BlogPage = () => {
                         </div>
 
                         {/* Read More Button */}
-                        <button className="flex items-center gap-2 text-red-600 font-semibold text-sm group-hover:gap-3 transition-all">
+                        <button className="flex items-center gap-2 text-secondary-600 font-semibold text-sm group-hover:gap-3 transition-all">
                           Read
                           <ArrowRight size={16} />
                         </button>
@@ -209,7 +209,7 @@ const BlogPage = () => {
                     placeholder="Search posts..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full px-4 py-2 pr-10 border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-600"
+                    className="w-full px-4 py-2 pr-10 border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary-600"
                   />
                   <Search size={20} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
                 </div>
@@ -225,7 +225,7 @@ const BlogPage = () => {
                         onClick={() => setSelectedCategory(category)}
                         className={`w-full text-left px-3 py-2 transition-colors ${
                           selectedCategory === category
-                            ? 'bg-gradient-to-r from-red-600 to-orange-600 text-white'
+                            ? 'bg-gradient-to-r from-secondary-600 to-secondary-600 text-white'
                             : 'text-gray-700 hover:bg-gray-50'
                         }`}
                       >

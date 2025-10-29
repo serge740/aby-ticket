@@ -116,7 +116,7 @@ export default function AbyComingSoon() {
               </div>
 
               {/* Floating Badge */}
-              <div className="absolute -top-6 -right-6 bg-gradient-to-br from-yellow-400 to-orange-500 p-6 rounded-2xl shadow-2xl rotate-12 animate-bounce">
+              <div className="absolute -top-6 -right-6 bg-gradient-to-br from-yellow-400 to-primary-500 p-6 rounded-2xl shadow-2xl rotate-12 animate-bounce">
                 <p className="text-white font-bold text-2xl">NEW</p>
                 <p className="text-white text-sm">Route</p>
               </div>

@@ -7,7 +7,7 @@ const Header = ({title, path}) => {
             <div 
                 className='absolute bg-fixed   inset-0 bg-cover bg-botoom bg-no-repeat'
                 style={{
-                    backgroundImage: `url(https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80)`,
+                    backgroundImage: `url(https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=1600&h=600&fit=crop)`,
                 }}
             >
                 {/* Gradient Overlays */}
