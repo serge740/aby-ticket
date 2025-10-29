@@ -1,178 +1,186 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Bus, MapPin, Calendar, Search, ArrowUpRight } from 'lucide-react';
 
-export default function AbyTicketHero() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const slides = [
-    {
-      image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1920&h=1080&fit=crop',
-      title: 'Travel Across Rwanda',
-      subtitle: 'Comfortable & Safe Bus Services'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=1920&h=1080&fit=crop',
-      title: 'Book Your Journey',
-      subtitle: 'Fast, Easy & Reliable Booking'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1581262177000-8c2c6e7d4f6f?w=1920&h=1080&fit=crop',
-      title: 'Explore Rwanda',
-      subtitle: 'Connect Cities with Comfort'
-    }
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
-
-    return () => clearInterval(timer);
-  }, [slides.length]);
+export default function AbyTicketLanding() {
+  const [formData, setFormData] = useState({
+    busType: '',
+    departureLocation: '',
+    departureDate: '',
+    arrivalLocation: '',
+    returnDate: ''
+  });
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black">
-      {/* Slides Container */}
-      <div className="relative w-full h-full">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className="absolute inset-0 transition-opacity duration-[2000ms] ease-in-out"
-            style={{
-              opacity: index === currentSlide ? 1 : 0,
-              zIndex: index === currentSlide ? 1 : 0
-            }}
-          >
-            {/* Background Image with Ken Burns effect */}
-            <div
-              className="absolute inset-0 bg-cover bg-center will-change-transform"
-              style={{
-                backgroundImage: `url(${slide.image})`,
-                scale: index === currentSlide ? 1.15 : 1,
-                animation: index === currentSlide ? 'kenBurns 6000ms ease-out' : 'none'
-              }}
-            >
-              {/* Dark Overlay - stronger on the right to make left text more visible */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Content - Left Aligned */}
-      <div className="absolute inset-0 z-10">
-        <div className="container mx-auto h-full px-6 md:px-12 lg:px-20">
-          <div className="flex items-center h-full max-w-2xl">
-            <div className="text-left">
-              {/* Small Heading */}
-              <p className="text-green-400 text-sm md:text-base mb-4 font-semibold tracking-wider uppercase animate-fadeIn">
-                Travel Made Easy
-              </p>
-              
-              {/* Main Heading */}
-              <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                ENJOY YOUR
-              </h1>
-              <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-                JOURNEY <span className="text-green-500">TODAY</span>
-              </h1>
-
-              {/* Promotion Badge */}
-              <div className="mb-8 inline-flex items-center gap-0">
-                <div className="bg-white/10 backdrop-blur-sm border border-white/20 px-6 py-3 rounded-l-lg">
-                  <p className="text-white text-base md:text-lg font-medium">Book Now. Get</p>
-                </div>
-                <div className="bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-3 rounded-r-lg relative">
-                  <p className="text-white text-xl md:text-2xl font-bold">10% OFF</p>
-                  <div className="absolute right-0 top-0 bottom-0 w-0 h-0 border-t-[24px] border-t-transparent border-b-[24px] border-b-transparent border-l-[16px] border-l-emerald-600 translate-x-full md:border-t-[28px] md:border-b-[28px] md:border-l-[20px]"></div>
-                </div>
-              </div>
-
-              {/* Price */}
-              <div className="mb-8">
-                <p className="text-white text-lg mb-2">Starting From</p>
-                <p className="text-green-400 text-4xl md:text-5xl font-bold">RWF 3,500</p>
-              </div>
-
-              {/* Contact Info with Icon */}
-              <div className="flex items-center gap-4 mb-8 bg-white/10 backdrop-blur-sm px-6 py-4 rounded-lg border border-white/20 inline-flex">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
-                  <div className="text-left">
-                    <p className="text-white/70 text-sm">Call Us Now</p>
-                    <p className="text-green-400 text-xl md:text-2xl font-bold">+250 788 123 456</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Buttons */}
-              <div className="flex gap-4 flex-wrap">
-                <button 
-                  onClick={() => window.location.href = '#book-ticket'}
-                  className="px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-full hover:from-green-500 hover:to-emerald-500 transition-all duration-300 font-semibold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
-                >
-                  Book Ticket Now
-                </button>
-                <button 
-                  onClick={() => window.location.href = '#routes'}
-                  className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full hover:bg-white hover:text-gray-900 transition-all duration-300 font-semibold text-base md:text-lg"
-                >
-                  View Routes
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Slide Indicators */}
-      <div className="absolute bottom-8 left-1/2  flex gap-3 z-20">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide
-                ? 'bg-green-500 w-12'
-                : 'bg-white/50 hover:bg-white/75 w-3'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
+    <div className="relative min-h-screen bg-black overflow-hidden">
+      {/* Background Image from Unsplash */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1600&q=80')`,
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
       </div>
 
       {/* Decorative Elements */}
-      <div className="absolute top-10 right-10 w-20 h-20 border-4 border-green-500/30 rounded-full animate-pulse"></div>
-      <div className="absolute bottom-20 right-20 w-32 h-32 border-4 border-green-500/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-1/4 h-full bg-gradient-to-r from-blue-900/10 to-transparent"></div>
+        <div className="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-blue-900/10 to-transparent"></div>
+      </div>
 
-      <style>{`
-        @keyframes kenBurns {
-          0% {
-            transform: scale(1.15);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
+   
+      {/* Main Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
         
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-fadeIn {
-          animation: fadeIn 1s ease-out;
-        }
-      `}</style>
+        {/* Logo */}
+        <div className="absolute top-8 left-0 right-0 text-center">
+          <div className="text-gray-400 text-sm tracking-[0.4em] uppercase font-semibold">
+            ABY TICKET
+          </div>
+        </div>
+
+        {/* Welcome Badge */}
+        <div className="mb-8">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-600/10 border border-blue-600/30 backdrop-blur-sm">
+            <span className="text-blue-400 text-xl">✦</span>
+            <span className="text-blue-400 text-sm font-medium">Welcome To Aby Ticket</span>
+          </div>
+        </div>
+
+        {/* Main Heading */}
+        <h1 className="text-white text-5xl md:text-7xl font-bold text-center mb-6 leading-tight max-w-5xl">
+          Looking to save more on<br />your bus ticket?
+        </h1>
+
+        {/* Subheading */}
+        <p className="text-gray-300 text-base md:text-lg text-center max-w-3xl mb-10 leading-relaxed">
+          Whether you're traveling across Rwanda for business, visiting family, or exploring our beautiful country,<br />
+          we offer reliable and comfortable bus services to all major destinations.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-wrap gap-4 mb-20">
+          <button className="group flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg shadow-blue-600/30">
+            Book A Ticket
+            <div className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-700 group-hover:bg-blue-800 transition-colors">
+              <ArrowUpRight size={18} />
+            </div>
+          </button>
+          
+          <button className="group flex items-center gap-3 px-8 py-4 bg-white hover:bg-gray-100 text-black font-semibold rounded-full transition-all duration-300 shadow-lg">
+            Learn More
+            <div className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 group-hover:bg-gray-300 transition-colors">
+              <ArrowUpRight size={18} />
+            </div>
+          </button>
+        </div>
+
+        {/* Search Form */}
+        <div className="w-full max-w-7xl">
+          <div className="bg-white rounded-3xl shadow-2xl p-8">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-end">
+              
+              {/* Bus Type */}
+              <div className="space-y-2">
+                <label className="flex items-center gap-2 text-gray-700 font-semibold text-sm">
+                  <Bus size={20} />
+                  Bus Type
+                </label>
+                <select 
+                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer"
+                  value={formData.busType}
+                  onChange={(e) => setFormData({...formData, busType: e.target.value})}
+                >
+                  <option value="">Choose Bus Type</option>
+                  <option value="express">Express</option>
+                  <option value="luxury">Luxury</option>
+                  <option value="standard">Standard</option>
+                  <option value="vip">VIP</option>
+                </select>
+              </div>
+
+              {/* Departure Location */}
+              <div className="space-y-2">
+                <label className="flex items-center gap-2 text-gray-700 font-semibold text-sm">
+                  <MapPin size={20} />
+                  Departure Location
+                </label>
+                <select 
+                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer"
+                  value={formData.departureLocation}
+                  onChange={(e) => setFormData({...formData, departureLocation: e.target.value})}
+                >
+                  <option value="">From Location</option>
+                  <option value="kigali">Kigali</option>
+                  <option value="musanze">Musanze</option>
+                  <option value="huye">Huye</option>
+                  <option value="rubavu">Rubavu</option>
+                  <option value="muhanga">Muhanga</option>
+                </select>
+              </div>
+
+              {/* Departure Date */}
+              <div className="space-y-2">
+                <label className="flex items-center gap-2 text-gray-700 font-semibold text-sm">
+                  <Calendar size={20} />
+                  Departure Date
+                </label>
+                <input 
+                  type="date"
+                  placeholder="mm/dd/yyyy"
+                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value={formData.departureDate}
+                  onChange={(e) => setFormData({...formData, departureDate: e.target.value})}
+                />
+              </div>
+
+              {/* Arrival Location */}
+              <div className="space-y-2">
+                <label className="flex items-center gap-2 text-gray-700 font-semibold text-sm">
+                  <MapPin size={20} />
+                  Arrival Location
+                </label>
+                <select 
+                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer"
+                  value={formData.arrivalLocation}
+                  onChange={(e) => setFormData({...formData, arrivalLocation: e.target.value})}
+                >
+                  <option value="">To Location</option>
+                  <option value="kigali">Kigali</option>
+                  <option value="musanze">Musanze</option>
+                  <option value="huye">Huye</option>
+                  <option value="rubavu">Rubavu</option>
+                  <option value="muhanga">Muhanga</option>
+                </select>
+              </div>
+
+              {/* Return Date with Search Button */}
+              <div className="flex items-end gap-3">
+                <div className="space-y-2 flex-1">
+                  <label className="flex items-center gap-2 text-gray-700 font-semibold text-sm">
+                    <Calendar size={20} />
+                    Return Date
+                  </label>
+                  <input 
+                    type="date"
+                    placeholder="mm/dd/yyyy"
+                    className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={formData.returnDate}
+                    onChange={(e) => setFormData({...formData, returnDate: e.target.value})}
+                  />
+                </div>
+                
+                {/* Search Button */}
+                <button className="w-14 h-14 flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-colors shadow-lg shadow-blue-600/30">
+                  <Search size={24} />
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 }

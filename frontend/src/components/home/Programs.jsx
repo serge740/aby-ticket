@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Phone } from 'lucide-react';
 
-export default function AbyDeliverySection() {
+export default function AbyBookingSection() {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const galleryImages = [
-    'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1581262177000-8c2c6e7d4f6f?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1609198092357-f04e0d3d3589?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=400&h=300&fit=crop',
   ];
 
   useEffect(() => {
@@ -23,12 +23,12 @@ export default function AbyDeliverySection() {
   }, []);
 
   return (
-    <div className="w-full bg-gradient-to-b from-orange-50 to-white py-16 md:py-24 px-4">
-      <div className=" mx-auto">
+    <div className="w-full bg-gradient-to-b from-emerald-50 to-white py-16 md:py-24 px-4">
+      <div className="mx-auto">
         {/* Gallery Strip */}
         <div className="relative mb-16 overflow-hidden rounded-3xl shadow-2xl">
           <div 
-            className="flex  transition-transform duration-1000 ease-linear"
+            className="flex transition-transform duration-1000 ease-linear"
             style={{
               transform: `translateX(-${(scrollPosition * 100) / galleryImages.length}%)`
             }}
@@ -36,7 +36,7 @@ export default function AbyDeliverySection() {
             {[...galleryImages, ...galleryImages].map((image, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-80 h-56  overflow-hidden"
+                className="flex-shrink-0 w-80 h-56 overflow-hidden"
               >
                 <img
                   src={image}
@@ -48,39 +48,39 @@ export default function AbyDeliverySection() {
           </div>
           
           {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-orange-50 to-transparent pointer-events-none"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-emerald-50 to-transparent pointer-events-none"></div>
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
         </div>
 
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side - Large Food Image */}
-          <div className="relative ">
+          {/* Left Side - Large Bus Image */}
+          <div className="relative">
             {/* Decorative Elements */}
-            <div className="absolute -top-8 -left-8 w-24 h-24 bg-orange-200 rounded-full opacity-30 blur-2xl"></div>
-            <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-red-200 rounded-full opacity-30 blur-2xl"></div>
+            <div className="absolute -top-8 -left-8 w-24 h-24 bg-emerald-200 rounded-full opacity-30 blur-2xl"></div>
+            <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-green-200 rounded-full opacity-30 blur-2xl"></div>
             
             {/* Single Large Image Card */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
               <img
-                src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&h=800&fit=crop"
-                alt="Delicious Food"
+                src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&h=800&fit=crop"
+                alt="Modern Bus"
                 className="w-full h-[60vh] object-cover transform group-hover:scale-110 transition-transform duration-700"
               />
               
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
               
-              {/* Delivery Badge */}
-              <div className="absolute top-6 right-6 bg-gradient-to-r from-red-600 to-orange-600 px-6 py-3 rounded-full shadow-lg animate-pulse">
-                <p className="text-white font-bold text-lg">Fast Delivery</p>
+              {/* Booking Badge */}
+              <div className="absolute top-6 right-6 bg-gradient-to-r from-emerald-600 to-green-600 px-6 py-3 rounded-full shadow-lg animate-pulse">
+                <p className="text-white font-bold text-lg">Easy Booking</p>
               </div>
               
               {/* Bottom Info */}
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
-                  <p className="text-white font-bold text-xl mb-1">30 Min Delivery</p>
-                  <p className="text-white/80 text-sm">Hot & Fresh to Your Door</p>
+                  <p className="text-white font-bold text-xl mb-1">24/7 Service</p>
+                  <p className="text-white/80 text-sm">Book Anytime, Anywhere</p>
                 </div>
               </div>
             </div>
@@ -90,59 +90,59 @@ export default function AbyDeliverySection() {
           <div className="space-y-6">
             {/* Badge */}
             <div className="inline-block">
-              <p className="text-red-600 italic text-lg md:text-xl font-semibold">
-                Delivery
+              <p className="text-emerald-600 italic text-lg md:text-xl font-semibold">
+                Easy Booking
               </p>
             </div>
 
             {/* Main Heading */}
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              <span className="text-gray-900">A Moments Of Delivered</span>
+              <span className="text-gray-900">Book Your Ticket</span>
               <br />
-              <span className="text-red-600">On Right Time & Place</span>
+              <span className="text-emerald-600">On Right Time & Place</span>
             </h2>
 
             {/* Description */}
             <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-xl">
-              Food Khan is a restaurant, bar and coffee roastery located on a busy corner site in Farringdon's Exmouth Market. With glazed frontage on two sides of the building, overlooking the market and a bustling London inteon.
+              Aby Ticket is Rwanda's leading bus booking platform, connecting travelers across the country with safe, comfortable, and reliable transport services. Book your journey with confidence and travel in comfort.
             </p>
 
-            {/* Delivery Contact Card */}
+            {/* Booking Contact Card */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
               <div className="flex items-center gap-4">
-                {/* Delivery Icon */}
-                <div className="w-16 h-16 bg-gradient-to-br from-red-600 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                {/* Phone Icon */}
+                <div className="w-16 h-16 bg-gradient-to-br from-emerald-600 to-green-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
 
                 {/* Contact Info */}
                 <div>
-                  <p className="text-gray-600 text-sm mb-1">Delivery Order Num.</p>
-                  <a href="tel:123-59794069" className="text-red-600 text-2xl font-bold hover:text-red-700 transition-colors">
-                    123-59794069
+                  <p className="text-gray-600 text-sm mb-1">Book Your Ticket</p>
+                  <a href="tel:+250788123456" className="text-emerald-600 text-2xl font-bold hover:text-emerald-700 transition-colors">
+                    +250 788 123 456
                   </a>
                 </div>
               </div>
 
-              {/* Order Button */}
-              <button className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-600 text-white px-10 py-3.5 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 whitespace-nowrap">
-                Order Now
+              {/* Book Button */}
+              <button className="bg-gradient-to-r from-emerald-600 to-green-500 hover:from-emerald-500 hover:to-green-600 text-white px-10 py-3.5 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 whitespace-nowrap">
+                Book Now
               </button>
             </div>
 
             {/* Additional Features */}
             <div className="grid grid-cols-2 gap-4 pt-4">
               <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-900">Fast Delivery</p>
-                  <p className="text-sm text-gray-600">Within 30 minutes</p>
+                  <p className="font-semibold text-gray-900">On-Time Service</p>
+                  <p className="text-sm text-gray-600">Always punctual</p>
                 </div>
               </div>
 
@@ -153,9 +153,25 @@ export default function AbyDeliverySection() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-900">Fresh Food</p>
-                  <p className="text-sm text-gray-600">Quality guaranteed</p>
+                  <p className="font-semibold text-gray-900">Safe Travel</p>
+                  <p className="text-sm text-gray-600">Certified drivers</p>
                 </div>
+              </div>
+            </div>
+
+            {/* Extra Info Cards */}
+            <div className="grid grid-cols-3 gap-3 pt-4">
+              <div className="bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl p-4 text-center border border-emerald-100">
+                <p className="text-2xl font-bold text-emerald-600 mb-1">50+</p>
+                <p className="text-xs text-gray-600">Routes</p>
+              </div>
+              <div className="bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl p-4 text-center border border-emerald-100">
+                <p className="text-2xl font-bold text-emerald-600 mb-1">24/7</p>
+                <p className="text-xs text-gray-600">Support</p>
+              </div>
+              <div className="bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl p-4 text-center border border-emerald-100">
+                <p className="text-2xl font-bold text-emerald-600 mb-1">5k+</p>
+                <p className="text-xs text-gray-600">Travelers</p>
               </div>
             </div>
           </div>

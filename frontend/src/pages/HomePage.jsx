@@ -9,6 +9,7 @@ import Menu from '../components/home/Menu';
 import AbyComingSoon from '../components/home/CounterTimer';
 import AbyPopularDishes from '../components/home/PopularDishes';
 import FoodPromoCards from '../components/home/FoodPromoCards';
+import CarRentalProcess from '../components/home/PopularDishes';
 
 const LandingPage = lazy(() => import("../components/home/landingPage"));
 const WhyChooseUs = lazy(() => import("../components/home/chooseUs"));
@@ -27,18 +28,18 @@ const HomePage = () => {
         <>
             <LandingPage />
             <HomeAbout />
+            <WhyChooseUs />
             <Menu />
 
-            <WhyChooseUs />
-            <AbyComingSoon />
+            {/* <AbyComingSoon /> */}
             {/* <ContentReach /> */}
-            <AbyPopularDishes  />
+            <CarRentalProcess  />
+            <MeetPeopleSection />
             <FoodPromoCards  />
  
-            <MeetPeopleSection />
+            <Testimonials />
             <Programs />
               {/* <Partners /> */}
-            <Testimonials />
           
             <BlogLatest />
 

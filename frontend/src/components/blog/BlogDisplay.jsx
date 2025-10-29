@@ -1,155 +1,156 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useNavigate } from 'react-router-dom';
-import { Eye, MessageCircle, ArrowRight } from 'lucide-react';
+import { Calendar, ArrowUpRight } from 'lucide-react';
 import { blogPosts } from '../../stores/blogsData';
 
-const BlogCard = ({ image, title, content, content2, id, date, views, comments, category }) => {
+const FeaturedArticle = ({ image, title, date, id,content2 }) => {
   const navigate = useNavigate();
-  const [isHovered, setIsHovered] = useState(false);
   
-  // Format date
-  const getFormattedDate = (dateInput) => {
+  const formatDate = (dateInput) => {
     const d = new Date(dateInput);
-    const day = d.getDate();
-    const month = d.toLocaleString('default', { month: 'short' });
-    const year = d.getFullYear();
-    return { day, month, year };
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   };
 
-  const postDate = getFormattedDate(date);
+  return (
+    <div 
+      className="relative h-full rounded-3xl overflow-hidden cursor-pointer group"
+      onClick={() => navigate(`/blog/${id}`)}
+      data-aos="fade-right"
+    >
+      {/* Background Image */}
+      <img 
+        src={image} 
+        alt={title}
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+      />
+      
+      {/* Dark Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+      
+      {/* Content */}
+      <div className="absolute bottom-0 left-0 right-0 p-8">
+        {/* Date */}
+        <div className="flex items-center gap-2 text-white/90 mb-4">
+          <Calendar className="w-5 h-5" />
+          <span className="text-sm font-medium">{formatDate(date)}</span>
+        </div>
+        
+        {/* Title */}
+        <h3 className="text-white text-3xl font-bold mb-6 leading-tight">
+          {title}
+        </h3>
+
+         <p className='text-gray-200 line-clamp-1 '>{content2}</p>
+        
+        {/* Arrow Button */}
+        <button className="w-14 h-14 bg-orange-600 hover:bg-orange-700 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+          <ArrowUpRight className="w-6 h-6 text-white" />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const SmallArticle = ({ image, title, date, id, delay = 0 ,content2 }) => {
+  const navigate = useNavigate();
   
-  // Get excerpt from content
-  const excerpt = (content2 || content).substring(0, 150) + '...';
+  const formatDate = (dateInput) => {
+    const d = new Date(dateInput);
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  };
 
   return (
-    <article 
-      className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group cursor-pointer transform hover:-translate-y-2"
-      data-aos="fade-up"
-      data-aos-duration="800"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+    <div 
+      className="flex gap-4 cursor-pointer group"
       onClick={() => navigate(`/blog/${id}`)}
+      data-aos="fade-left"
+      data-aos-delay={delay}
     >
-      <div className="relative overflow-hidden h-64">
+      {/* Image */}
+      <div className="w-48 h-40 flex-shrink-0 rounded-2xl overflow-hidden">
         <img 
           src={image} 
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
-        
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-        
-        {/* Category Badge */}
-        {category && category.length > 0 && (
-          <div className="absolute top-4 left-4 bg-gradient-to-r from-red-600 to-orange-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg">
-            {Array.isArray(category) ? category[0] : category}
-          </div>
-        )}
-
-        {/* Date Badge */}
-        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-2xl p-3 shadow-lg text-center">
-          <div className="text-3xl font-bold text-red-600">{postDate.day}</div>
-          <div className="text-xs text-gray-600 uppercase">{postDate.month}</div>
-        </div>
-
-        {/* Stats on Image (visible on hover) */}
-        <div className={`absolute bottom-4 left-4 right-4 flex items-center justify-between text-white transition-all duration-300 ${
-          isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm px-3 py-1.5 rounded-full">
-              <Eye size={14} />
-              <span className="text-sm font-medium">{views}</span>
-            </div>
-            <div className="flex items-center gap-2 bg-black/50 backdrop-blur-sm px-3 py-1.5 rounded-full">
-              <MessageCircle size={14} />
-              <span className="text-sm font-medium">{comments}</span>
-            </div>
-          </div>
-        </div>
       </div>
-
-      <div className="p-6">
+      
+      {/* Content */}
+      <div className="flex-1 flex flex-col justify-between py-2">
+        {/* Date */}
+        <div className="flex items-center gap-2 text-gray-500 mb-3">
+          <Calendar className="w-4 h-4" />
+          <span className="text-sm">{formatDate(date)}</span>
+        </div>
+        
         {/* Title */}
-        <h2 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-red-600 transition-colors line-clamp-2">
+        <h4 className="text-gray-900 text-lg font-bold leading-snug mb-4 group-hover:text-orange-600 transition-colors line-clamp-2">
           {title}
-        </h2>
+        </h4>
 
-        {/* Excerpt */}
-        <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-2">
-          {excerpt}
-        </p>
-
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mb-4"></div>
-
-        {/* Footer */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4 text-gray-500 text-sm">
-            <div className="flex items-center gap-2">
-              <Eye size={16} />
-              <span>{views}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <MessageCircle size={16} />
-              <span>{comments}</span>
-            </div>
-          </div>
-
-          {/* Read More Button */}
-          <button className="flex items-center gap-2 text-red-600 font-semibold text-sm group-hover:gap-3 transition-all">
-            Read
-            <ArrowRight size={16} />
-          </button>
-        </div>
+        <p className='text-gray-500 line-clamp-2 '>{content2}</p>
+        
+        {/* Read More */}
+        <button className="flex items-center gap-2 text-orange-600 font-semibold text-sm group-hover:gap-3 transition-all">
+          Read Story
+          <ArrowUpRight className="w-4 h-4" />
+        </button>
       </div>
-    </article>
+    </div>
   );
 };
 
 const BlogLatest = () => {
-  const navigate = useNavigate();
-
   useEffect(() => {
     AOS.init({
-      duration: 1000,
+      duration: 800,
       once: true,
       easing: 'ease-out',
     });
   }, []);
 
+  // Get first 4 posts
+  const [featuredPost, ...smallPosts] = blogPosts.slice(0, 4);
+
   return (
-    <section className="w-full py-16 bg-gray-50">
-      <div className="container mx-auto px-4 md:px-16">
+    <section className="w-full py-20 bg-white relative overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute top-20 left-10 w-3 h-3 bg-orange-600 rounded-full" data-aos="fade" data-aos-delay="200"></div>
+      <div className="absolute bottom-40 right-20 w-2 h-2 bg-orange-600 rounded-full" data-aos="fade" data-aos-delay="400"></div>
+      
+      <div className=" mx-auto px-4 md:px-16">
         {/* Section Header */}
-        <div className="text-center mb-12" data-aos="fade-down">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            <span className="text-black">Latest</span> <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">News & Blogs</span>
+        <div className="text-center mb-16" data-aos="fade-down">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="text-orange-600 text-xl">✱</span>
+            <span className="text-orange-600 font-semibold">Latest Articles</span>
+          </div>
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+            Stay informed and inspired for<br />your next journey
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Discover the rich culinary world of Rwanda through our expertly crafted articles
-          </p>
         </div>
 
-        {/* Blog Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
-          {blogPosts.slice(0, 3).map((post) => (
-            <BlogCard key={post.id} {...post} />
-          ))}
-        </div>
-
-        {/* View All Button */}
-        <div className="text-center" data-aos="fade-up" data-aos-delay="200">
-          <button
-            onClick={() => navigate('/blogs')}
-            className="px-10 py-4 bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold rounded-full hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3 mx-auto"
-          >
-            View All Articles
-            <ArrowRight size={20} />
-          </button>
+        {/* Articles Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Featured Article - Left Side */}
+          <div className="lg:row-span-3 h-[600px]">
+            {featuredPost && (
+              <FeaturedArticle {...featuredPost} />
+            )}
+          </div>
+          
+          {/* Small Articles - Right Side */}
+          <div className="flex flex-col gap-8">
+            {smallPosts.map((post, index) => (
+              <SmallArticle 
+                key={post.id} 
+                {...post}
+                delay={index * 100}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

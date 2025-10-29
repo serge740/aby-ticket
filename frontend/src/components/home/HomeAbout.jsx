@@ -1,132 +1,115 @@
 import React from 'react';
+import { ArrowUpRight, Smartphone, MapPin } from 'lucide-react';
 
-export default function AbyTicketAbout() {
+export default function AboutSection() {
   return (
-    <div className="w-full bg-gray-50 py-16 md:py-24 px-4 md:px-16">
-      <div className="mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side - Dynamic Grid Layout */}
+    <section className="bg-gray-50 py-20 px-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Left Side - Images */}
           <div className="relative">
-            <div className="grid grid-cols-3 grid-rows-4 gap-4 h-[700px]">
-              {/* Large Bus Image - Takes 2 columns, 2 rows */}
-              <div className="col-span-2 row-span-2 overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.02] transition-transform duration-300">
+            {/* Decorative Elements */}
+            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-10">
+              <div className="w-20 h-20 flex items-center justify-center">
+                <svg viewBox="0 0 100 100" className="w-full h-full text-blue-600">
+                  <path d="M50 10 L90 50 L50 90 L10 50 Z" fill="currentColor" opacity="0.9"/>
+                  <circle cx="50" cy="50" r="8" fill="white"/>
+                </svg>
+              </div>
+            </div>
+
+            <div className="absolute bottom-8 left-8 z-10">
+              <div className="w-12 h-12 flex items-center justify-center">
+                <svg viewBox="0 0 100 100" className="w-full h-full text-gray-800">
+                  <path d="M50 20 L80 50 L50 80 L20 50 Z" fill="currentColor"/>
+                </svg>
+              </div>
+            </div>
+
+            {/* Main Images Container */}
+            <div className="relative flex items-center justify-center">
+              {/* Top Circle Image */}
+              <div className="absolute top-0 left-0 w-72 h-72 rounded-full overflow-hidden border-8 border-white shadow-2xl z-20">
                 <img 
-                  src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&h=800&fit=crop"
-                  alt="Modern bus"
+                  src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?w=600&q=80" 
+                  alt="Happy passenger in bus"
                   className="w-full h-full object-cover"
                 />
               </div>
 
-              {/* Stats Card - 1 column, 2 rows */}
-              <div className="col-span-1 row-span-2 bg-gradient-to-br from-emerald-600 to-green-500 rounded-2xl shadow-lg flex flex-col items-center justify-center p-6 transform hover:scale-[1.02] transition-transform duration-300">
-                <div className="text-white mb-3">
-                  <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-white text-4xl font-bold mb-1">5000+</h3>
-                <p className="text-white text-sm font-medium text-center">Happy Travelers</p>
-              </div>
-
-              {/* Bus Interior - 2 columns, 2 rows */}
-              <div className="col-span-2 row-span-2 overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.02] transition-transform duration-300">
+              {/* Bottom Circle Image */}
+              <div className="relative mt-48 ml-32 w-80 h-80 rounded-full overflow-hidden border-8 border-white shadow-2xl z-10">
                 <img 
-                  src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&h=600&fit=crop"
-                  alt="Comfortable bus interior"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Bus on Road - 1 column, 2 rows */}
-              <div className="col-span-1 row-span-2 overflow-hidden rounded-2xl shadow-lg transform hover:scale-[1.02] transition-transform duration-300">
-                <img 
-                  src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=400&h=800&fit=crop"
-                  alt="Bus traveling"
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80" 
+                  alt="Professional bus service"
                   className="w-full h-full object-cover"
                 />
               </div>
             </div>
-
-            {/* Decorative floating elements */}
-            <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-green-400 rounded-full opacity-10 blur-2xl"></div>
-            <div className="absolute -top-6 -left-6 w-32 h-32 bg-emerald-400 rounded-full opacity-10 blur-2xl"></div>
           </div>
 
           {/* Right Side - Content */}
-          <div className="text-gray-900 space-y-6">
-            <div>
-              <p className="text-sm md:text-base font-light tracking-wider mb-3 text-emerald-600 uppercase">
-                About Aby Ticket
-              </p>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Safe & Comfortable Travel At Great Prices, Only For{' '}
-                <span className="text-emerald-600">Smart Travelers.</span>
-              </h2>
-            </div>
-
-            <div className="space-y-5 text-gray-600">
-              <p className="text-base md:text-lg leading-relaxed">
-                Aby Ticket is Rwanda's premier bus booking platform, connecting travelers to destinations across the country with comfort, safety, and reliability.
-              </p>
-             
-              <p className="text-base md:text-lg leading-relaxed">
-                We partner with the best bus operators in Rwanda, ensuring every journey meets our high standards for safety and comfort. Our modern fleet features comfortable seating, air conditioning, and professional drivers dedicated to your safety.
-              </p>
-
-              <p className="text-base md:text-lg leading-relaxed">
-                More than just a booking service, we've created a seamless travel experience where families connect, business thrives, and every journey becomes hassle-free.
-              </p>
-            </div>
-
-            {/* Feature Card */}
-            <div className="flex items-start gap-4 bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300 border border-gray-100">
-              <div className="relative flex-shrink-0">
-                <div className="w-20 h-20 rounded-full overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=200&h=200&fit=crop"
-                    alt="VIP Bus Service"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="absolute -top-2 -left-2 bg-emerald-600 text-white text-xs font-bold rounded-full w-12 h-12 flex items-center justify-center shadow-lg">
-                  VIP
-                </div>
+          <div className="space-y-8">
+            {/* Header */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="text-blue-600 text-2xl">✦</span>
+                <span className="text-blue-600 font-semibold text-sm uppercase tracking-wide">About Us</span>
               </div>
               
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Premium VIP Service
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Experience luxury travel with extra legroom, Wi-Fi, and refreshments on select routes.
-                </p>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+                Your trusted partner in<br />reliable bus travel
+              </h2>
+              
+              <p className="text-gray-600 text-base leading-relaxed">
+                At Aby Ticket, we connect Rwanda through safe, comfortable, and affordable bus services. 
+                With modern buses and professional drivers, we ensure your journey across Rwanda is smooth and enjoyable.
+              </p>
+            </div>
+
+            {/* Features */}
+            <div className="space-y-6">
+              {/* Feature 1 */}
+              <div className="flex gap-4 items-start">
+                <div className="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center">
+                  <Smartphone className="w-8 h-8 text-blue-600" strokeWidth={2} />
+                </div>
+                <div className="flex-1 space-y-2">
+                  <h3 className="text-xl font-bold text-gray-900">Easy Booking Process</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    We have optimized the booking process so that our clients can experience the easiest and the safest service
+                  </p>
+                </div>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="flex gap-4 items-start">
+                <div className="flex-shrink-0 w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center">
+                  <MapPin className="w-8 h-8 text-orange-600" strokeWidth={2} />
+                </div>
+                <div className="flex-1 space-y-2">
+                  <h3 className="text-xl font-bold text-gray-900">Convenient Pick-Up & Return Process</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    We have optimized the booking process so that our clients can experience the easiest and the safest service
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-3 gap-4 pt-4">
-              <div className="text-center">
-                <h4 className="text-3xl font-bold text-emerald-600">50+</h4>
-                <p className="text-sm text-gray-600 mt-1">Routes</p>
-              </div>
-              <div className="text-center">
-                <h4 className="text-3xl font-bold text-emerald-600">24/7</h4>
-                <p className="text-sm text-gray-600 mt-1">Support</p>
-              </div>
-              <div className="text-center">
-                <h4 className="text-3xl font-bold text-emerald-600">100%</h4>
-                <p className="text-sm text-gray-600 mt-1">Safe</p>
-              </div>
-            </div>
-
+            {/* CTA Button */}
             <div className="pt-4">
-              <button className="px-8 py-3 bg-transparent border-2 border-emerald-600 text-emerald-600 rounded-full hover:bg-emerald-600 hover:text-white transition-all duration-300 font-medium text-base">
-                View All Routes
+              <button className="group flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg shadow-blue-600/30">
+                Contact Us
+                <div className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-700 group-hover:bg-blue-800 transition-colors">
+                  <ArrowUpRight size={18} />
+                </div>
               </button>
             </div>
           </div>
+
         </div>
       </div>
-    </div>
+    </section>
   );
 }
