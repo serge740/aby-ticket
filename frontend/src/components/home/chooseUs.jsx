@@ -40,8 +40,8 @@ export default function ServicesSection() {
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
           <div className="flex items-center justify-center gap-2">
-            <span className="text-green-600 text-2xl">✦</span>
-            <span className="text-green-600 font-semibold text-sm uppercase tracking-wide">Our Services</span>
+            <span className="text-primary-600 text-2xl">✦</span>
+            <span className="text-primary-600 font-semibold text-sm uppercase tracking-wide">Our Services</span>
           </div>
           
           <h2 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
@@ -57,7 +57,7 @@ export default function ServicesSection() {
               className={`
                 rounded-3xl p-8 transition-all duration-300 hover:scale-105
                 
-                  hover:bg-gradient-to-br hover:from-green-600 to-green-500 hover:text-white hover:shadow-xl hover:shadow-green-600/30
+                  hover:bg-gradient-to-br hover:from-primary-600 to-primary-500 hover:text-white hover:shadow-xl hover:shadow-primary-600/30
                 bg-white text-gray-900 shadow-lg 
                 
               `}
@@ -65,7 +65,7 @@ export default function ServicesSection() {
               {/* Icon */}
               <div className={`
                 w-16 h-16 rounded-2xl flex items-center justify-center mb-6
-                 hover:bg-green-700/30 bg-gray-100
+                 hover:bg-primary-700/30 bg-gray-100
               `}>
                 <service.icon 
                   className={'hover:text-white text-gray-900'} 
@@ -93,8 +93,8 @@ export default function ServicesSection() {
               <button className={`
                 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300
                 
-                   hover:bg-green-800 
-                 bg-green-600  text-white
+                   hover:bg-primary-800 
+                 bg-primary-600  text-white
                 
               `}>
                 {service.featured ? (
@@ -114,9 +114,9 @@ export default function ServicesSection() {
             From a diverse fleet of vehicles to flexible rental plans.
           </p>
 
-          <button className="group inline-flex items-center gap-3 px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg shadow-green-600/30">
+          <button className="group inline-flex items-center gap-3 px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg shadow-primary-600/30">
             View All Service
-            <div className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 group-hover:bg-green-800 transition-colors">
+            <div className="w-10 h-10 flex items-center justify-center rounded-full bg-primary-700 group-hover:bg-primary-800 transition-colors">
               <ArrowUpRight size={20} strokeWidth={2.5} />
             </div>
           </button>

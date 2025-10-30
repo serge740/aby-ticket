@@ -137,7 +137,7 @@ export default function AbyTicketLocations() {
 
         {/* Header Section */}
         <div className="relative z-10 text-center pt-16 pb-8 px-4">
-          <p className="text-sm italic text-emerald-400 mb-2 tracking-wider">Travel Destinations</p>
+          <p className="text-sm italic text-secondary-400 mb-2 tracking-wider">Travel Destinations</p>
           <h1 className="text-5xl md:text-6xl font-bold mb-4">We Serve Across Rwanda</h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Connecting you to every corner of the Land of a Thousand Hills
@@ -148,7 +148,7 @@ export default function AbyTicketLocations() {
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 md:p-16">
           {/* Eastern Province */}
           <div className="bg-opacity-40 rounded-3xl px-8 md:px-12 py-12 backdrop-blur-sm" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-            <div className="text-sm italic text-emerald-400 mb-2 tracking-wider">Popular Routes</div>
+            <div className="text-sm italic text-secondary-400 mb-2 tracking-wider">Popular Routes</div>
             <h2 className="text-4xl md:text-5xl font-bold mb-12">Eastern Province</h2>
 
             <div className="space-y-8">
@@ -167,7 +167,7 @@ export default function AbyTicketLocations() {
 
           {/* Western Province */}
           <div className="bg-opacity-40 rounded-3xl px-8 md:px-12 py-12 backdrop-blur-sm" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-            <div className="text-sm italic text-emerald-400 mb-2 tracking-wider">Lake Kivu Routes</div>
+            <div className="text-sm italic text-secondary-400 mb-2 tracking-wider">Lake Kivu Routes</div>
             <h2 className="text-4xl md:text-5xl font-bold mb-12">Western Province</h2>
 
             <div className="space-y-8">
@@ -186,7 +186,7 @@ export default function AbyTicketLocations() {
 
           {/* Southern Province */}
           <div className="bg-opacity-40 rounded-3xl px-8 md:px-12 py-12 backdrop-blur-sm" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-            <div className="text-sm italic text-emerald-400 mb-2 tracking-wider">Cultural Routes</div>
+            <div className="text-sm italic text-secondary-400 mb-2 tracking-wider">Cultural Routes</div>
             <h2 className="text-4xl md:text-5xl font-bold mb-12">Southern Province</h2>
 
             <div className="space-y-8">
@@ -205,7 +205,7 @@ export default function AbyTicketLocations() {
 
           {/* Northern Province */}
           <div className="bg-opacity-40 rounded-3xl px-8 md:px-12 py-12 backdrop-blur-sm" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-            <div className="text-sm italic text-emerald-400 mb-2 tracking-wider">Mountain Routes</div>
+            <div className="text-sm italic text-secondary-400 mb-2 tracking-wider">Mountain Routes</div>
             <h2 className="text-4xl md:text-5xl font-bold mb-12">Northern Province</h2>
 
             <div className="space-y-8">
@@ -225,7 +225,7 @@ export default function AbyTicketLocations() {
 
         {/* View All Routes Button */}
         <div className="relative z-10 text-center pb-16">
-          <button className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white px-12 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+          <button className="bg-gradient-to-r from-secondary-600 to-primary-600 hover:from-secondary-500 hover:to-primary-500 text-white px-12 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
             View All Routes & Schedules
           </button>
         </div>
@@ -236,12 +236,12 @@ export default function AbyTicketLocations() {
 
 function LocationItem({ name, description, price, oldPrice, recommended }) {
   return (
-    <div className="border-b border-gray-700 pb-6 hover:border-emerald-500/50 transition-colors duration-300">
+    <div className="border-b border-gray-700 pb-6 hover:border-secondary-500/50 transition-colors duration-300">
       <div className="flex items-start justify-between mb-2">
         <div className="flex items-center gap-3 flex-wrap">
           <h3 className="text-xl font-semibold">{name}</h3>
           {recommended && (
-            <span className="bg-gradient-to-r from-emerald-600 to-green-600 text-white text-xs px-3 py-1 rounded-full font-medium">
+            <span className="bg-gradient-to-r from-secondary-600 to-primary-600 text-white text-xs px-3 py-1 rounded-full font-medium">
               Popular
             </span>
           )}
@@ -250,7 +250,7 @@ function LocationItem({ name, description, price, oldPrice, recommended }) {
           {oldPrice && (
             <span className="text-gray-500 line-through text-sm">RWF {oldPrice}</span>
           )}
-          <span className="text-emerald-400 font-semibold text-lg">RWF {price}</span>
+          <span className="text-secondary-400 font-semibold text-lg">RWF {price}</span>
         </div>
       </div>
       <p className="text-sm text-gray-400 leading-relaxed">{description}</p>
