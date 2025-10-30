@@ -1,5 +1,5 @@
 import React from 'react'
-
+import image from '../assets/bus/image2.jpg'
 const Header = ({title, path}) => {
     return (
         <div className='relative w-full h-[50vh] flex justify-center items-center overflow-hidden'>
@@ -7,12 +7,12 @@ const Header = ({title, path}) => {
             <div 
                 className='absolute bg-fixed   inset-0 bg-cover bg-botoom bg-no-repeat'
                 style={{
-                    backgroundImage: `url(https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=1600&h=600&fit=crop)`,
+                    backgroundImage: `url(${image})`,
                 }}
             >
                 {/* Gradient Overlays */}
-                <div className='absolute inset-0 bg-gradient-to-r from-secondary-900/10 via-secondary-800/10 to-secondary-700/15'></div>
-                <div className='absolute inset-0 bg-gradient-to-b from-transparent via-secondary-900/10 to-secondary-900/10'></div>
+                <div className='absolute inset-0 bg-gradient-to-r from-black/20 via-black/30 to-black/45'></div>
+                <div className='absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black/20'></div>
             </div>
 
             {/* Content Container */}
@@ -41,7 +41,7 @@ const Header = ({title, path}) => {
             </div>
 
             {/* Bottom Fade Effect */}
-            <div className='absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-secondary-900/40 to-transparent'></div>
+            <div className='absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/40 to-transparent'></div>
         </div>
     )
 }
