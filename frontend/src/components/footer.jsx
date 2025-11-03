@@ -28,8 +28,8 @@ export default function ModernAbyTicketFooter() {
     { path: '/help', translationKey: 'footer.help' },
     { path: '/faq', translationKey: 'footer.faq' },
     { path: '/how-to-book', translationKey: 'footer.howtoBook' },
-    { path: '/destinations', translationKey: 'footer.destinations' },
-    { path: '/contact-us', translationKey: 'footer.contact' }
+    // { path: '/destinations', translationKey: 'footer.destinations' },
+    // { path: '/contact-us', translationKey: 'footer.contact' }
   ];
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -63,7 +63,7 @@ export default function ModernAbyTicketFooter() {
             {/* Brand Column */}
             <div className="space-y-6">
               <NavLink to="/" className="flex items-center">
-                <img src={Logo} alt="AbyTicket Logo" className="h-24 scale-125 object-cover" />
+                <img src={Logo} alt="AbyTicket Logo" className="h-16 w-24 object-cover scale-125 object-cover" />
               </NavLink>
               <p className="text-gray-400 leading-relaxed text-sm">{t('footer.tagline')}</p>
               <div className="flex gap-3">

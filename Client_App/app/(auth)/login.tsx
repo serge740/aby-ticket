@@ -15,7 +15,7 @@ import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
 // Import info
 import info from '../../constants/info';
-import { router } from 'expo-router';
+import { Link, router } from 'expo-router';
 
 const LoginScreen = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -149,6 +149,9 @@ const LoginScreen = () => {
                 Create an account
               </Text>
             </TouchableOpacity>
+
+            <Link href={"/(guest)"}>continue as guest </Link>
+
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
