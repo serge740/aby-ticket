@@ -154,10 +154,10 @@ model Client {
   id           String    @id @default(uuid())
   name         String
   email        String    @unique
-  phoneNumber  String    @unique
+  phoneNumber  String?   
   password     String
   status       Status    @default(ACTIVE)
-  google_id    String?   @unique
+  google_id    String?   
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 

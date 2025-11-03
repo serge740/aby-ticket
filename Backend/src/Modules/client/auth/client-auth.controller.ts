@@ -13,7 +13,8 @@ import {
 import { ClientService } from './client-auth.service';
 import { Response, Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
-import { ClientAuthGuard } from './guards/client-auth.guard';
+import { ClientAuthGuard } from 'src/Guards/client-auth.guard';
+
 
 @Controller('client')
 export class ClientController {

@@ -1,4 +1,5 @@
 {
   "welcome": "Welcome!",
-  "greeting": "Hello, {{name}}!"
+  "greeting": "Hello, {{name}}!",
+  "change_language": "Change Language"
 }

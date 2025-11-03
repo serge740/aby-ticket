@@ -4,23 +4,25 @@ import * as Localization from 'expo-localization';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import en from './locales/en.json';
-import es from './locales/es.json';
+import fr from './locales/fr.json';
+import rw from './locales/rw.json';
 
-// Define available resources
+// Define your available translations
 export const resources = {
   en: { translation: en },
-  es: { translation: es },
+  fr: { translation: fr },
+  rw: { translation: rw },
 } as const;
 
 export type Language = keyof typeof resources;
 
 const LANGUAGE_KEY = 'user-language';
 
-// Async function to load saved language
+// Async initialization function
 async function initI18n() {
   try {
     const savedLang = await AsyncStorage.getItem(LANGUAGE_KEY);
-    const deviceLang = Localization.locale?.split('-')[0] as Language;
+    const deviceLang = Localization.locale.split('-')[0] as Language;
 
     await i18n
       .use(initReactI18next)
@@ -33,18 +35,18 @@ async function initI18n() {
 
     console.log('✅ i18n initialized with language:', i18n.language);
   } catch (error) {
-    console.error('❌ i18n init failed:', error);
+    console.error('❌ i18n initialization failed:', error);
   }
 }
 
-// Listen for language changes and save them
+// Save language whenever it changes
 i18n.on('languageChanged', (lng) => {
-  AsyncStorage.setItem(LANGUAGE_KEY, lng).catch((err:any) =>
+  AsyncStorage.setItem(LANGUAGE_KEY, lng).catch((err) =>
     console.error('Failed to save language', err)
   );
 });
 
-// Initialize immediately
+// Run initialization
 initI18n();
 
 export default i18n;
