@@ -64,5 +64,114 @@
     },
     "home": "Ahabanza",
     "about": "Ibyerekeye",
-    "contact": "Twandikire"
+    "contact": "Twandikire",
+     "services": {
+    "sectionTitle": "Serivisi Zacu",
+    "sectionHeader": "Tegura urugendo rwawe rworoshye",
+    "sectionDescription": "Fata itike, ukurikire imodoka, cyangwa utegure urugendo rwawe byoroshye ukoresheje online, offline cyangwa USSD.",
+    "bookTicket": "Fata Itike",
+    "bookTicketDesc": "Tegura urugendo rwawe uhereye ku itike yihuse, ihuye n’ingendo zawe.",
+    "trackCar": "Kurikirana Imodoka",
+    "trackCarDesc": "Reba aho imodoka yawe iri mu gihe nyacyo ukanamenya igihe igeze aho ugomba kujya.",
+    "onlineOfflineBooking": "Booking Online/Offline",
+    "onlineOfflineBookingDesc": "Fata itike ukoresheje porogaramu yacu cyangwa aho tugurisha amatike.",
+    "ussdBooking": "Booking ukoresheje USSD",
+    "ussdBookingDesc": "Fata itike vuba ukoresheje code ya USSD kuri telefoni yawe.",
+    "bottomDescription": "Duhanga uburyo bworoshye bwo gutegura urugendo rwawe, guhitamo imodoka, no kugura itike byihuse.",
+    "viewAll": "Reba Serivisi Zose"
+  },
+   "about": {
+    "badge": "Ibijyanye na Aby Ticket",
+    "title": "Serivisi y'Amabus Yizewe Cyane mu Rwanda",
+    "subtitle": "Tuhuza imigi mu Rwanda yose hamwe n'ubwitwararike butinzwe, bworoshye kandi bwizewe. Menya itandukaniro ry'ingendo n'amabus agezweho hamwe na Aby Ticket.",
+    "description": "Kuva twashinzwe, Aby Ticket yiyemeje gutanga serivisi idasanzwe y'amabus mu Rwanda hose. Dukoresha amabus agezweho kandi yitaweho neza, hamwe n'abashoferi b'inararibonye bashyira imbere umutekano wawe n'ihumure ryawe. Urusobe rwacu rwagutse ruhuza imigi mikuru harimo Kigali, Musanze, Huye, Rubavu, n'izindi.",
+    "cta": "Tanga Urugendo Rwawe",
+    "rating": "Amanota y'Abakiriya",
+    "ratingDescription": "Hashingiye ku bice 15,000+ by'abagenzi byemejwe",
+    "stats": {
+      "passengers": "Abagenzi Bishimiye",
+      "routes": "Inzira za Buri Munsi",
+      "satisfaction": "Igipimo cyo Kwishimira",
+      "support": "Ubufasha bw'Abakiriya"
+    },
+    "features": {
+      "safety": {
+        "title": "Umutekano Ubanza",
+        "description": "Amabus yacu yose agenzurwa buri gihe kandi akagenzurwa mu bijyanye n'umutekano. Abashoferi bacu b'inararibonye bahuguwe mu gutwara neza no kurinda abashyitsi."
+      },
+      "punctuality": {
+        "title": "Gutaha ku Gihe",
+        "description": "Twubaha igihe cyawe. Amabus yacu ataha ku gihe cyagenwe, bikugirira neza ko ugera aho ugana igihe ukeneye. Gukurikirana mu gihe nyacyo bikubwira ibiri kugenda mu rugendo rwawe."
+      },
+      "comfort": {
+        "title": "Urugendo Runoze",
+        "description": "Wishimire intebe nini, imyuka ikonje, umusarani usukuye, n'imyidagaduro mu busi. Amabus yacu yagenewe ihumure ryawe mu ngendo ngufi n'izide."
+      }
+    },
+    "highlights": {
+      "modern": "Amabus agezweho afite imyuka ikonje",
+      "drivers": "Abashoferi b'inararibonye bemerewe",
+      "tracking": "Gukurikirana GPS mu gihe nyacyo",
+      "support": "Ubufasha bw'abakiriya 24/7"
+    },
+    "whyChoose": "Kuki Uhitamo Aby Ticket?",
+    "commitment": "Ubwitange Bwacu ku Buryo Buhebuje"
+  },
+  "locations": {
+    "subtitle": "Genda mu Rwanda Rwose",
+    "title": "Tugeza Ahantu Hose",
+    "description": "Tangura amatike y'imodoka z'amabasi z'umutekano, ziyoroheje kandi za bucuti ku mihanda yose y'igihugu.",
+    "popularAgencies": "Sosiyete Zizeye",
+    "popularRoutes": "Inzira Zisanzwe",
+    "viewAll": "Reba Inzira Zose",
+    "popular": "Isanzwe",
+    "duration": "mu rugendo",
+    "bookNow": "Tangura Itike",
+    "ctaTitle": "Witeguye Kugenda?",
+    "ctaDesc": "Imodoka zirenga 50 buri munsi zerekeza Musanze, Rubavu, Huye n'ahandi.",
+    "exploreRoutes": "Sura Inzira Zose"
+  },
+  "hero": {
+    "watchVideo": "REBA VIDYO YUZUYE",
+    "title": "Genda mu Rwanda mu Buryohe & mu Nteguza",
+    "subtitle": "Tangura amatike uva mu mabasi yizewe — umutekano, vuba, kandi yizewe."
+  },
+   "bookingProcess": {
+    "badge": "Uburyo Bikora",
+    "title": "Intambwe zoroshye zo gutanga itike rya bisi",
+    "subtitle": "Tanga itike rya bisi muburyo butatu bworoshye - ukoresheje urubuga rwacu, aplikasiyo ya mudasobwa, cyangwa ukoresheje kode ya USSD. Gutanga byihuse, byizewe kandi byoroshye.",
+    "trustBadge": {
+      "title": "Amatike 500K+ Yatanzwe",
+      "subtitle": "Yizerwaho n'abagenzi mu Rwanda hose"
+    },
+    "steps": {
+      "choose": {
+        "title": "Hitamo Urugendo Rwawe",
+        "content": "Hitamo imigi yo gutaha no kugera, hitamo itariki n'igihe ukunda. Reba inzira zihari kuva Kigali kugera Musanze, Huye, Rubavu, n'ahandi. Gereranya ibiciro n'abashoramari ba bisi urenze ushake uburyo bukwiye."
+      },
+      "book": {
+        "title": "Tanga Itike Ryawe",
+        "content": "Rangiza gutanga itike ukoresheje urubuga rwacu, aplikasiyo, cyangwa ukanda *334# kuri USSD. Hitamo intebe yawe, ongeraho amakuru y'umugenzi, wishyure ukoresheje Mobile Money (MTN, Airtel), karita, cyangwa amafaranga mu biro byacu."
+      },
+      "travel": {
+        "title": "Genda Byoroshye",
+        "content": "Akira itike rya elegitoroniki rya SMS na imeri ako kanya. Erekana kode y'itike ryawe kuri sitasiyo ya bisi, injira muri bisi yawe, wishimire urugendo runoze. Kurikirana aho bisi yawe iri mu gihe nyacyo ukoresheje aplikasiyo yacu."
+      }
+    }
+  },
+  "faq": {
+    "subtitle": "Ibibazo bikunze kubazwa",
+    "title": "Ibyo ukeneye byose kumenya ku booking ya tike",
+    "busAlt": "Imodoka rusange",
+    "q1": "Nigute nabona tike y’imodoka?",
+    "a1": "Ushobora kubona tike yawe kuri interineti, uhitemo aho uturuka n’aho ujya, igihe ushaka kugenda, hanyuma wishyure ukoresheje uburyo bwizewe.",
+    "q2": "Nshobora guhagarika cyangwa guhindura urugendo rwanjye?",
+    "a2": "Yego, ushobora guhagarika cyangwa guhindura urugendo rwawe nibura amasaha 24 mbere yo guhaguruka. Igihe cy’imihango myinshi bishobora kugira ingaruka.",
+    "q3": "Hariho igabanyirizwa ku banyeshuri cyangwa abakuru?",
+    "a3": "Yego, abanyeshuri n’abakuze bafite uburenganzira ku giciro gito. Ugomba kwerekana indangamuntu igaragaza icyiciro cyawe.",
+    "q4": "Ni ubuhe buryo bwo kwishyura bwemewe?",
+    "a4": "Dufata amakarita yo kwishyura, Mobile Money, n’ubundi buryo bwemewe bwo kwishyura mu gihugu.",
+    "q5": "Nkeneye gucapa tike yanjye?",
+    "a5": "Oya, ntibisabwa gucapa. Ushobora kwerekana tike yawe ya telefoni igihe winjira mu modoka."
+  }
 }

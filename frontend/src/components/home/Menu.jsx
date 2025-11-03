@@ -1,259 +1,152 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { MapPin, Bus, Star, Clock, ArrowRight } from 'lucide-react';
+
+const popularAgencies = [
+  "Kigali Coach", "Kigali Safaris", "Virunga Express", "Kuvu Belt",
+  "Nile Safaris", "Horizon Express", "Fidelity Express", "RITCO Express"
+];
+
+const popularRoutes = [
+  { from: "Kigali", to: "Musanze", agency: "Virunga Express", time: "2h 30m", popular: true },
+  { from: "Kigali", to: "Rubavu", agency: "Kigali Coach", time: "3h 15m", popular: true },
+  { from: "Kigali", to: "Nyanza", agency: "Horizon Express", time: "2h 00m" },
+  { from: "Rubavu", to: "Musanze", agency: "Kuvu Belt", time: "1h 45m" },
+  { from: "Kigali", to: "Huye", agency: "RITCO Express", time: "2h 30m", popular: true },
+  { from: "Kigali", to: "Nyamata", agency: "Fidelity Express", time: "45m" },
+];
 
 export default function AbyTicketLocations() {
-  const easternProvince = [
-    {
-      name: "Rwamagana",
-      description: "Gateway to Eastern Province with modern facilities",
-      price: "3,500",
-    },
-    {
-      name: "Kayonza",
-      description: "Strategic transit hub on major routes",
-      price: "4,200",
-      oldPrice: "5,000",
-    },
-    {
-      name: "Kirehe",
-      description: "Peaceful town with regular service",
-      price: "5,500",
-      recommended: true,
-    },
-    {
-      name: "Ngoma",
-      description: "Historic district with daily departures",
-      price: "5,800",
-    },
-    {
-      name: "Bugesera",
-      description: "Near airport with convenient schedules",
-      price: "3,000",
-    },
-  ];
-
-  const westernProvince = [
-    {
-      name: "Rubavu (Gisenyi)",
-      description: "Beautiful lakeside destination on Lake Kivu",
-      price: "6,500",
-      oldPrice: "7,500",
-    },
-    {
-      name: "Rusizi (Cyangugu)",
-      description: "Southern Lake Kivu with stunning views",
-      price: "7,200",
-      recommended: true,
-    },
-    {
-      name: "Karongi (Kibuye)",
-      description: "Scenic route along Lake Kivu shores",
-      price: "5,800",
-    },
-    {
-      name: "Nyamasheke",
-      description: "Tea plantations and mountain scenery",
-      price: "6,800",
-    },
-    {
-      name: "Rutsiro",
-      description: "Agricultural heartland with daily service",
-      price: "4,500",
-    },
-  ];
-
-  const southernProvince = [
-    {
-      name: "Huye (Butare)",
-      description: "University town and cultural center",
-      price: "4,800",
-      recommended: true,
-    },
-    {
-      name: "Muhanga (Gitarama)",
-      description: "Central location with frequent departures",
-      price: "3,200",
-    },
-    {
-      name: "Nyanza",
-      description: "Royal palace and historical sites",
-      price: "4,000",
-    },
-    {
-      name: "Nyamagabe",
-      description: "Gateway to Nyungwe Forest",
-      price: "5,500",
-      oldPrice: "6,200",
-    },
-    {
-      name: "Ruhango",
-      description: "Growing town with modern transport",
-      price: "3,800",
-    },
-  ];
-
-  const northernProvince = [
-    {
-      name: "Musanze (Ruhengeri)",
-      description: "Gateway to Volcanoes National Park",
-      price: "5,200",
-      recommended: true,
-    },
-    {
-      name: "Gicumbi",
-      description: "Northern district with regular service",
-      price: "4,500",
-    },
-    {
-      name: "Rulindo",
-      description: "Agricultural region with daily routes",
-      price: "3,500",
-    },
-    {
-      name: "Burera",
-      description: "Beautiful lakes and mountain views",
-      price: "6,000",
-    },
-    {
-      name: "Gakenke",
-      description: "Northern highlands destination",
-      price: "5,500",
-    },
-  ];
+  const { t } = useTranslation();
 
   return (
-    <div id='our-locations' className="w-full min-h-screen bg-black">
-      {/* Locations Section */}
-      <div className="relative bg-black text-white overflow-hidden">
-        {/* Background Image - Rwanda's 1000 Hills */}
+    <div id="our-locations" className="w-full min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+      {/* Hero Background */}
+      <div className="relative overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url(https://images.unsplash.com/photo-1650370619926-7158b8d33af0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1980&h=1080)`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1583417319070-4e98198f35f5?ixlib=rb-4.1.0&auto=format&fit=crop&w=2070&q=80')`,
+            filter: 'brightness(0.7)',
           }}
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
 
-        {/* Dark Overlay - makes image darker but still visible */}
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.75)' }} />
-
-        {/* Header Section */}
-        <div className="relative z-10 text-center pt-16 pb-8 px-4">
-          <p className="text-sm italic text-secondary-400 mb-2 tracking-wider">Travel Destinations</p>
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">We Serve Across Rwanda</h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Connecting you to every corner of the Land of a Thousand Hills
+        {/* Header */}
+        <div className="relative z-10 text-center pt-20 pb-12 px-4">
+          <p className="text-sm md:text-base font-medium text-primary-400 tracking-wider mb-2">
+            {t('locations.subtitle')}
+          </p>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+            {t('locations.title')}
+          </h1>
+          <p className="text-gray-200 text-lg max-w-3xl mx-auto">
+            {t('locations.description')}
           </p>
         </div>
+      </div>
 
-        {/* Locations Grid */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 md:p-16">
-          {/* Eastern Province */}
-          <div className="bg-opacity-40 rounded-3xl px-8 md:px-12 py-12 backdrop-blur-sm" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-            <div className="text-sm italic text-secondary-400 mb-2 tracking-wider">Popular Routes</div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-12">Eastern Province</h2>
-
-            <div className="space-y-8">
-              {easternProvince.map((item, index) => (
-                <LocationItem
-                  key={index}
-                  name={item.name}
-                  description={item.description}
-                  price={item.price}
-                  oldPrice={item.oldPrice}
-                  recommended={item.recommended}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Western Province */}
-          <div className="bg-opacity-40 rounded-3xl px-8 md:px-12 py-12 backdrop-blur-sm" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-            <div className="text-sm italic text-secondary-400 mb-2 tracking-wider">Lake Kivu Routes</div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-12">Western Province</h2>
-
-            <div className="space-y-8">
-              {westernProvince.map((item, index) => (
-                <LocationItem
-                  key={index}
-                  name={item.name}
-                  description={item.description}
-                  price={item.price}
-                  oldPrice={item.oldPrice}
-                  recommended={item.recommended}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Southern Province */}
-          <div className="bg-opacity-40 rounded-3xl px-8 md:px-12 py-12 backdrop-blur-sm" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-            <div className="text-sm italic text-secondary-400 mb-2 tracking-wider">Cultural Routes</div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-12">Southern Province</h2>
-
-            <div className="space-y-8">
-              {southernProvince.map((item, index) => (
-                <LocationItem
-                  key={index}
-                  name={item.name}
-                  description={item.description}
-                  price={item.price}
-                  oldPrice={item.oldPrice}
-                  recommended={item.recommended}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Northern Province */}
-          <div className="bg-opacity-40 rounded-3xl px-8 md:px-12 py-12 backdrop-blur-sm" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-            <div className="text-sm italic text-secondary-400 mb-2 tracking-wider">Mountain Routes</div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-12">Northern Province</h2>
-
-            <div className="space-y-8">
-              {northernProvince.map((item, index) => (
-                <LocationItem
-                  key={index}
-                  name={item.name}
-                  description={item.description}
-                  price={item.price}
-                  oldPrice={item.oldPrice}
-                  recommended={item.recommended}
-                />
-              ))}
-            </div>
+      {/* Popular Agencies */}
+      <div className="bg-white py-10 border-b">
+        <div className="max-w-8xl mx-auto px-4 md:px-12">
+          <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+            <Bus className="w-5 h-5 text-primary-600" />
+            {t('locations.popularAgencies')}
+          </h3>
+          <div className="flex flex-wrap gap-3">
+            {popularAgencies.map((agency) => (
+              <span
+                key={agency}
+                className="px-4 py-2 bg-primary-50 text-primary-800 rounded-full text-sm font-medium border border-primary-200"
+              >
+                {agency}
+              </span>
+            ))}
           </div>
         </div>
+      </div>
 
-        {/* View All Routes Button */}
-        <div className="relative z-10 text-center pb-16">
-          <button className="bg-gradient-to-r from-secondary-600 to-primary-600 hover:from-secondary-500 hover:to-primary-500 text-white px-12 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-            View All Routes & Schedules
+      {/* Popular Routes Grid */}
+      <div className="max-w-8xl mx-auto px-4 py-16 md:px-12">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 flex items-center gap-3">
+            <MapPin className="w-8 h-8 text-primary-600" />
+            {t('locations.popularRoutes')}
+          </h2>
+          <button className="hidden md:flex items-center gap-2 text-primary-600 font-medium hover:text-primary-700 transition">
+            {t('locations.viewAll')} <ArrowRight className="w-5 h-5" />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {popularRoutes.map((route, index) => (
+            <div
+              key={index}
+              className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden cursor-pointer"
+            >
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 bg-primary-500 rounded-full"></div>
+                    <span className="font-semibold text-gray-900">{route.from}</span>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-primary-600 transition" />
+                  <div className="flex items-center gap-2">
+                    <span className="font-semibold text-gray-900">{route.to}</span>
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-600 flex items-center gap-1">
+                      <Bus className="w-4 h-4" /> {route.agency}
+                    </span>
+                    {route.popular && (
+                      <span className="flex items-center gap-1 text-xs font-medium text-primary-700 bg-primary-50 px-2 py-1 rounded-full">
+                        <Star className="w-3 h-3 fill-current" /> {t('locations.popular')}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="flex items-center text-sm text-gray-500">
+                    <Clock className="w-4 h-4 mr-1" />
+                    {route.time} {t('locations.duration')}
+                  </div>
+                </div>
+
+                <div className="mt-5 pt-4 border-t border-gray-100">
+                  <button className="w-full py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-medium rounded-xl hover:from-primary-600 hover:to-primary-700 transition transform hover:scale-105">
+                    {t('locations.bookNow')}
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile View All Button */}
+        <div className="mt-10 text-center md:hidden">
+          <button className="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white font-medium rounded-full hover:bg-primary-700 transition">
+            {t('locations.viewAll')} <ArrowRight className="w-5 h-5" />
           </button>
         </div>
       </div>
-    </div>
-  );
-}
 
-function LocationItem({ name, description, price, oldPrice, recommended }) {
-  return (
-    <div className="border-b border-gray-700 pb-6 hover:border-secondary-500/50 transition-colors duration-300">
-      <div className="flex items-start justify-between mb-2">
-        <div className="flex items-center gap-3 flex-wrap">
-          <h3 className="text-xl font-semibold">{name}</h3>
-          {recommended && (
-            <span className="bg-gradient-to-r from-secondary-600 to-primary-600 text-white text-xs px-3 py-1 rounded-full font-medium">
-              Popular
-            </span>
-          )}
-        </div>
-        <div className="flex items-center gap-2 flex-shrink-0">
-          {oldPrice && (
-            <span className="text-gray-500 line-through text-sm">RWF {oldPrice}</span>
-          )}
-          <span className="text-secondary-400 font-semibold text-lg">RWF {price}</span>
+      {/* CTA Footer */}
+      <div className="bg-gradient-to-r from-primary-600 to-primary-700 py-16">
+        <div className="max-w-4xl mx-auto text-center px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            {t('locations.ctaTitle')}
+          </h2>
+          <p className="text-primary-100 text-lg mb-8">
+            {t('locations.ctaDesc')}
+          </p>
+          <button className="bg-white text-primary-700 px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+            {t('locations.exploreRoutes')}
+          </button>
         </div>
       </div>
-      <p className="text-sm text-gray-400 leading-relaxed">{description}</p>
     </div>
   );
 }

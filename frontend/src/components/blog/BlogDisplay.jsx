@@ -23,7 +23,7 @@ const FeaturedArticle = ({ image, title, date, id,content2 }) => {
       <img 
         src={image} 
         alt={title}
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        className="w-full h-full  object-cover transition-transform duration-700 group-hover:scale-110"
       />
       
       {/* Dark Gradient Overlay */}
@@ -115,12 +115,12 @@ const BlogLatest = () => {
   const [featuredPost, ...smallPosts] = blogPosts.slice(0, 4);
 
   return (
-    <section className="w-full py-20 bg-white relative overflow-hidden">
+    <section className="w-full py-4 bg-white relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-20 left-10 w-3 h-3 bg-primary-600 rounded-full" data-aos="fade" data-aos-delay="200"></div>
       <div className="absolute bottom-40 right-20 w-2 h-2 bg-primary-600 rounded-full" data-aos="fade" data-aos-delay="400"></div>
       
-      <div className=" mx-auto px-4 md:px-16">
+      <div className=" mx-auto px-4 md:px-10">
         {/* Section Header */}
         <div className="text-center mb-16" data-aos="fade-down">
           <div className="flex items-center justify-center gap-2 mb-4">

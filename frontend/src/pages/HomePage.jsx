@@ -38,7 +38,7 @@ const HomePage = () => {
             <FoodPromoCards  />
  
             <Testimonials />
-            <Programs />
+            {/* <Programs /> */}
               {/* <Partners /> */}
           
             <BlogLatest />

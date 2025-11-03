@@ -1,30 +1,32 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function FAQSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { t } = useTranslation();
 
   const faqs = [
     {
-      question: 'What Do I Need To Rent A Car?',
-      answer: 'Explore our diverse selection of high-end vehicles, choose your preferred pickup and return dates, and select a location that best fits your needs.'
+      question: t('faq.q1'),
+      answer: t('faq.a1'),
     },
     {
-      question: 'How Old Do I Need To Be To Rent A Car?',
-      answer: 'The minimum age requirement to rent a car is typically 21 years old. However, drivers under 25 may be subject to additional fees. Some luxury or specialty vehicles may require the driver to be 25 or older.'
+      question: t('faq.q2'),
+      answer: t('faq.a2'),
     },
     {
-      question: 'Can I Rent A Car With A Debit Card?',
-      answer: 'Yes, we accept debit cards for car rentals. However, additional verification and a deposit may be required. Please ensure your debit card has sufficient funds to cover the rental cost and security deposit.'
+      question: t('faq.q3'),
+      answer: t('faq.a3'),
     },
     {
-      question: 'What Is Your Cancellation Policy?',
-      answer: 'You can cancel your reservation up to 24 hours before the pickup time for a full refund. Cancellations made within 24 hours of pickup may be subject to a cancellation fee.'
+      question: t('faq.q4'),
+      answer: t('faq.a4'),
     },
     {
-      question: 'Do You Offer Insurance Coverage?',
-      answer: 'Yes, we offer comprehensive insurance coverage options including collision damage waiver, theft protection, and liability insurance. Your personal auto insurance may also provide coverage, so please check with your provider.'
-    }
+      question: t('faq.q5'),
+      answer: t('faq.a5'),
+    },
   ];
 
   const toggleFAQ = (index) => {
@@ -32,23 +34,18 @@ export default function FAQSection() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-primary-50/30 py-16 px-4 md:py-24">
-      <div className=" mx-auto">
+    <div className="bg-gradient-to-br from-gray-50 to-primary-50/30 py-6 px-4 md:py-24">
+      <div className="mx-auto max-w-8xl md:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Side - Bus Background Image */}
+          {/* Left Side - Bus Image */}
           <div className="relative order-2 lg:order-1 lg:h-[700px]">
             <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl">
-              {/* Background Image */}
               <img
                 src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&h=800&fit=crop"
-                alt="Luxury bus"
+                alt={t('faq.busAlt')}
                 className="w-full h-full object-cover"
               />
-              
-              {/* Gradient Overlay for better contrast */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-              
-              {/* Optional Decorative Element */}
               <div className="absolute top-8 left-8 w-20 h-20 bg-primary-500/20 rounded-full blur-2xl"></div>
               <div className="absolute bottom-8 right-8 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div>
             </div>
@@ -56,20 +53,18 @@ export default function FAQSection() {
 
           {/* Right Side - FAQ Accordion */}
           <div className="order-1 lg:order-2">
-            {/* Header */}
             <div className="mb-8">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-primary-600 text-xl">✱</span>
                 <span className="text-primary-600 font-bold text-sm md:text-base tracking-wide uppercase">
-                  Frequently Asked Questions
+                  {t('faq.subtitle')}
                 </span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-                Everything you need to know about our services
+              <h2 className="text-4xl md:text-3xl font-extrabold text-gray-900 leading-tight">
+                {t('faq.title')}
               </h2>
             </div>
 
-            {/* FAQ Accordion */}
             <div className="space-y-4">
               {faqs.map((faq, index) => (
                 <div
