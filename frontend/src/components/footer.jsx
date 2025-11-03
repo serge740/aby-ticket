@@ -4,6 +4,7 @@ import {
   Facebook, Twitter, Instagram, Mail, Phone, MapPin, Clock, 
   Send, ArrowUp, Globe, ChevronDown 
 } from 'lucide-react';
+import { changeLanguage } from '../i18n';
 
 export default function ModernAbyTicketFooter() {
   const { t, i18n } = useTranslation();
@@ -177,7 +178,7 @@ export default function ModernAbyTicketFooter() {
                     {languages.map(lang => (
                       <button
                         key={lang.code}
-                        onClick={() => { i18n.changeLanguage(lang.code); setLangOpen(false); }}
+                        onClick={() => { changeLanguage(lang.code); setLangOpen(false); }}
                         className={`w-full px-4 py-3 flex items-center gap-3 hover:bg-white/5 transition-colors text-left text-sm ${i18n.language === lang.code ? 'bg-white/10 text-primary-400' : 'text-gray-400'}`}
                       >
                         <span className="text-xl">{lang.flag}</span>

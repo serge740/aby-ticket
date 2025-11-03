@@ -1,11 +1,10 @@
 import React, { lazy, useEffect } from "react";
 import Header from "../../components/header";
+import { t } from "i18next";
 // import { useLocation, useParams } from 'react-router-dom';
 const ContentWriteServices = lazy(() =>
   import("../../components/home/contentWrite")
 );
-const Testimonials = lazy(() => import("../../components/home/testimony"));
-const BlogLatest = lazy(() => import("../../components/blog/BlogDisplay.jsx"));
 
 const ServicePage = () => {
   useEffect(() => {
@@ -17,7 +16,7 @@ const ServicePage = () => {
   }, []);
   return (
     <section className=" text-center min-h-screen">
-      <Header title={`service`} path={`service`} />
+      <Header title={t('servicesPage.header.badge')} path={t('servicesPage.header.badge')} />
 
       <div className="flex flex-col justify-center w-[100%]  items-center gap-10">
         <ContentWriteServices />
