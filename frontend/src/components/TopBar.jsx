@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import ReactCountryFlag from "react-country-flag";
 import { Facebook, Twitter, Instagram, Linkedin, Globe } from "lucide-react";
+import { changeLanguage } from "../i18n";
 
 export default function TopBar({ onLanguageChange }) {
   const { t, i18n } = useTranslation();
@@ -12,13 +13,24 @@ export default function TopBar({ onLanguageChange }) {
     { code: "rw", name: "Kinyarwanda", flag: "RW" },
   ];
 
-  const [selectedLang, setSelectedLang] = useState(i18n.language);
+  // Start with language from localStorage or i18n.language
+  const [selectedLang, setSelectedLang] = useState(
+    localStorage.getItem("i18nextLng") || i18n.language
+  );
+
+  // Ensure i18n uses the saved language on mount
+  useEffect(() => {
+    if (selectedLang !== i18n.language) {
+      changeLanguage(selectedLang);
+    }
+  }, [selectedLang, i18n]);
 
   const handleLanguageChange = (code) => {
-    i18n.changeLanguage(code);
+    changeLanguage(code);
     setSelectedLang(code);
     onLanguageChange?.(code);
   };
+
 
   return (
     <div className="w-full bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 text-white text-sm shadow-md">
