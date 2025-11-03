@@ -3,6 +3,8 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, VerifyCallback } from 'passport-google-oauth20';
 import { PrismaService } from 'src/Prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
+import * as bcrypt  from 'bcryptjs'
+import { randomBytes } from 'crypto';
 
 interface OAuthState {
   redirectUri?: string;
@@ -57,14 +59,14 @@ export class GoogleClientStrategy extends PassportStrategy(
       // If no Google ID, redirect
       if (!id) {
         const redirectUrl = parsedState.redirectUri
-          ? `${parsedState.redirectUri}&&status=notfound&&acceptance=0`
+          ? `${parsedState.redirectUri}&status=notfound&acceptance=0`
           : `${process.env.FRONTEND_URL_ONLY}/auth/client/login?status=notfound&&acceptance=0`;
 
         return done(null, { redirect: redirectUrl, state: parsedState });
       }
 
       // Find client by google_id
-      let client = await this.prisma.client.findUnique({ where: { google_id: id } });
+      let client = await this.prisma.client.findFirst({ where: { google_id: id } });
 
       // If client exists, make sure name is set
       if (client) {
@@ -81,14 +83,16 @@ export class GoogleClientStrategy extends PassportStrategy(
 
       // Try finding client by email
       client = await this.prisma.client.findUnique({ where: { email: userEmail } });
-
+      
       if (!client) {
-        // New client: create with name
+          const randomPassword = await bcrypt.hash(randomBytes(16).toString('hex'), 10);
+          // New client: create with name
         client = await this.prisma.client.create({
           data: {
             name: displayName || 'No Name',
             email: userEmail,
             google_id: id,
+            password:randomPassword,
             status: 'ACTIVE',
           },
         });
