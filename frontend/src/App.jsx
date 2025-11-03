@@ -34,6 +34,9 @@ import CompanyLoginPage from "./pages/auth/company/Login";
 import ProtectPrivateCompanyRoute from "./components/protectors/ProtectPrivateCompanyRoute";
 import CompanyProfilePage from "./pages/dashboard/company/CompanyProfilePage";
 import MenuCategoryDashboard from "./pages/dashboard/company/MenuCategoryDashboard";
+import FAQPage from "./pages/FAQPage";
+import HowToBookPage from "./pages/HowToBookPage";
+import HelpAndSupportPage from "./pages/HelpAndSupportPage";
 
 
 // Loading component
@@ -69,6 +72,9 @@ const router = createBrowserRouter([
     { path: 'products/:id', element: <SuspenseWrapper><CoffeeShop /></SuspenseWrapper> },
     { path: 'cart', element: <SuspenseWrapper><CartPage /></SuspenseWrapper> },
     { path: 'gallery', element: <SuspenseWrapper><Gallery /></SuspenseWrapper> },
+    { path: 'faq', element: <SuspenseWrapper><FAQPage /></SuspenseWrapper> },
+    { path: 'how-to-book', element: <SuspenseWrapper><HowToBookPage /></SuspenseWrapper> },
+    { path: 'help', element: <SuspenseWrapper><HelpAndSupportPage /></SuspenseWrapper> },
  
   ]
 },
