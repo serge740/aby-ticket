@@ -1,57 +1,66 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
 @theme {
-/* --- Colors --- */
-/* 🌿 Primary - Teal Green (#0e8a74 inspired) */
---color-primary-50:  #e6f7f4;
---color-primary-100: #ccefe9;
---color-primary-200: #99dfd3;
---color-primary-300: #66cfbd;
---color-primary-400: #33bfa7;
---color-primary-500: #0e8a74; /* Base color */
---color-primary-600: #0c7865;
---color-primary-700: #096454;
---color-primary-800: #074f43;
---color-primary-900: #053b33;
---color-primary-950: #032520;
+  /* --- Colors --- */
+  /* 🌿 Primary - Teal Green (#0e8a74 inspired) */
+  --color-primary-50: #e6f7f4;
+  --color-primary-100: #ccefe9;
+  --color-primary-200: #99dfd3;
+  --color-primary-300: #66cfbd;
+  --color-primary-400: #33bfa7;
+  --color-primary-500: #0e8a74;
+  /* Base color */
+  --color-primary-600: #0c7865;
+  --color-primary-700: #096454;
+  --color-primary-800: #074f43;
+  --color-primary-900: #053b33;
+  --color-primary-950: #032520;
 
-/* 💎 Secondary - Soft Mint Accent (complementary to #0e8a74) */
---color-secondary-50:  #f0fdfa;
---color-secondary-100: #ccf8ee;
---color-secondary-200: #99f1dc;
---color-secondary-300: #66e9cb;
---color-secondary-400: #33e2b9;
---color-secondary-500: #0ecda3; /* Bright mint tone */
---color-secondary-600: #0ba786;
---color-secondary-700: #08816a;
---color-secondary-800: #065b4d;
---color-secondary-900: #033531;
---color-secondary-950: #011e1c;
+  /* 💎 Secondary - Soft Mint Accent (complementary to #0e8a74) */
+  --color-secondary-50: #f0fdfa;
+  --color-secondary-100: #ccf8ee;
+  --color-secondary-200: #99f1dc;
+  --color-secondary-300: #66e9cb;
+  --color-secondary-400: #33e2b9;
+  --color-secondary-500: #0ecda3;
+  /* Bright mint tone */
+  --color-secondary-600: #0ba786;
+  --color-secondary-700: #08816a;
+  --color-secondary-800: #065b4d;
+  --color-secondary-900: #033531;
+  --color-secondary-950: #011e1c;
 
 
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.animate-slide-up {
-  animation: slideUp 0.5s ease-out forwards;
-}
 
 
-/* --- Fonts --- */
+
+  /* --- Fonts --- */
 
   /* --- Animations and Keyframes --- */
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
   }
+
   --animate-float: float 3s ease-in-out infinite;
   --animate-pulse-slow: pulse 3s ease-in-out infinite;
 
@@ -59,94 +68,104 @@
   --shadow-glow: 0 0 20px rgba(239, 68, 68, 0.3);
   --shadow-glow-lg: 0 0 40px rgba(239, 68, 68, 0.4);
 }
-html{
+
+html {
   scroll-behavior: smooth;
 }
-input{
+
+input {
   color: black;
 }
-textarea{
+
+textarea {
   color: black;
 }
-select{
+
+select {
   color: black;
 }
-body{
-    font-family: "Oswald", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-  }
+
+body {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
 
 
 
-   .pre-container .ql-editor {
-          padding: 1rem;
-          /* max-height: 500px; */
-          /* overflow-y: auto; */
-        }
-        
-        .pre-container .ql-editor h1 {
-          font-size: 2em;
-          font-weight: bold;
-          margin-top: 0.67em;
-          margin-bottom: 0.67em;
-        }
-        
-        .pre-container .ql-editor h2 {
-          font-size: 1.5em;
-          font-weight: bold;
-          margin-top: 0.83em;
-          margin-bottom: 0.83em;
-        }
-        
-        .pre-container .ql-editor h3 {
-          font-size: 1.17em;
-          font-weight: bold;
-          margin-top: 1em;
-          margin-bottom: 1em;
-        }
-        
-        .pre-container .ql-editor ul,
-        .pre-container .ql-editor ol {
-          padding-left: 1.5em;
-          margin-bottom: 1em;
-        }
-        
-        .pre-container .ql-editor ul {
-          list-style-type: disc;
-        }
-        
-        .pre-container .ql-editor ol {
-          list-style-type: decimal;
-        }
-        
-        .pre-container .ql-editor li {
-          margin-bottom: 0.5em;
-        }
-        
-        .pre-container .ql-editor p {
-          margin-bottom: 1em;
-        }
-        
-        .pre-container .ql-editor strong {
-          font-weight: bold;
-        }
-        
-        .pre-container .ql-editor em {
-          font-style: italic;
-        }
-        
-        .pre-container .ql-editor blockquote {
-          border-left: 4px solid #ccc;
-          padding-left: 1em;
-          margin-left: 0;
-          font-style: italic;
-        }
 
-        .ql-container {
-          min-height: 400px;
-        }
-        
-        .ql-editor {
-          min-height: 400px;
-        }
+.pre-container .ql-editor {
+  padding: 1rem;
+  /* max-height: 500px; */
+  /* overflow-y: auto; */
+}
+
+.pre-container .ql-editor h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+}
+
+.pre-container .ql-editor h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+}
+
+.pre-container .ql-editor h3 {
+  font-size: 1.17em;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.pre-container .ql-editor ul,
+.pre-container .ql-editor ol {
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.pre-container .ql-editor ul {
+  list-style-type: disc;
+}
+
+.pre-container .ql-editor ol {
+  list-style-type: decimal;
+}
+
+.pre-container .ql-editor li {
+  margin-bottom: 0.5em;
+}
+
+.pre-container .ql-editor p {
+  margin-bottom: 1em;
+}
+
+.pre-container .ql-editor strong {
+  font-weight: bold;
+}
+
+.pre-container .ql-editor em {
+  font-style: italic;
+}
+
+.pre-container .ql-editor blockquote {
+  border-left: 4px solid #ccc;
+  padding-left: 1em;
+  margin-left: 0;
+  font-style: italic;
+}
+
+.ql-container {
+  min-height: 400px;
+}
+
+.ql-editor {
+  min-height: 400px;
+}
