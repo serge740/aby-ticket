@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import { Outlet, useLocation } from 'react-router-dom'
 import FooterContent from '../components/footer'
+import TopBar from '../components/TopBar'
 
 const MainLayout = () => {
   const location = useLocation();
@@ -15,7 +16,7 @@ const MainLayout = () => {
   }, [location.pathname]);
   return (
     <div className='min-h-dvh text-white flex justify-between items-stretch flex-col bg-white'>
-
+   <TopBar />
     <Navbar />
     <Outlet />
     <FooterContent />

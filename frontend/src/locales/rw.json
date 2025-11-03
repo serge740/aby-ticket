@@ -1,0 +1,68 @@
+{
+    "email": "Twandikire kuri",
+    "phone": "Duhamagare",
+    "adText": "Tegereza itike yawe ubu ugende neza!",
+    "bookRental": "Bika imodoka",
+    "menu": {
+        "home": "Ahabanza",
+        "aboutUs": "Ibyerekeye Twebwe",
+        "services": "Serivisi",
+        "blogs": "Amakuru Agezweho  ",
+        "contactUs": "Hamagara"
+    },
+    "cta": {
+        "bookRental": "Gura ticket "
+    },
+    "welcome": "Murakaza neza kuri Aby Ticket",
+    "slides": {
+        "bookOnline": {
+            "title": "Tegura itike ya bisi kuri internet",
+            "description": "Tegura amatike ya bisi yawe vuba kandi neza uri aho ariho hose mu Rwanda, utagombye gutegereza umurongo."
+        },
+        "trackBus": {
+            "title": "Kurikirana bisi yawe mu gihe nyacyo",
+            "description": "Menya aho bisi yawe iherereye mbere yo kugera ku gihagararo cyawe kugirango urugendo rugende neza."
+        },
+        "easyUse": {
+            "title": "Byoroshye gukoresha ku mbuga zose",
+            "description": "Porogaramu yacu n’urubuga rwacu byakozwe ku buryo buri wese yabikoresha, yaba kuri mudasobwa, tablet cyangwa telefone."
+        }
+    },
+    "buttons": {
+        "bookTicket": "Tegura itike",
+        "learnMore": "Menya byinshi"
+    },
+    "footer": {
+        "readyToTravel": "Witeguye Urugendo?",
+        "bookNextJourney": "Tanga Urugendo Rwawe",
+        "bookNow": "Tanga Ubu",
+        "abyTicket": "Aby Ticket",
+        "tagline": "Ubunararibonye urugendo ruteze umutekano kandi rworoshye muri Rwanda yose. Tuguhuza n'aho ugana hose tukwizeye kandi dukwita.",
+        "mainOffice": "Ibiro Bikuru",
+        "address": "KN 4 Ave, Kigali, Rwanda",
+        "viewMap": "Reba ku Ikarita",
+        "bookTicket": "Tanga Itike",
+        "bookDescription": "Tanga umwanya wawe kugira ngo ugere neza muri Rwanda yose.",
+        "phone": " +250 792888980",
+        "serviceHours": "Amasaha yo Gukora",
+        "weekdays": "Kuwa mbere-Kuwa gatanu: 6:00 - 20:00",
+        "weekends": "Impera yicyumweru: 6:00 - 21:00",
+        "newsletter": "Inkuru",
+        "newsletterDesc": "Iyandikishe kugira ngo ubone amakuru y'ibyitonderwa n'urugendo.",
+        "emailPlaceholder": "Andika Imeri Yawe",
+        "subscribe": "Iyandikishe Ubu",
+        "copyright": "Copyright © 2024",
+        "allRights": "Uburenganzira Bwose Burarinzwe",
+        "privacyPolicy": "Politiki y'Ibanga",
+        "terms": "Amategeko yo Gukoresha",
+        "quickLinks": "Ihuza Ryihuta",
+        "aboutUs": "Abo Turi",
+        "ourFleet": "Ibinyabiziga Byacu",
+        "destinations": "Aho Tugana",
+        "contact": "Tuvugishe"
+
+    },
+    "home": "Ahabanza",
+    "about": "Ibyerekeye",
+    "contact": "Twandikire"
+}

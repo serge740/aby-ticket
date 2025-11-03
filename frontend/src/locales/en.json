@@ -1,0 +1,71 @@
+{
+    "email": "Email us at",
+    "phone": "Call us",
+    "adText": "Book your ticket now and travel safely!",
+    "bookRental": "Book A Rental",
+    "home": "Home",
+    "about": "About Us",
+    "contact": "Contact",
+    "menu": {
+        "home": "Home",
+        "aboutUs": "About Us",
+        "services": "Services",
+        "blogs": "Blogs",
+        "contactUs": "Contact Us"
+    },
+    "cta": {
+        "bookRental": "Book A ticket"
+    },
+    "welcome": "Welcome to Aby Ticket",
+    "slides": {
+        "bookOnline": {
+            "title": "Book Your Bus Ticket Online",
+            "description": "Reserve your bus tickets quickly and securely from anywhere in Rwanda, without waiting in line."
+        },
+        "trackBus": {
+            "title": "Track Your Bus in Real Time",
+            "description": "Know exactly where your bus is before it arrives at your stop for a stress-free journey."
+        },
+        "easyUse": {
+            "title": "Easy to Use on All Platforms",
+            "description": "Our app and website are designed for everyone, whether on desktop, tablet, or mobile."
+        }
+    },
+    "buttons": {
+        "bookTicket": "Book A Ticket",
+        "learnMore": "Learn More"
+    },
+    "footer": {
+        "readyToTravel": "Ready to Travel?",
+        "bookNextJourney": "Book Your Next Journey",
+        "bookNow": "Book Now",
+        "abyTicket": "Aby Ticket",
+        "tagline": "Experience safe and comfortable travel across Rwanda. We connect you to every destination with reliability and care.",
+        "mainOffice": "Main Office",
+        "address": "KN 4 Ave, Kigali, Rwanda",
+        "viewMap": "View on Map",
+        "bookTicket": "Book A Ticket",
+        "bookDescription": "Reserve your seat for a comfortable journey across Rwanda.",
+        "phone": " +250792888980",
+        "serviceHours": "Service Hours",
+        "weekdays": "Monday-Friday: 6am - 8pm",
+        "weekends": "Weekends: 6am - 9pm",
+        "newsletter": "Newsletter",
+        "newsletterDesc": "Subscribe to get special offers and travel updates.",
+        "emailPlaceholder": "Enter Your Email",
+        "subscribe": "Subscribe Now",
+        "copyright": "Copyright © 2024",
+        "allRights": "All Rights Reserved",
+        "privacyPolicy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "quickLinks": "Quick Links",
+        "aboutUs": "About Us",
+        "ourFleet": "Our Fleet",
+        "destinations": "Destinations",
+        "contact": "Contact",
+        "home": "Home",
+        "about": "About Us"
+
+    }
+
+}

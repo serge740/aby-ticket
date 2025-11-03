@@ -1,0 +1,71 @@
+{
+    "email": "Envoyez-nous un e-mail à",
+    "phone": "Appelez-nous",
+    "adText": "Réservez votre billet maintenant et voyagez en toute sécurité !",
+    "bookRental": "Réserver une location",
+    "menu": {
+        "home": "Accueil",
+        "aboutUs": "À propos",
+        "services": "Services",
+        "blogs": "Blogs",
+        "contactUs": "Contactez-nous"
+    },
+    "cta": {
+        "bookRental": "Acheter un billet"
+
+    },
+    "welcome": "Bienvenue sur Aby Ticket",
+    "slides": {
+        "bookOnline": {
+            "title": "Réservez votre billet de bus en ligne",
+            "description": "Réservez vos billets de bus rapidement et en toute sécurité depuis n'importe où au Rwanda, sans faire la queue."
+        },
+        "trackBus": {
+            "title": "Suivez votre bus en temps réel",
+            "description": "Sachez exactement où se trouve votre bus avant qu'il n'arrive à votre arrêt pour un voyage sans stress."
+        },
+        "easyUse": {
+            "title": "Facile à utiliser sur toutes les plateformes",
+            "description": "Notre application et notre site Web sont conçus pour tout le monde, que ce soit sur ordinateur, tablette ou mobile."
+        }
+    },
+    "buttons": {
+        "bookTicket": "Réserver un billet",
+        "learnMore": "En savoir plus"
+    },
+    "footer": {
+        "readyToTravel": "Prêt à Voyager?",
+        "bookNextJourney": "Réservez Votre Prochain Voyage",
+        "bookNow": "Réserver Maintenant",
+        "abyTicket": "Aby Ticket",
+        "tagline": "Découvrez des voyages sûrs et confortables à travers le Rwanda. Nous vous connectons à chaque destination avec fiabilité et soin.",
+        "mainOffice": "Bureau Principal",
+        "address": "KN 4 Ave, Kigali, Rwanda",
+        "viewMap": "Voir sur la Carte",
+        "bookTicket": "Réserver un Billet",
+        "bookDescription": "Réservez votre siège pour un voyage confortable à travers le Rwanda.",
+        "phone": " +250 792888980",
+        "serviceHours": "Heures de Service",
+        "weekdays": "Lundi-Vendredi: 6h - 20h",
+        "weekends": "Week-ends: 6h - 21h",
+        "newsletter": "Newsletter",
+        "newsletterDesc": "Abonnez-vous pour recevoir des offres spéciales et des mises à jour de voyage.",
+        "emailPlaceholder": "Entrez Votre Email",
+        "subscribe": "S'abonner Maintenant",
+        "copyright": "Copyright © 2024",
+        "allRights": "Tous Droits Réservés",
+        "privacyPolicy": "Politique de Confidentialité",
+        "terms": "Conditions d'Utilisation",
+        "quickLinks": "Liens Rapides",
+        "aboutUs": "À Propos",
+        "ourFleet": "Notre Flotte",
+        "destinations": "Destinations",
+        "contact": "Contact",
+        "home": "Accueil",
+        "about": "À propos"
+    },
+    "home": "Accueil",
+    "about": "À propos",
+    "contact": "Contact"
+
+}
