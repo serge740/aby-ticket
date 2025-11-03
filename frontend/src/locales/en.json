@@ -66,6 +66,115 @@
         "home": "Home",
         "about": "About Us"
 
+    },
+     "services": {
+    "sectionTitle": "Our Services",
+    "sectionHeader": "Plan Your Journey with Ease",
+    "sectionDescription": "Book tickets, track your vehicle, or plan your trip easily online, offline, or via USSD.",
+    "bookTicket": "Book Ticket",
+    "bookTicketDesc": "Plan your journey starting with a fast ticket that fits your schedule.",
+    "trackCar": "Track Your Vehicle",
+    "trackCarDesc": "See your vehicle’s real-time location and estimated arrival at your destination.",
+    "onlineOfflineBooking": "Online/Offline Booking",
+    "onlineOfflineBookingDesc": "Book tickets via our app or at authorized ticket points.",
+    "ussdBooking": "USSD Booking",
+    "ussdBookingDesc": "Book quickly using a USSD code directly from your phone.",
+    "bottomDescription": "We provide easy ways to plan your journey, select your vehicle, and purchase tickets instantly.",
+    "viewAll": "View All Services"
+  },
+  "about": {
+    "badge": "About Aby Ticket",
+    "title": "Rwanda's Most Trusted Bus Service",
+    "subtitle": "Connecting cities across Rwanda with safe, comfortable, and reliable transportation. Experience the difference of modern bus travel with Aby Ticket.",
+    "description": "Since our establishment, Aby Ticket has been committed to providing exceptional bus services throughout Rwanda. We operate modern, well-maintained buses with professional drivers who prioritize your safety and comfort. Our extensive network connects major cities including Kigali, Musanze, Huye, Rubavu, and more.",
+    "cta": "Book Your Journey",
+    "rating": "Customer Rating",
+    "ratingDescription": "Based on 15,000+ verified passenger reviews",
+    "stats": {
+      "passengers": "Happy Passengers",
+      "routes": "Daily Routes",
+      "satisfaction": "Satisfaction Rate",
+      "support": "Customer Support"
+    },
+    "features": {
+      "safety": {
+        "title": "Safety First",
+        "description": "All our buses undergo regular maintenance checks and safety inspections. Our experienced drivers are trained in defensive driving and passenger safety protocols."
+      },
+      "punctuality": {
+        "title": "On-Time Departures",
+        "description": "We value your time. Our buses depart on schedule, ensuring you reach your destination when you need to. Real-time tracking keeps you informed throughout your journey."
+      },
+      "comfort": {
+        "title": "Comfortable Travel",
+        "description": "Enjoy spacious seating, air conditioning, clean restrooms, and onboard entertainment. Our buses are designed for your comfort on both short and long journeys."
+      }
+    },
+    "highlights": {
+      "modern": "Modern fleet with air conditioning",
+      "drivers": "Professional, licensed drivers",
+      "tracking": "Real-time GPS tracking",
+      "support": "24/7 customer support"
+    },
+    "whyChoose": "Why Choose Aby Ticket?",
+    "commitment": "Our Commitment to Excellence"
+  },
+  "locations": {
+    "subtitle": "Travel Across Rwanda",
+    "title": "We Connect Every Corner",
+    "description": "Book safe, comfortable, and affordable bus tickets to all major destinations in Rwanda.",
+    "popularAgencies": "Trusted Bus Operators",
+    "popularRoutes": "Most Popular Routes",
+    "viewAll": "View All Routes",
+    "popular": "Popular",
+    "duration": "journey",
+    "bookNow": "Book Ticket",
+    "ctaTitle": "Ready to Travel?",
+    "ctaDesc": "Over 50+ daily departures to Musanze, Rubavu, Huye, and beyond.",
+    "exploreRoutes": "Explore All Routes"
+  },
+  "hero": {
+    "watchVideo": "WATCH FULL VIDEO",
+    "title": "Travel Rwanda with Ease & Comfort",
+    "subtitle": "Book tickets from trusted operators to any destination — safe, fast, and reliable."
+  },
+   "bookingProcess": {
+    "badge": "How It Works",
+    "title": "Simple steps to book your bus ticket",
+    "subtitle": "Book your bus ticket in three easy ways - through our website, mobile app, or using USSD code. Fast, secure, and convenient booking at your fingertips.",
+    "trustBadge": {
+      "title": "500K+ Tickets Booked",
+      "subtitle": "Trusted by passengers across Rwanda"
+    },
+    "steps": {
+      "choose": {
+        "title": "Choose Your Journey",
+        "content": "Select your departure and destination cities, pick your preferred travel date and time. Browse available routes from Kigali to Musanze, Huye, Rubavu, and more. Compare prices and bus operators to find the perfect option."
+      },
+      "book": {
+        "title": "Book Your Ticket",
+        "content": "Complete your booking through our website, mobile app, or dial *334# for USSD. Choose your seat, add passenger details, and pay securely via Mobile Money (MTN, Airtel), card, or cash at our offices."
+      },
+      "travel": {
+        "title": "Travel With Ease",
+        "content": "Receive your e-ticket via SMS and email instantly. Show your ticket code at the bus station, board your bus, and enjoy a comfortable journey. Track your bus location in real-time through our app."
+      }
     }
+  },
+  "faq": {
+    "subtitle": "Frequently Asked Questions",
+    "title": "Everything you need to know about booking tickets",
+    "busAlt": "Public bus",
+    "q1": "How do I book a bus ticket?",
+    "a1": "You can easily book tickets online by selecting your cities, choosing your travel time, and confirming payment through our secure system.",
+    "q2": "Can I cancel or change my booking?",
+    "a2": "Yes, you can cancel or reschedule up to 24 hours before departure. Some restrictions may apply for peak times.",
+    "q3": "Are there discounts for students or seniors?",
+    "a3": "Yes, discounted fares are available for students and seniors with valid ID.",
+    "q4": "What payment methods are accepted?",
+    "a4": "We accept debit/credit cards, mobile money, and other local payment options.",
+    "q5": "Do I need to print my ticket?",
+    "a5": "No, e-tickets are accepted. Just show your ticket on your phone when boarding."
+  }
 
 }

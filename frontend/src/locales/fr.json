@@ -66,6 +66,115 @@
     },
     "home": "Accueil",
     "about": "À propos",
-    "contact": "Contact"
+    "contact": "Contact",
+    "services": {
+    "sectionTitle": "Nos Services",
+    "sectionHeader": "Planifiez Votre Voyage Facilement",
+    "sectionDescription": "Réservez vos billets, suivez votre véhicule ou planifiez votre voyage facilement en ligne, hors ligne ou via USSD.",
+    "bookTicket": "Réserver un Billet",
+    "bookTicketDesc": "Planifiez votre voyage en commençant par un billet rapide adapté à votre emploi du temps.",
+    "trackCar": "Suivre le Véhicule",
+    "trackCarDesc": "Voir l’emplacement en temps réel de votre véhicule et son heure d’arrivée estimée.",
+    "onlineOfflineBooking": "Réservation En Ligne/Hors Ligne",
+    "onlineOfflineBookingDesc": "Réservez vos billets via notre application ou dans les points de vente agréés.",
+    "ussdBooking": "Réservation USSD",
+    "ussdBookingDesc": "Réservez rapidement avec un code USSD directement depuis votre téléphone.",
+    "bottomDescription": "Nous proposons des moyens simples pour planifier votre voyage, choisir votre véhicule et acheter vos billets instantanément.",
+    "viewAll": "Voir Tous les Services"
+  },
+  "about": {
+    "badge": "À Propos d'Aby Ticket",
+    "title": "Le Service de Bus le Plus Fiable du Rwanda",
+    "subtitle": "Reliant les villes à travers le Rwanda avec un transport sûr, confortable et fiable. Découvrez la différence du voyage en bus moderne avec Aby Ticket.",
+    "description": "Depuis notre création, Aby Ticket s'engage à fournir des services de bus exceptionnels à travers le Rwanda. Nous exploitons des bus modernes et bien entretenus avec des chauffeurs professionnels qui privilégient votre sécurité et votre confort. Notre vaste réseau relie les grandes villes, notamment Kigali, Musanze, Huye, Rubavu et bien d'autres.",
+    "cta": "Réservez Votre Voyage",
+    "rating": "Note Client",
+    "ratingDescription": "Basé sur plus de 15 000 avis de passagers vérifiés",
+    "stats": {
+      "passengers": "Passagers Satisfaits",
+      "routes": "Itinéraires Quotidiens",
+      "satisfaction": "Taux de Satisfaction",
+      "support": "Support Client"
+    },
+    "features": {
+      "safety": {
+        "title": "Sécurité Avant Tout",
+        "description": "Tous nos bus font l'objet de contrôles d'entretien et d'inspections de sécurité réguliers. Nos chauffeurs expérimentés sont formés à la conduite défensive et aux protocoles de sécurité des passagers."
+      },
+      "punctuality": {
+        "title": "Départs à l'Heure",
+        "description": "Nous valorisons votre temps. Nos bus partent à l'heure prévue, vous assurant d'arriver à destination quand vous en avez besoin. Le suivi en temps réel vous tient informé tout au long de votre voyage."
+      },
+      "comfort": {
+        "title": "Voyage Confortable",
+        "description": "Profitez de sièges spacieux, de la climatisation, de toilettes propres et de divertissements à bord. Nos bus sont conçus pour votre confort lors de trajets courts et longs."
+      }
+    },
+    "highlights": {
+      "modern": "Flotte moderne avec climatisation",
+      "drivers": "Chauffeurs professionnels agréés",
+      "tracking": "Suivi GPS en temps réel",
+      "support": "Support client 24/7"
+    },
+    "whyChoose": "Pourquoi Choisir Aby Ticket?",
+    "commitment": "Notre Engagement envers l'Excellence"
+  },
+  "locations": {
+    "subtitle": "Voyagez à Travers le Rwanda",
+    "title": "Nous Relions Chaque Coin",
+    "description": "Réservez des billets de bus sûrs, confortables et abordables vers toutes les grandes destinations du Rwanda.",
+    "popularAgencies": "Opérateurs de Bus Fiables",
+    "popularRoutes": "Itinéraires les Plus Populaires",
+    "viewAll": "Voir Tous les Itinéraires",
+    "popular": "Populaire",
+    "duration": "de trajet",
+    "bookNow": "Réserver un Billet",
+    "ctaTitle": "Prêt à Voyager ?",
+    "ctaDesc": "Plus de 50 départs quotidiens vers Musanze, Rubavu, Huye et plus.",
+    "exploreRoutes": "Explorer Tous les Itinéraires"
+  },
+  "hero": {
+    "watchVideo": "VOIR LA VIDÉO COMPLÈTE",
+    "title": "Voyagez au Rwanda en Toute Simplicité",
+    "subtitle": "Réservez vos billets auprès d’opérateurs fiables vers toutes les destinations — sûr, rapide et fiable."
+  },
+   "bookingProcess": {
+    "badge": "Comment Ça Marche",
+    "title": "Étapes simples pour réserver votre billet de bus",
+    "subtitle": "Réservez votre billet de bus de trois manières simples - via notre site web, application mobile ou code USSD. Réservation rapide, sécurisée et pratique à portée de main.",
+    "trustBadge": {
+      "title": "500K+ Billets Réservés",
+      "subtitle": "Approuvé par les passagers du Rwanda"
+    },
+    "steps": {
+      "choose": {
+        "title": "Choisissez Votre Voyage",
+        "content": "Sélectionnez vos villes de départ et de destination, choisissez votre date et heure de voyage préférées. Parcourez les itinéraires disponibles de Kigali à Musanze, Huye, Rubavu et plus. Comparez les prix et les opérateurs de bus."
+      },
+      "book": {
+        "title": "Réservez Votre Billet",
+        "content": "Complétez votre réservation via notre site web, application mobile, ou composez *334# pour USSD. Choisissez votre siège, ajoutez les détails des passagers et payez en toute sécurité via Mobile Money (MTN, Airtel), carte ou espèces."
+      },
+      "travel": {
+        "title": "Voyagez En Toute Tranquillité",
+        "content": "Recevez votre e-billet instantanément par SMS et email. Présentez votre code de billet à la gare routière, montez dans votre bus et profitez d'un voyage confortable. Suivez la position de votre bus en temps réel."
+      }
+    }
+  },
+   "faq": {
+    "subtitle": "Questions fréquemment posées",
+    "title": "Tout ce que vous devez savoir sur la réservation de billets",
+    "busAlt": "Bus public",
+    "q1": "Comment réserver un billet de bus ?",
+    "a1": "Vous pouvez facilement réserver vos billets en ligne en sélectionnant vos villes de départ et d'arrivée, en choisissant l'heure du voyage et en confirmant votre paiement via notre système sécurisé.",
+    "q2": "Puis-je annuler ou modifier ma réservation ?",
+    "a2": "Oui, vous pouvez annuler ou modifier votre voyage jusqu’à 24 heures avant le départ. Certaines restrictions peuvent s’appliquer pendant les périodes de forte affluence.",
+    "q3": "Y a-t-il des réductions pour les étudiants ou les seniors ?",
+    "a3": "Oui, nous offrons des réductions spéciales pour les étudiants et les passagers âgés. Une pièce d’identité valide doit être présentée lors de l’enregistrement.",
+    "q4": "Quels modes de paiement acceptez-vous ?",
+    "a4": "Nous acceptons les cartes de débit et de crédit, l’argent mobile et d’autres méthodes de paiement locales.",
+    "q5": "Dois-je imprimer mon billet ?",
+    "a5": "Non, l’impression n’est pas nécessaire. Vous pouvez simplement montrer votre billet électronique sur votre téléphone lors de l’embarquement."
+  }
 
 }

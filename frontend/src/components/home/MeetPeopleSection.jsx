@@ -1,106 +1,86 @@
 import React from 'react';
-import { Play } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Play, Bus } from 'lucide-react';
+
+const busCompanies = [
+  'EBENEZER EXPRESS LTD', 'GICUMBI TRANSPORT COOP', 'KIVU BELT EXPRESS',
+  'TRIPARTITE TOURS', 'SELECT EXPRESS', 'SHALOM TRANSPORT', 'JALI TRANSPORT',
+  'ROYAL EXPRESS', 'KIGALI BUS SERVICES', 'LA COLOMBE EXPRESS', 'YAHOO CAR',
+  'NYABUGOGO TC', 'KAYONZA TC', 'MUSANZE TC', 'NYAGATARE TC', 'NGOMA TC',
+  'MUHANGA TC', 'HUYE TC', 'RUSIZI TC', 'STAR EXPRESS', 'DIFFERENT EXPRESS',
+  'RUBAVU TC', 'RITCO LTD', 'RUHIRE EXPRESS', 'INDONYI EXPRESS', 'KIGALI COACH',
+  'CAPITAL LTD', 'FIDELITY EXPRESS', 'CITY EXPRESS', 'EXCEL TRAVEL', 'VOLCANO LTD',
+  'HORIZON EXPRESS', 'STELLA EXPRESS', 'MATUNDA EXPRESS', 'OMEGA LTD',
+  'VIRUNGA EXPRESS', 'ALPHA EXPRESS', 'INTERNATIONAL EXPRESS', 'EA BUS & TRAVEL',
+  'MASH BUS SERVICES', 'TRINITY TRANSPORTERS', 'SIMBA COACH', 'MODERN COAST'
+];
+
+// Duplicate for seamless marquee
+const duplicatedCompanies = [...busCompanies, ...busCompanies];
 
 export default function VideoHeroSection() {
-  const companies = [
-    'EBENEZER EXPRESS LTD',
-    'GICUMBI TRANSPORT COOPERATIVE',
-    'KIVU BELT EXPRESS LTD',
-    'TRIPARTITE TOURS LTD',
-    'SELECT EXPRESS AGENCY LTD',
-    'SHALOM TRANSPORTATION LIMITED',
-    'JALI TRANSPORT Ltd',
-    'ROYAL EXPRESS',
-    'KIGALI BUS SERVICES LTD',
-    'LA COLOMBE EXPRESS LTD',
-    'YAHOO CAR EXPRESS LTD',
-    'NYABUGOGO TC',
-    'KAYONZA T C',
-    'MUSANZE T C',
-    'NYAGATARE T C',
-    'NGOMA T C',
-    'MUHANGA T C',
-    'HUYE T C',
-    'RUSIZI T C',
-    'STAR EXPRESS LTD',
-    'DIFFERENT EXPRESS LTD',
-    'RUBAVU T C',
-    'RITCO LTD',
-    'RUHIRE EXPRESS LTD',
-    'INDONYI EXPRESS',
-    'KIGALI COACH TOURS & TRAVEL LTD',
-    'CAPITAL LTD',
-    'FIDELITY EXPRESS LTD',
-    'CITY EXPRESS LTD',
-    'EXCEL TRAVEL & TOURS AGENCY LTD',
-    'VOLCANO LTD',
-    'HORIZON EXPRESS LTD',
-    'STELLA EXPRESS LTD',
-    'MATUNDA EXPRESS LTD',
-    'OMEGA LTD',
-    'VIRUNGA EXPRESS LTD',
-    'ALPHA EXPRESS COMPANY LTD',
-    'INTERNATIONAL EXPRESS LTD',
-    'EA BUS & TRAVEL LIMITED',
-    'MASH BUS SERVICES LTD',
-    'TRINITY TRANSPORTERS & DISTRIBUTORS CO.LTD',
-    'SIMBA COACH',
-    'MODERN COAST'
-  ];
-
-  // Duplicate companies for seamless loop
-  const duplicatedCompanies = [...companies, ...companies];
+  const { t } = useTranslation();
 
   return (
-    <div className="relative h-screen w-full overflow-hidden">
-      {/* Background Image with Overlay */}
+    <section className="relative h-screen w-full overflow-hidden bg-black">
+      {/* Background Video or Image */}
       <div className="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1920&h=1080&fit=crop"
-          alt="Bus on scenic road"
-          className="w-full h-full object-cover"
+        {/* Replace with actual video later */}
+        <div
+          className="w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1920&h=1080&fit=crop')`,
+            filter: 'brightness(0.7)',
+          }}
         />
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/60"></div>
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80"></div>
+        {/* Dark + Gradient Overlay */}
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/90"></div>
       </div>
 
-      {/* Content Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full px-4">
-        {/* Top Label */}
-        <div className="flex items-center gap-2 mb-6 animate-fade-in">
-          <span className="text-primary-500 text-xl">✱</span>
-          <span className="text-primary-500 font-semibold text-sm md:text-base tracking-wider uppercase">
-            Watch Full Video
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
+        {/* Top Badge */}
+        <div className="mb-6 animate-fade-in">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary-500/20 border border-primary-400/50 rounded-full text-primary-300 text-xs md:text-sm font-medium tracking-wider">
+            <Bus className="w-4 h-4" />
+            {t('hero.watchVideo')}
           </span>
         </div>
 
-        {/* Main Heading */}
-        <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-extrabold text-center leading-tight mb-12 max-w-5xl animate-slide-up">
-          Discover the ease and<br />
-          convenience of renting with Us
+        {/* Main Headline */}
+        <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8 max-w-5xl animate-slide-up">
+          {t('hero.title')}
         </h1>
 
+        {/* Subheadline */}
+        <p className="text-gray-200 text-lg md:text-xl max-w-2xl mb-12 animate-fade-in-delay">
+          {t('hero.subtitle')}
+        </p>
+
         {/* Play Button */}
-        <button className="group relative w-20 h-20 md:w-24 md:h-24 mb-20 animate-pulse-slow">
-          <div className="absolute inset-0 bg-primary-600 rounded-full animate-ping opacity-75"></div>
-          <div className="relative w-full h-full bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-2xl">
+        <button
+          onClick={() => alert('Video player coming soon!')} // Replace with modal/video
+          className="group relative w-20 h-20 md:w-24 md:h-24 mb-16 animate-pulse-slow"
+          aria-label="Play video"
+        >
+          <div className="absolute inset-0 bg-primary-500 rounded-full animate-ping opacity-75"></div>
+          <div className="relative w-full h-full bg-primary-500 hover:bg-primary-600 rounded-full flex items-center justify-center transition-all duration-300 transform group-hover:scale-110 shadow-2xl">
             <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-1 fill-white" />
           </div>
         </button>
 
-        {/* Companies Marquee */}
-        <div className="absolute bottom-0 left-0 right-0 bg-black/30 backdrop-blur-sm py-6 border-t border-white/10">
+        {/* Marquee: Trusted Partners */}
+        <div className="absolute bottom-0 left-0 right-0 bg-black/40 backdrop-blur-md py-5 border-t border-white/10">
           <div className="overflow-hidden">
             <div className="flex animate-marquee whitespace-nowrap">
               {duplicatedCompanies.map((company, index) => (
                 <div
                   key={index}
-                  className="inline-flex items-center mx-8 text-white font-semibold text-sm md:text-base tracking-wide"
+                  className="inline-flex items-center mx-6 text-white/90 font-medium text-sm md:text-base tracking-wide"
                 >
                   {company}
-                  <span className="mx-8 text-primary-500">•</span>
+                  <span className="mx-6 text-primary-500">•</span>
                 </div>
               ))}
             </div>
@@ -108,67 +88,45 @@ export default function VideoHeroSection() {
         </div>
       </div>
 
-      <style>{`
+      {/* Custom Animations */}
+      <style jsx>{`
         @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
-
         .animate-marquee {
-          animation: marquee 60s linear infinite;
+          animation: marquee 50s linear infinite;
         }
-
         .animate-marquee:hover {
           animation-play-state: paused;
         }
 
         @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-
-        .animate-fade-in {
-          animation: fade-in 1s ease-out;
-        }
+        .animate-fade-in { animation: fade-in 0.8s ease-out; }
 
         @keyframes slide-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
         }
+        .animate-slide-up { animation: slide-up 1s ease-out 0.3s both; }
 
-        .animate-slide-up {
-          animation: slide-up 1s ease-out 0.2s both;
+        @keyframes fade-in-delay {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
+        .animate-fade-in-delay { animation: fade-in-delay 1s ease-out 0.6s both; }
 
         @keyframes pulse-slow {
-          0%, 100% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.05);
-          }
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.08); }
         }
-
         .animate-pulse-slow {
           animation: pulse-slow 3s ease-in-out infinite;
         }
       `}</style>
-    </div>
+    </section>
   );
 }

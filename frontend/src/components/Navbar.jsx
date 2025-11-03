@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ChevronDown, Menu, X, ArrowUpRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Logo from '../assets/bus/logo.png'
 
 export default function NovaRideHeader() {
   const { t } = useTranslation(); // <-- i18n hook
@@ -99,10 +100,7 @@ export default function NovaRideHeader() {
           {/* Logo */}
           <div className="flex items-center">
             <NavLink to="/" className="flex items-center">
-              <span className="text-3xl font-black tracking-tight">
-                <span className="text-primary-600">ABY</span>
-                <span className="text-gray-900"> TICKET</span>
-              </span>
+             <img src={Logo} alt="" className="h-24 w-28 object-cover" />
             </NavLink>
           </div>
 
