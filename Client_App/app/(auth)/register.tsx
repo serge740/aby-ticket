@@ -1,84 +1,214 @@
 import React, { useState } from 'react';
-import { 
-  View, 
-  Text, 
-  TextInput, 
-  TouchableOpacity, 
-  StyleSheet, 
-  Image,
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
   SafeAreaView,
   KeyboardAvoidingView,
   Platform,
-  ScrollView
+  ScrollView,
+  Alert,
 } from 'react-native';
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-
+import { Ionicons } from '@expo/vector-icons';
 // Import info
 import info from '@/constants/info';
 import { router } from 'expo-router';
+import { useClientAuth } from '../../contexts/ClientAuthContext'; // Adjust the path as necessary
 
-const RegisterScreen = () => {
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+const RegisterScreen: React.FC = () => {
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [phoneNumber, setPhoneNumber] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const { register } = useClientAuth();
 
-  const handleSignUp = () => {
-    console.log('Sign up pressed');
-    // Add your registration logic here
+  const validateName = (value: string) => {
+    if (!value.trim()) {
+      return 'Name is required';
+    }
+    return '';
   };
 
-  const handleGoogleSignUp = () => {
-    console.log('Google sign up pressed');
-    // Add Google authentication logic here
+  const validateEmail = (value: string) => {
+    if (!value.trim()) {
+      return 'Email is required';
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) {
+      return 'Invalid email format';
+    }
+    return '';
+  };
+
+  const validatePhoneNumber = (value: string) => {
+    if (!value.trim()) {
+      return 'Phone number is required';
+    }
+    const phoneRegex = /^\+?[\d\s-]{7,15}$/;
+    if (!phoneRegex.test(value)) {
+      return 'Invalid phone number format';
+    }
+    return '';
+  };
+
+  const validatePassword = (value: string) => {
+    if (!value) {
+      return 'Password is required';
+    }
+    if (value.length <= 6) {
+      return 'Password must be more than 6 characters';
+    }
+    return '';
+  };
+
+  const validateConfirmPassword = (value: string) => {
+    if (!value) {
+      return 'Confirm password is required';
+    }
+    if (value !== password) {
+      return 'Passwords do not match';
+    }
+    return '';
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    let setter: (val: string) => void;
+    let validator: (val: string) => string;
+
+    switch (field) {
+      case 'name':
+        setter = setName;
+        validator = validateName;
+        break;
+      case 'email':
+        setter = setEmail;
+        validator = validateEmail;
+        break;
+      case 'phoneNumber':
+        setter = setPhoneNumber;
+        validator = validatePhoneNumber;
+        break;
+      case 'password':
+        setter = setPassword;
+        validator = validatePassword;
+        break;
+      case 'confirmPassword':
+        setter = setConfirmPassword;
+        validator = validateConfirmPassword;
+        break;
+      default:
+        return;
+    }
+
+    setter(value);
+    const error = validator(value);
+    setErrors((prev) => ({ ...prev, [field]: error }));
+  };
+
+  const hasErrors = () => {
+    return Object.values(errors).some((error) => error !== '') ||
+      !name || !email || !phoneNumber || !password || !confirmPassword;
+  };
+
+  const handleSignUp = async () => {
+    // Validate all fields before submission
+    const nameError = validateName(name);
+    const emailError = validateEmail(email);
+    const phoneError = validatePhoneNumber(phoneNumber);
+    const passwordError = validatePassword(password);
+    const confirmError = validateConfirmPassword(confirmPassword);
+
+    setErrors({
+      name: nameError,
+      email: emailError,
+      phoneNumber: phoneError,
+      password: passwordError,
+      confirmPassword: confirmError,
+    });
+
+    if (nameError || emailError || phoneError || passwordError || confirmError) {
+      return;
+    }
+
+    try {
+      await register({ name, email, phoneNumber, password });
+      router.replace('/(dashboard)');
+    } catch (error:any) {
+      Alert.alert('Registration Failed', error.message  || 'Please check your details and try again.');
+    }
   };
 
   const handleSignIn = () => {
-    console.log('Navigate to sign in');
-     router.push('/(auth)/login')
+    router.push('/(auth)/login');
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAvoidingView 
+      <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.keyboardView}
       >
-        <ScrollView 
+        <ScrollView
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
-       
-        
-
           {/* Welcome Text */}
           <View style={styles.welcomeContainer}>
             <Text style={styles.helloText}>Hello</Text>
             <Text style={styles.thereText}>there!</Text>
           </View>
-
           {/* Subtitle */}
           <Text style={styles.subtitleText}>
             Just few clicks and we become friends and let's enjoy every day get updates on all your shipments
           </Text>
-
           {/* Input Fields */}
           <View style={styles.inputContainer}>
-            {/* Phone Number Input */}
+            {/* Name Input */}
+            <View style={styles.inputWrapper}>
+              <Ionicons name="person-outline" size={20} color="#999" style={styles.inputIcon} />
+              <TextInput
+                style={styles.input}
+                placeholder="Enter your full name"
+                placeholderTextColor="#999"
+                value={name}
+                onChangeText={(value) => handleInputChange('name', value)}
+                autoCapitalize="words"
+              />
+            </View>
+            {errors.name && <Text style={styles.errorText}>{errors.name}</Text>}
+            {/* Email Input */}
             <View style={styles.inputWrapper}>
               <Ionicons name="mail-outline" size={20} color="#999" style={styles.inputIcon} />
               <TextInput
                 style={styles.input}
-                placeholder="Enter your mail/phone number"
+                placeholder="Enter your email"
                 placeholderTextColor="#999"
-                value={phoneNumber}
-                onChangeText={setPhoneNumber}
+                value={email}
+                onChangeText={(value) => handleInputChange('email', value)}
                 keyboardType="email-address"
                 autoCapitalize="none"
               />
             </View>
-
+            {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
+            {/* Phone Number Input */}
+            <View style={styles.inputWrapper}>
+              <Ionicons name="call-outline" size={20} color="#999" style={styles.inputIcon} />
+              <TextInput
+                style={styles.input}
+                placeholder="Enter your phone number"
+                placeholderTextColor="#999"
+                value={phoneNumber}
+                onChangeText={(value) => handleInputChange('phoneNumber', value)}
+                keyboardType="phone-pad"
+              />
+            </View>
+            {errors.phoneNumber && <Text style={styles.errorText}>{errors.phoneNumber}</Text>}
             {/* Password Input */}
             <View style={styles.inputWrapper}>
               <Ionicons name="lock-closed-outline" size={20} color="#999" style={styles.inputIcon} />
@@ -87,21 +217,21 @@ const RegisterScreen = () => {
                 placeholder="Create password"
                 placeholderTextColor="#999"
                 value={password}
-                onChangeText={setPassword}
+                onChangeText={(value) => handleInputChange('password', value)}
                 secureTextEntry={!showPassword}
               />
-              <TouchableOpacity 
+              <TouchableOpacity
                 onPress={() => setShowPassword(!showPassword)}
                 style={styles.eyeIcon}
               >
-                <Ionicons 
-                  name={showPassword ? "eye-off-outline" : "eye-outline"} 
-                  size={20} 
-                  color="#999" 
+                <Ionicons
+                  name={showPassword ? "eye-off-outline" : "eye-outline"}
+                  size={20}
+                  color="#999"
                 />
               </TouchableOpacity>
             </View>
-
+            {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
             {/* Confirm Password Input */}
             <View style={styles.inputWrapper}>
               <Ionicons name="lock-closed-outline" size={20} color="#999" style={styles.inputIcon} />
@@ -110,22 +240,22 @@ const RegisterScreen = () => {
                 placeholder="Re-type your password"
                 placeholderTextColor="#999"
                 value={confirmPassword}
-                onChangeText={setConfirmPassword}
+                onChangeText={(value) => handleInputChange('confirmPassword', value)}
                 secureTextEntry={!showConfirmPassword}
               />
-              <TouchableOpacity 
+              <TouchableOpacity
                 onPress={() => setShowConfirmPassword(!showConfirmPassword)}
                 style={styles.eyeIcon}
               >
-                <Ionicons 
-                  name={showConfirmPassword ? "eye-off-outline" : "eye-outline"} 
-                  size={20} 
-                  color="#999" 
+                <Ionicons
+                  name={showConfirmPassword ? "eye-off-outline" : "eye-outline"}
+                  size={20}
+                  color="#999"
                 />
               </TouchableOpacity>
             </View>
+            {errors.confirmPassword && <Text style={styles.errorText}>{errors.confirmPassword}</Text>}
           </View>
-
           {/* Terms and Privacy */}
           <View style={styles.termsContainer}>
             <Text style={styles.termsText}>
@@ -139,34 +269,20 @@ const RegisterScreen = () => {
               </Text>
             </Text>
           </View>
-
           {/* Sign Up Button */}
-          <TouchableOpacity 
+          <TouchableOpacity
             style={[styles.signUpButton, { backgroundColor: info.primary[500] }]}
             onPress={handleSignUp}
+            disabled={hasErrors()}
           >
             <Text style={styles.signUpButtonText}>Signup</Text>
           </TouchableOpacity>
-
           {/* OR Divider */}
           <View style={styles.dividerContainer}>
             <View style={styles.dividerLine} />
             <Text style={styles.dividerText}>Or</Text>
             <View style={styles.dividerLine} />
           </View>
-
-               {/* Google Sign In Button */}
-                    <TouchableOpacity 
-                     style={styles.googleButton}
-                     onPress={handleGoogleSignUp}
-                   >
-                     <Image 
-                       source={{ uri: 'https://www.google.com/favicon.ico' }}
-                       style={styles.googleIcon}
-                     />
-                     <Text style={styles.googleButtonText}>Continue with google</Text>
-                   </TouchableOpacity>
-         
           {/* Sign In Link */}
           <View style={styles.signInContainer}>
             <Text style={styles.signInText}>Already have an account? </Text>
@@ -195,23 +311,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingBottom: 40,
     paddingTop: 30,
-    justifyContent:'center',
-  },
-  timeText: {
-    fontSize: 15,
-    fontWeight: '600',
-    color: '#000',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  logoContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  logo: {
-    width: 70,
-    height: 70,
+    justifyContent: 'center',
   },
   welcomeContainer: {
     marginBottom: 12,
@@ -242,7 +342,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     paddingHorizontal: 10,
     paddingVertical: 10,
-    marginBottom: 14,
+    marginBottom: 4,
     borderWidth: 1,
     borderColor: '#E5E5E5',
   },
@@ -261,6 +361,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 16,
     padding: 4,
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 12,
+    marginBottom: 10,
+    marginLeft: 10,
   },
   termsContainer: {
     marginBottom: 24,
@@ -305,27 +411,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     fontSize: 14,
     color: '#999',
-  },
-   googleButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FFF',
-    borderRadius: 25,
-    paddingVertical: 14,
-    borderWidth: 1,
-    borderColor: '#E5E5E5',
-    marginBottom: 24,
-  },
-  googleIcon: {
-    width: 20,
-    height: 20,
-    marginRight: 10,
-  },
-  googleButtonText: {
-    fontSize: 15,
-    color: '#000',
-    fontWeight: '500',
   },
   signInContainer: {
     flexDirection: 'row',

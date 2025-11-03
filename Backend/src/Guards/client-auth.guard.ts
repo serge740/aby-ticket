@@ -10,13 +10,18 @@ import { JwtService } from '@nestjs/jwt';
 export class ClientAuthGuard implements CanActivate {
   constructor(private readonly jwtService: JwtService) {}
 
-  canActivate(context: ExecutionContext): boolean {
+  async canActivate(context: ExecutionContext): Promise<boolean> {
     const req = context.switchToHttp().getRequest();
 
     let token: string | undefined;
 
+ 
+    
     // 1️⃣ Try to get token from Authorization header (Bearer token)
+
     const authHeader = req.headers['authorization'] || req.headers['Authorization'];
+    console.log(authHeader);
+    
     if (authHeader && authHeader.startsWith('Bearer ')) {
       token = authHeader.split(' ')[1];
     }
@@ -33,11 +38,11 @@ export class ClientAuthGuard implements CanActivate {
 
     // 4️⃣ Verify token
     try {
-      const decoded = this.jwtService.verify(token);
+     const decoded = await this.jwtService.verifyAsync(token, { secret: process.env.JWT_SECRET });
       if (decoded.role !== 'client') {
         throw new UnauthorizedException('Invalid token role');
       }
-      req.user = decoded; // Attach client payload to the request
+      req.client = decoded; // Attach client payload to the request
       return true;
     } catch (err) {
       throw new UnauthorizedException('Invalid or expired token');

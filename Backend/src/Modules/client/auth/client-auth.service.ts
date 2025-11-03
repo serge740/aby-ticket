@@ -44,6 +44,30 @@ export class ClientService {
     return client;
   }
 
+
+  // Get client profile
+async getClientProfile(clientId: string) {
+  const client = await this.prisma.client.findUnique({
+    where: { id: clientId },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      phoneNumber: true,
+      profileImage: true,
+      status: true,
+      createdAt: true,
+    },
+  });
+
+  if (!client) {
+    throw new NotFoundException('Client not found');
+  }
+
+  return client;
+}
+
+
   // -----------------------------
   // AUTH METHODS
   // -----------------------------
@@ -174,13 +198,13 @@ export class ClientService {
     const client = await this.findClientById(clientId);
     if (!client) throw new NotFoundException('Client not found');
 
-    res.clearCookie('AccessClientToken', {
+    res.clearCookie('client_token', {
       httpOnly: true,
       secure: true,
       sameSite: 'none',
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
-    return { message: 'Logged out successfully' };
+  return  res.json({ message: 'Logged out successfully' }) ;
   }
 }

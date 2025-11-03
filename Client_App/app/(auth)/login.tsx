@@ -1,80 +1,165 @@
 import React, { useState } from 'react';
-import { 
-  View, 
-  Text, 
-  TextInput, 
-  TouchableOpacity, 
-  StyleSheet, 
-  Image,
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
   SafeAreaView,
   KeyboardAvoidingView,
   Platform,
-  ScrollView
+  ScrollView,
+  Alert,
 } from 'react-native';
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 // Import info
 import info from '../../constants/info';
-import { Link, router } from 'expo-router';
+import { router } from 'expo-router';
+import { useClientAuth } from '@/contexts/ClientAuthContext'; // Adjust the path as necessary
 
-const LoginScreen = () => {
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+const LoginScreen: React.FC = () => {
+  const [identifier, setIdentifier] = useState<string>(''); // Unified input: phone or email
+  const [password, setPassword] = useState<string>('');
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const { login } = useClientAuth();
 
-  const handleSignIn = () => {
-      console.log('Sign in pressed');
-      router.replace('/(tabs)')
-    // Add your authentication logic here
+  const validateIdentifier = (value: string) => {
+    if (!value.trim()) {
+      return 'Phone number or email is required';
+    }
+    const trimmed = value.trim();
+    const phoneRegex = /^\+?[\d\s-]{7,15}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!phoneRegex.test(trimmed) && !emailRegex.test(trimmed)) {
+      return 'Invalid phone number or email format';
+    }
+    return '';
   };
 
-  const handleGoogleSignIn = () => {
-    // Add Google authentication logic here
+  const validatePassword = (value: string) => {
+    if (!value) {
+      return 'Password is required';
+    }
+    if (value.length <= 6) {
+      return 'Password must be more than 6 characters';
+    }
+    return '';
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    let setter: (val: string) => void;
+    let validator: (val: string) => string;
+    switch (field) {
+      case 'identifier':
+        setter = setIdentifier;
+        validator = validateIdentifier;
+        break;
+      case 'password':
+        setter = setPassword;
+        validator = validatePassword;
+        break;
+      default:
+        return;
+    }
+    setter(value);
+    const error = validator(value);
+    setErrors((prev) => ({ ...prev, [field]: error }));
+  };
+
+  const hasErrors = () => {
+    return Object.values(errors).some((error) => error !== '') ||
+      !identifier || !password;
+  };
+
+  const handleSignIn = async () => {
+    const identifierError = validateIdentifier(identifier);
+    const passwordError = validatePassword(password);
+    setErrors({
+      identifier: identifierError,
+      password: passwordError,
+    });
+    if (identifierError || passwordError) {
+      return;
+    }
+
+    try {
+      // Pass the raw identifier (phone or email) to your login function
+      // Assuming your backend/API supports login with either
+      await login(identifier.trim(), password);
+      router.replace('/(dashboard)');
+    } catch (error: any) {
+      Alert.alert('Login Failed', error.message || 'Please check your credentials and try again.');
+    }
+  };
+
+  const handleContinueAsGuest = () => {
+    router.replace('/(guest)');
   };
 
   const handleCreateAccount = () => {
-   router.push('/(auth)/register')
+    router.push('/(auth)/register');
+  };
+
+  const handleForgotPassword = () => {
+    // router.push('/(auth)/forgot-password');
+  };
+
+  const getDynamicPlaceholder = () => {
+    const trimmed = identifier.trim();
+    const phoneRegex = /^\+?[\d\s-]{7,15}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (trimmed === '') return 'Enter phone number or email';
+    if (phoneRegex.test(trimmed)) return 'Enter phone number';
+    if (emailRegex.test(trimmed)) return 'Enter email';
+    return 'Enter phone number or email';
+  };
+
+  const getDynamicIcon = () => {
+    const trimmed = identifier.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailRegex.test(trimmed)) {
+      return 'mail-outline';
+    }
+    return 'call-outline';
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <KeyboardAvoidingView 
+      <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.keyboardView}
       >
-        <ScrollView 
+        <ScrollView
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
-        
-
-       
-
           {/* Welcome Text */}
           <View style={styles.welcomeContainer}>
             <Text style={styles.welcomeText}>Welcome</Text>
             <Text style={styles.welcomeBackText}>back!</Text>
           </View>
-
           {/* Subtitle */}
           <Text style={styles.subtitleText}>
             Sign in to access your package history and get real-time updates on all your shipments
           </Text>
-
           {/* Input Fields */}
           <View style={styles.inputContainer}>
-            {/* Phone Number Input */}
+            {/* Identifier Input (Phone or Email) */}
             <View style={styles.inputWrapper}>
-              <Ionicons name="call-outline" size={20} color="#999" style={styles.inputIcon} />
+              <Ionicons name={getDynamicIcon()} size={20} color="#999" style={styles.inputIcon} />
               <TextInput
                 style={styles.input}
-                placeholder="Enter your phone number"
+                placeholder={getDynamicPlaceholder()}
                 placeholderTextColor="#999"
-                value={phoneNumber}
-                onChangeText={setPhoneNumber}
-                keyboardType="phone-pad"
+                value={identifier}
+                onChangeText={(value) => handleInputChange('identifier', value)}
+                keyboardType="email-address" // Works well for both; auto-capitalization off by default
+                autoCapitalize="none"
+                autoCorrect={false}
               />
             </View>
+            {errors.identifier && <Text style={styles.errorText}>{errors.identifier}</Text>}
 
             {/* Password Input */}
             <View style={styles.inputWrapper}>
@@ -84,63 +169,56 @@ const LoginScreen = () => {
                 placeholder="Enter your password"
                 placeholderTextColor="#999"
                 value={password}
-                onChangeText={setPassword}
+                onChangeText={(value) => handleInputChange('password', value)}
                 secureTextEntry={!showPassword}
               />
-              <TouchableOpacity 
+              <TouchableOpacity
                 onPress={() => setShowPassword(!showPassword)}
                 style={styles.eyeIcon}
               >
-                <Ionicons 
-                  name={showPassword ? "eye-off-outline" : "eye-outline"} 
-                  size={20} 
-                  color="#999" 
+                <Ionicons
+                  name={showPassword ? "eye-off-outline" : "eye-outline"}
+                  size={20}
+                  color="#999"
                 />
               </TouchableOpacity>
             </View>
+            {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
           </View>
-
           {/* Remember Me & Forgot Password */}
           <View style={styles.optionsRow}>
             <TouchableOpacity style={styles.rememberMeContainer}>
               <View style={styles.checkbox} />
               <Text style={styles.rememberMeText}>Remember me</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleForgotPassword}>
               <Text style={[styles.forgotPasswordText, { color: info.primary[500] }]}>
                 Forgot password?
               </Text>
             </TouchableOpacity>
           </View>
-
           {/* Sign In Button */}
-          <TouchableOpacity 
+          <TouchableOpacity
             style={[styles.signInButton, { backgroundColor: info.primary[500] }]}
             onPress={handleSignIn}
+            disabled={hasErrors()}
           >
             <Text style={styles.signInButtonText}>Sign in</Text>
           </TouchableOpacity>
-
           {/* OR Divider */}
           <View style={styles.dividerContainer}>
             <View style={styles.dividerLine} />
             <Text style={styles.dividerText}>OR</Text>
             <View style={styles.dividerLine} />
           </View>
-
-          {/* Google Sign In Button */}
-           <TouchableOpacity 
-            style={styles.googleButton}
-            onPress={handleGoogleSignIn}
+          {/* Guest Button */}
+          <TouchableOpacity
+            style={styles.guestButton}
+            onPress={handleContinueAsGuest}
           >
-            <Image 
-              source={{ uri: 'https://www.google.com/favicon.ico' }}
-              style={styles.googleIcon}
-            />
-            <Text style={styles.googleButtonText}>Continue with google</Text>
+            <MaterialIcons name="person" size={20} color="#000" style={styles.guestIcon} />
+            <Text style={styles.guestButtonText}>Continue as guest</Text>
           </TouchableOpacity>
-
-
           {/* Create Account Link */}
           <View style={styles.createAccountContainer}>
             <Text style={styles.createAccountText}>Don't have an account? </Text>
@@ -149,9 +227,6 @@ const LoginScreen = () => {
                 Create an account
               </Text>
             </TouchableOpacity>
-
-            <Link href={"/(guest)"}>continue as guest </Link>
-
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -163,7 +238,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fafafa',
-
   },
   keyboardView: {
     flex: 1,
@@ -171,25 +245,9 @@ const styles = StyleSheet.create({
   scrollContent: {
     flexGrow: 1,
     paddingHorizontal: 24,
-    justifyContent:"center",
-    paddingTop:30,
+    justifyContent: "center",
+    paddingTop: 30,
     paddingBottom: 40,
-  },
-  timeText: {
-    fontSize: 15,
-    fontWeight: '600',
-    color: '#000',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  logoContainer: {
-    alignItems: 'center',
-    marginTop: 20,
-    marginBottom: 30,
-  },
-  logo: {
-    width: 80,
-    height: 80,
   },
   welcomeContainer: {
     marginBottom: 12,
@@ -220,7 +278,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     paddingHorizontal: 10,
     paddingVertical: 7,
-    marginBottom: 16,
+    marginBottom: 4,
     borderWidth: 1,
     borderColor: '#E5E5E5',
   },
@@ -239,6 +297,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 16,
     padding: 4,
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 12,
+    marginBottom: 10,
+    marginLeft: 10,
   },
   optionsRow: {
     flexDirection: 'row',
@@ -297,7 +361,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#999',
   },
- googleButton: {
+  guestButton: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -308,12 +372,10 @@ const styles = StyleSheet.create({
     borderColor: '#E5E5E5',
     marginBottom: 24,
   },
-  googleIcon: {
-    width: 20,
-    height: 20,
+  guestIcon: {
     marginRight: 10,
   },
-  googleButtonText: {
+  guestButtonText: {
     fontSize: 15,
     color: '#000',
     fontWeight: '500',
