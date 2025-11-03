@@ -72,18 +72,13 @@ export default function AbyTicketContact() {
         </div>
         
         {/* Main Heading */}
-        <h1 className="text-gray-900 text-5xl md:text-7xl font-bold text-center mb-6 leading-tight">
+        <h1 className="text-gray-900 text-2xl  md:text-7xl font-bold text-center mb-6 leading-tight">
           We'd love to hear<br />from you
         </h1>
-        
-        {/* Subheading - Improved for Rwanda-specific transportation context */}
-        <p className="text-gray-600 text-base md:text-lg text-center max-w-3xl mx-auto mb-16 leading-relaxed">
-          Have questions about bus bookings across Rwanda's beautiful landscapes? Need assistance with your inter-city journey from Kigali to Musanze or beyond?<br />
-          Our dedicated team is here to support your travel needs 24/7, ensuring smooth and reliable transportation anywhere in Rwanda.
-        </p>
+     
         
         {/* Contact Cards & Form Container */}
-        <div className=" px-4 md:px-8 lg:px-16 mx-auto">
+        <div className=" px-4 md:px-8 lg:px-4 mx-auto">
           
           {/* Contact Info Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">

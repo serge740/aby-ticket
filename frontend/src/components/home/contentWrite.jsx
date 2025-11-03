@@ -90,27 +90,27 @@ export default function ServicesSection() {
         }}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-8xl mx-auto relative z-10 px-6">
         {/* Header */}
         <div className="text-center mb-4">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 border border-orange-100 mb-6">
-            <Sparkles className="w-4 h-4 text-orange-600" />
-            <span className="text-sm font-semibold tracking-wide text-orange-600 uppercase">Our Services</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 mb-6">
+            <Sparkles className="w-4 h-4 text-primary-600" />
+            <span className="text-sm font-semibold tracking-wide text-primary-600 uppercase">Our Services</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">
             Complete Transportation
             <br />
-            <span className="bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">Solutions for Rwanda</span>
+            <span className="bg-gradient-to-r from-primary-600 to-primary-500 bg-clip-text text-transparent">Solutions for Rwanda</span>
           </h2>
           
-          <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="text-gray-600 text-lg md:text-xl max-w-8xl mx-auto leading-relaxed">
             From online booking to offline USSD services, we provide flexible transport solutions for every need
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-20">
+        <div className=" max-w-9xl grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-20">
           {services.map((service, index) => {
             const Icon = service.icon;
             const isHovered = hoveredIndex === index;
@@ -122,15 +122,15 @@ export default function ServicesSection() {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                <div className="relative h-full bg-white rounded-2xl p-8 transition-all duration-300 hover:shadow-xl border border-gray-100 hover:border-orange-200">
+                <div className="relative h-full bg-white rounded-2xl p-8 transition-all duration-300 hover:shadow-xl border border-gray-100 hover:border-primary-200">
                   {/* Icon Container */}
-                  <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-xl mb-5 bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-xl mb-5 bg-gradient-to-br from-primary-500 to-primary-600 shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-8 h-8 text-white" strokeWidth={2} />
                   </div>
 
                   {/* Content */}
                   <div className="mb-4">
-                    <div className="text-xs font-semibold text-orange-600 uppercase tracking-wider mb-2">
+                    <div className="text-xs font-semibold text-primary-600 uppercase tracking-wider mb-2">
                       {service.subtitle}
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-3">
@@ -145,14 +145,14 @@ export default function ServicesSection() {
                     <ul className="space-y-2 mb-6">
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
-                          <Check className="w-4 h-4 text-orange-600 flex-shrink-0" />
+                          <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
 
                     {/* CTA Link */}
-                    <button className="inline-flex items-center gap-2 font-semibold text-orange-600 hover:gap-3 transition-all duration-300 text-sm group">
+                    <button className="inline-flex items-center gap-2 font-semibold text-primary-600 hover:gap-3 transition-all duration-300 text-sm group">
                       <span>Learn More</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </button>
@@ -169,7 +169,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Testimonials Section */}
-        <div className="bg-gradient-to-br from-orange-600 to-orange-500 rounded-3xl p-8 md:p-12 text-white mb-16 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-primary-600 to-primary-500 rounded-3xl p-8 md:p-12 text-white mb-16 relative overflow-hidden">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
@@ -180,7 +180,7 @@ export default function ServicesSection() {
           <div className="relative z-10">
             <div className="text-center mb-8">
               <h3 className="text-3xl md:text-4xl font-bold mb-2">What Our Customers Say</h3>
-              <p className="text-orange-100">Trusted by thousands of travelers across Rwanda</p>
+              <p className="text-primary-100">Trusted by thousands of travelers across Rwanda</p>
             </div>
 
             <div className="max-w-3xl mx-auto">
@@ -191,11 +191,11 @@ export default function ServicesSection() {
                   </div>
                   <div>
                     <div className="font-bold text-lg">{testimonials[currentTestimonial].name}</div>
-                    <div className="text-orange-100 text-sm">{testimonials[currentTestimonial].role}</div>
+                    <div className="text-primary-100 text-sm">{testimonials[currentTestimonial].role}</div>
                   </div>
                   <div className="ml-auto flex gap-1">
                     {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                      <span key={i} className="text-yellow-300">★</span>
+                      <span key={i} className="text-primary-300">★</span>
                     ))}
                   </div>
                 </div>
@@ -218,20 +218,7 @@ export default function ServicesSection() {
           </div>
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4">
-            <button className="px-8 py-4 bg-gradient-to-r from-orange-600 to-orange-500 text-white rounded-full font-bold text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-              Book Your Ride Now
-            </button>
-            <button className="px-8 py-4 bg-white text-orange-600 border-2 border-orange-600 rounded-full font-bold text-lg hover:bg-orange-50 transition-all duration-300">
-              View All Routes
-            </button>
-          </div>
-          <p className="mt-6 text-gray-600">
-            Need help? Call us: <span className="font-bold text-orange-600">+250 788 XXX XXX</span> or dial <span className="font-bold text-orange-600">*XXX#</span>
-          </p>
-        </div>
+       
       </div>
     </section>
   );

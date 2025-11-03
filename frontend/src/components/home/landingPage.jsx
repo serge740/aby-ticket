@@ -1,186 +1,177 @@
-import React, { useState } from 'react';
-import { Bus, MapPin, Calendar, Search, ArrowUpRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Bus, MapPin, Calendar, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function AbyTicketLanding() {
-  const [formData, setFormData] = useState({
-    busType: '',
-    departureLocation: '',
-    departureDate: '',
-    arrivalLocation: '',
-    returnDate: ''
-  });
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      title: "Looking to save more on your bus ticket?",
+      description: "Whether you're traveling across Rwanda for business, visiting family, or exploring our beautiful country, we offer reliable and comfortable bus services to all major destinations.",
+      image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1600&q=80",
+      gradient: "from-primary-900/70 via-primary-800/60 to-black/80"
+    },
+    {
+      title: "Travel in Comfort & Style",
+      description: "Experience premium comfort with our modern fleet of buses featuring reclining seats, air conditioning, and onboard entertainment for a journey as enjoyable as your destination.",
+      image: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=1600&q=80",
+      gradient: "from-primary-900/70 via-primary-800/60 to-black/80"
+    },
+    {
+      title: "Explore Rwanda's Beauty",
+      description: "From the bustling streets of Kigali to the serene landscapes of Musanze, discover every corner of Rwanda with our extensive network connecting all major cities and attractions.",
+      image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=1600&q=80",
+      gradient: "from-green-900/70 via-green-800/60 to-black/80"
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
 
   return (
     <div className="relative min-h-screen bg-black overflow-hidden">
-      {/* Background Image from Unsplash */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1600&q=80')`,
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
+      {/* Background Images with Transitions */}
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+            index === currentSlide ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{
+            backgroundImage: `url('${slide.image}')`,
+          }}
+        >
+          <div className={`absolute inset-0 bg-gradient-to-b ${slide.gradient}`}></div>
+        </div>
+      ))}
+
+      {/* Animated Left Sidebar */}
+      <div className="absolute left-0 top-0 h-full w-2 bg-gradient-to-b from-primary-500 via-primary-500 to-green-500 animate-pulse"></div>
+      
+      <div className="absolute left-8 top-1/2 -translate-y-1/2 space-y-4">
+        <div className="w-1 h-20 bg-gradient-to-b from-primary-500 to-transparent rounded-full animate-pulse" style={{ animationDelay: '0s' }}></div>
+        <div className="w-1 h-32 bg-gradient-to-b from-primary-500 to-transparent rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+        <div className="w-1 h-24 bg-gradient-to-b from-green-500 to-transparent rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-1/4 h-full bg-gradient-to-r from-primary-900/10 to-transparent"></div>
-        <div className="absolute top-0 right-0 w-1/4 h-full bg-gradient-to-l from-primary-900/10 to-transparent"></div>
-      </div>
+      {/* Floating Color Orbs */}
+      <div className="absolute top-20 left-20 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 left-40 w-80 h-80 bg-primary-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute top-40 left-60 w-48 h-48 bg-green-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
 
-   
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
         
         {/* Logo */}
         <div className="absolute top-8 left-0 right-0 text-center">
-          <div className="text-gray-400 text-sm tracking-[0.4em] uppercase font-semibold">
+          <div className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 via-primary-400 to-green-400 text-sm tracking-[0.4em] uppercase font-bold">
             ABY TICKET
           </div>
         </div>
 
-        {/* Welcome Badge */}
-        <div className="mb-8">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary-600/10 border border-primary-600/30 backdrop-blur-sm">
-            <span className="text-primary-400 text-xl">✦</span>
-            <span className="text-primary-400 text-sm font-medium">Welcome To Aby Ticket</span>
+        {/* Content Container */}
+        <div className="max-w-6xl mx-auto text-center">
+          {/* Welcome Badge */}
+          <div className="mb-8 animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-white/20 backdrop-blur-sm">
+              <span className="text-yellow-400 text-xl animate-pulse">✦</span>
+              <span className="text-white text-sm font-medium">Welcome To Aby Ticket</span>
+            </div>
           </div>
-        </div>
 
-        {/* Main Heading */}
-        <h1 className="text-white text-5xl md:text-7xl font-bold text-center mb-6 leading-tight max-w-5xl">
-          Looking to save more on<br />your bus ticket?
-        </h1>
+          {/* Slide Content */}
+          <div className="transition-all duration-700 ease-in-out">
+            <h1 className="text-white text-5xl md:text-7xl font-bold text-center mb-6 leading-tight max-w-5xl mx-auto animate-fade-in">
+              {slides[currentSlide].title}
+            </h1>
 
-        {/* Subheading */}
-        <p className="text-gray-300 text-base md:text-lg text-center max-w-3xl mb-10 leading-relaxed">
-          Whether you're traveling across Rwanda for business, visiting family, or exploring our beautiful country,<br />
-          we offer reliable and comfortable bus services to all major destinations.
-        </p>
+            <p className="text-gray-200 text-base md:text-lg text-center max-w-3xl mx-auto mb-10 leading-relaxed animate-fade-in">
+              {slides[currentSlide].description}
+            </p>
+          </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap gap-4 mb-20">
-          <button className="group flex items-center gap-3 px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg shadow-primary-600/30">
-            Book A Ticket
-            <div className="w-8 h-8 flex items-center justify-center rounded-full bg-primary-700 group-hover:bg-primary-800 transition-colors">
-              <ArrowUpRight size={18} />
-            </div>
-          </button>
-          
-          <button className="group flex items-center gap-3 px-8 py-4 bg-white hover:bg-gray-100 text-black font-semibold rounded-full transition-all duration-300 shadow-lg">
-            Learn More
-            <div className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 group-hover:bg-gray-300 transition-colors">
-              <ArrowUpRight size={18} />
-            </div>
-          </button>
-        </div>
-
-        {/* Search Form */}
-        <div className="w-full max-w-7xl">
-          <div className="bg-white rounded-3xl shadow-2xl p-8">
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-end">
-              
-              {/* Bus Type */}
-              <div className="space-y-2">
-                <label className="flex items-center gap-2 text-gray-700 font-semibold text-sm">
-                  <Bus size={20} />
-                  Bus Type
-                </label>
-                <select 
-                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 appearance-none cursor-pointer"
-                  value={formData.busType}
-                  onChange={(e) => setFormData({...formData, busType: e.target.value})}
-                >
-                  <option value="">Choose Bus Type</option>
-                  <option value="express">Express</option>
-                  <option value="luxury">Luxury</option>
-                  <option value="standard">Standard</option>
-                  <option value="vip">VIP</option>
-                </select>
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-4 mb-12 justify-center">
+            <button className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-600 via-primary-600 to-green-600 hover:from-primary-700 hover:via-primary-700 hover:to-green-700 text-white font-semibold rounded-full transition-all duration-300 shadow-lg shadow-primary-600/30 hover:shadow-primary-600/50 hover:scale-105 transform">
+              Book A Ticket
+              <div className="w-8 h-8 flex items-center justify-center rounded-full bg-white/20 group-hover:bg-white/30 transition-colors">
+                <ArrowUpRight size={18} />
               </div>
-
-              {/* Departure Location */}
-              <div className="space-y-2">
-                <label className="flex items-center gap-2 text-gray-700 font-semibold text-sm">
-                  <MapPin size={20} />
-                  Departure Location
-                </label>
-                <select 
-                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 appearance-none cursor-pointer"
-                  value={formData.departureLocation}
-                  onChange={(e) => setFormData({...formData, departureLocation: e.target.value})}
-                >
-                  <option value="">From Location</option>
-                  <option value="kigali">Kigali</option>
-                  <option value="musanze">Musanze</option>
-                  <option value="huye">Huye</option>
-                  <option value="rubavu">Rubavu</option>
-                  <option value="muhanga">Muhanga</option>
-                </select>
+            </button>
+            
+            <button className="group flex items-center gap-3 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-full transition-all duration-300 shadow-lg hover:scale-105 transform">
+              Learn More
+              <div className="w-8 h-8 flex items-center justify-center rounded-full bg-white/20 group-hover:bg-white/30 transition-colors">
+                <ArrowUpRight size={18} />
               </div>
+            </button>
+          </div>
 
-              {/* Departure Date */}
-              <div className="space-y-2">
-                <label className="flex items-center gap-2 text-gray-700 font-semibold text-sm">
-                  <Calendar size={20} />
-                  Departure Date
-                </label>
-                <input 
-                  type="date"
-                  placeholder="mm/dd/yyyy"
-                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                  value={formData.departureDate}
-                  onChange={(e) => setFormData({...formData, departureDate: e.target.value})}
+          {/* Slide Indicators */}
+          <div className="flex items-center justify-center gap-4">
+            {/* Previous Button */}
+            <button
+              onClick={prevSlide}
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white transition-all duration-300 hover:scale-110"
+            >
+              <ChevronLeft size={20} />
+            </button>
+
+            {/* Dots */}
+            <div className="flex gap-2">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentSlide 
+                      ? 'w-8 bg-gradient-to-r from-primary-500 via-primary-500 to-green-500' 
+                      : 'w-2 bg-white/30 hover:bg-white/50'
+                  }`}
                 />
-              </div>
-
-              {/* Arrival Location */}
-              <div className="space-y-2">
-                <label className="flex items-center gap-2 text-gray-700 font-semibold text-sm">
-                  <MapPin size={20} />
-                  Arrival Location
-                </label>
-                <select 
-                  className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 appearance-none cursor-pointer"
-                  value={formData.arrivalLocation}
-                  onChange={(e) => setFormData({...formData, arrivalLocation: e.target.value})}
-                >
-                  <option value="">To Location</option>
-                  <option value="kigali">Kigali</option>
-                  <option value="musanze">Musanze</option>
-                  <option value="huye">Huye</option>
-                  <option value="rubavu">Rubavu</option>
-                  <option value="muhanga">Muhanga</option>
-                </select>
-              </div>
-
-              {/* Return Date with Search Button */}
-              <div className="flex items-end gap-3">
-                <div className="space-y-2 flex-1">
-                  <label className="flex items-center gap-2 text-gray-700 font-semibold text-sm">
-                    <Calendar size={20} />
-                    Return Date
-                  </label>
-                  <input 
-                    type="date"
-                    placeholder="mm/dd/yyyy"
-                    className="w-full px-4 py-3 bg-gray-50 border-0 rounded-xl text-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                    value={formData.returnDate}
-                    onChange={(e) => setFormData({...formData, returnDate: e.target.value})}
-                  />
-                </div>
-                
-                {/* Search Button */}
-                <button className="w-14 h-14 flex items-center justify-center bg-primary-600 hover:bg-primary-700 text-white rounded-full transition-colors shadow-lg shadow-primary-600/30">
-                  <Search size={24} />
-                </button>
-              </div>
-
+              ))}
             </div>
+
+            {/* Next Button */}
+            <button
+              onClick={nextSlide}
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white transition-all duration-300 hover:scale-110"
+            >
+              <ChevronRight size={20} />
+            </button>
           </div>
         </div>
+
 
       </div>
+
+      <style jsx>{`
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.7s ease-out;
+        }
+      `}</style>
     </div>
   );
 }
