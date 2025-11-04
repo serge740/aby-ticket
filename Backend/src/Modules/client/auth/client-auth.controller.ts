@@ -24,7 +24,7 @@ import { ClientFileFields, testimonialUploadConfig } from 'src/common/Utils/file
 
 @Controller('client')
 export class ClientController {
-  constructor(private readonly clientService: ClientService) {}
+  constructor(private readonly clientService: ClientService) { }
 
   // -----------------------------
   // REGISTER
@@ -50,7 +50,7 @@ export class ClientController {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-      path:'/'
+      path: '/'
     });
 
     return { message: 'Login successful', client, token };
@@ -62,12 +62,12 @@ export class ClientController {
   @UseGuards(ClientAuthGuard)
   @Patch('change-password')
   async changePassword(
-    @Req() req:RequestWithClient,
+    @Req() req: RequestWithClient,
     @Body() body: { currentPassword: string; newPassword: string },
   ) {
 
-      const id = (req.client as any)?.id;
-    
+    const id = (req.client as any)?.id;
+
     return this.clientService.changePassword(id, body.currentPassword, body.newPassword);
   }
 
@@ -76,9 +76,9 @@ export class ClientController {
   // -----------------------------
   @UseGuards(ClientAuthGuard)
   @Patch('update')
-    @UseInterceptors(FileFieldsInterceptor(ClientFileFields, testimonialUploadConfig))
+  @UseInterceptors(FileFieldsInterceptor(ClientFileFields, testimonialUploadConfig))
   async updateClient(
-   @Req() req:RequestWithClient,
+    @Req() req: RequestWithClient,
     @Body()
     body: {
       name?: string;
@@ -88,12 +88,12 @@ export class ClientController {
       profileImage?: string;
       status?: 'ACTIVE' | 'INACTIVE';
     },
-    @UploadedFiles()  files?: { profileImage?: Express.Multer.File[] },
+    @UploadedFiles() files?: { profileImage?: Express.Multer.File[] },
   ) {
-     if(files?.profileImage){
-        body.profileImage = `/uploads/profile/${files?.profileImage?.[0].filename}`
+    if (files?.profileImage) {
+      body.profileImage = `/uploads/profile/${files?.profileImage?.[0].filename}`
     }
-      const clientId = (req.client as any)?.id;
+    const clientId = (req.client as any)?.id;
     return this.clientService.updateClient(clientId, body);
   }
 
@@ -102,12 +102,12 @@ export class ClientController {
   // -----------------------------
   @UseGuards(ClientAuthGuard)
   @Delete('delete')
-  async deleteClient(@Req() req:RequestWithClient) {
-      const id = (req.client as any)?.id;
+  async deleteClient(@Req() req: RequestWithClient) {
+    const id = (req.client as any)?.id;
     return this.clientService.deleteClient(id);
   }
 
-   // -----------------------------
+  // -----------------------------
   // 🔐 GET CLIENT PROFILE
   // -----------------------------
   @UseGuards(ClientAuthGuard)
@@ -115,7 +115,7 @@ export class ClientController {
 
   async getProfile(@Req() req: RequestWithClient) {
     // The guard attaches decoded user info to req.user
-    
+
     const clientId = (req.client as any)?.id;
     const client = await this.clientService.getClientProfile(clientId);
     return { client };
@@ -126,8 +126,8 @@ export class ClientController {
   // -----------------------------
   @UseGuards(ClientAuthGuard)
   @Post('logout')
-  async logout( @Res() res: Response,@Req() req:RequestWithClient) {
-      const clientId = (req.client as any)?.id;
+  async logout(@Res() res: Response, @Req() req: RequestWithClient) {
+    const clientId = (req.client as any)?.id;
     await this.clientService.logout(res, clientId);
 
   }
@@ -136,7 +136,7 @@ export class ClientController {
   // GOOGLE OAUTH LOGIN
   // -----------------------------
   @Get('google')
-  @UseGuards(GoogleAdminStateGuard,AuthGuard('google-client'))
+  @UseGuards(GoogleAdminStateGuard, AuthGuard('google-client'))
   async googleLogin() {
     // Initiates Google OAuth flow
   }
@@ -144,7 +144,9 @@ export class ClientController {
   @Get('google/callback')
   @UseGuards(AuthGuard('google-client'))
   async googleCallback(@Req() req: any, @Res() res: Response) {
-    const { client, token, redirect,state } = req.user as any;
+    const { client, token, redirect, state } = req.user as any;
+    console.log(req.user);
+    
 
     if (redirect) {
       // Redirect to frontend if OAuth failed
@@ -159,8 +161,22 @@ export class ClientController {
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
+    const platform = state.platform;
+
+
+
+    let redirectUri;
+
+    if (platform == 'mobile' || platform == 'window') {
+      redirectUri = (state.redirectUri as string);
+    }
+    else if (platform == 'web') {
+      redirectUri = `${process.env.FRONTEND_URL}/${state.path}`
+    }
+    else{
+      redirectUri = `${process.env.FRONTEND_URL}`
+    }
     // Redirect to frontend or return client info
-    const redirectUri = (state.redirectUri as string) || `${process.env.FRONTEND_URL_ONLY}/dashboard`;
     return res.redirect(`${redirectUri}?login=success&token=${token}`);
   }
 }
