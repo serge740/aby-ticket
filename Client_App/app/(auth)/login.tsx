@@ -16,6 +16,7 @@ import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import info from '../../constants/info';
 import { router } from 'expo-router';
 import { useClientAuth } from '@/contexts/ClientAuthContext'; // Adjust the path as necessary
+import GoogleButton from '@/components/auth/GoogleButton';
 
 const LoginScreen: React.FC = () => {
   const [identifier, setIdentifier] = useState<string>(''); // Unified input: phone or email
@@ -211,6 +212,8 @@ const LoginScreen: React.FC = () => {
             <Text style={styles.dividerText}>OR</Text>
             <View style={styles.dividerLine} />
           </View>
+
+          <GoogleButton />
           {/* Guest Button */}
           <TouchableOpacity
             style={styles.guestButton}

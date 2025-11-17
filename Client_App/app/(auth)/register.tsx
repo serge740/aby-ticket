@@ -16,6 +16,7 @@ import { Ionicons } from '@expo/vector-icons';
 import info from '@/constants/info';
 import { router } from 'expo-router';
 import { useClientAuth } from '../../contexts/ClientAuthContext'; // Adjust the path as necessary
+import GoogleButton from '@/components/auth/GoogleButton';
 
 const RegisterScreen: React.FC = () => {
   const [name, setName] = useState<string>('');
@@ -283,6 +284,9 @@ const RegisterScreen: React.FC = () => {
             <Text style={styles.dividerText}>Or</Text>
             <View style={styles.dividerLine} />
           </View>
+
+          <GoogleButton />
+
           {/* Sign In Link */}
           <View style={styles.signInContainer}>
             <Text style={styles.signInText}>Already have an account? </Text>

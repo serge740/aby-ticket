@@ -1,6 +1,9 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import * as SecureStore from 'expo-secure-store';
 import { ClientAuthService, Client } from '../services/clientAuthService';
+import * as WebBrowser from 'expo-web-browser';
+import * as Linking from 'expo-linking';
+import ENV from '@/env';
 
 interface ClientAuthContextProps {
   client: Client | null;
@@ -10,7 +13,7 @@ interface ClientAuthContextProps {
 
   register: (data: { name: string; email: string; phoneNumber: string; password: string }) => Promise<void>;
   login: (login: string, password: string) => Promise<void>;
-  loginWithGoogle: (googleToken: string) => Promise<void>;
+  loginWithGoogle: () => Promise<void>;
   getProfile: () => Promise<void>;
   updateProfile: (data: Partial<Client>) => Promise<void>;
   logout: () => Promise<void>;
@@ -30,7 +33,7 @@ export const ClientAuthProvider: React.FC<Props> = ({ children }) => {
   const [token, setToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+ 
   const authService = new ClientAuthService();
 
   // -----------------------------
@@ -107,6 +110,7 @@ export const ClientAuthProvider: React.FC<Props> = ({ children }) => {
   // LOGIN
   // -----------------------------
   const login = async (login: string, password: string) => {
+    
     try {
       const result = await authService.login(login, password);
       const {client,token} = result
@@ -125,18 +129,52 @@ export const ClientAuthProvider: React.FC<Props> = ({ children }) => {
   // -----------------------------
   // GOOGLE LOGIN
   // -----------------------------
-  const loginWithGoogle = async (googleToken: string) => {
-    try {
-      const { client, token } = await authService.loginWithGoogle(googleToken);
-      setClient(client);
-      setToken(token);
-      setIsAuthenticated(true);
-      await SecureStore.setItemAsync(TOKEN_KEY, token);
-    } catch (error) {
-      console.error('Google login failed:', error);
-      throw error;
+ const loginWithGoogle = async () => {
+  setLoading(true)
+  try {
+    // 1. Build redirect URI
+    const redirectUri = __DEV__
+      ? Linking.createURL("/")
+      : "abyticket://";
+
+    const stateObj = { redirectUri, platform: "mobile" };
+    const encodedState = encodeURIComponent(JSON.stringify(stateObj));
+    const loginUrl = `${ENV.API_URL}/client/google?state=${encodedState}`;
+
+    // 2. Open Google OAuth
+    const result = await WebBrowser.openAuthSessionAsync(loginUrl, redirectUri);
+
+    if (result.type !== "success" || !result.url) {
+      throw new Error("Login cancelled or failed");
     }
-  };
+
+    // 3. Extract YOUR APP TOKEN from URL
+    const parsed = Linking.parse(result.url);
+    const token = parsed.queryParams?.token as string;
+
+    if (!token) {
+      throw new Error("No token received from server");
+    }
+
+    // 4. Store token & fetch profile (same as normal login)
+    setToken(token);
+    await SecureStore.setItemAsync(TOKEN_KEY, token);
+
+    // Fetch user profile using the token
+    await fetchProfile();
+    setIsAuthenticated(true);
+
+    // Optional: you can return token or navigate here
+    // router.replace("/(dashboard)"); // if you want to navigate from provider
+
+  } catch (error: any) {
+    console.error('Google login failed:', error);
+    throw error;
+  }
+  finally{
+    setLoading(false)
+  }
+};
 
   // -----------------------------
   // GET PROFILE (EXPOSED)
